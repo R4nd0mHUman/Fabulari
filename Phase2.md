@@ -3,8 +3,8 @@
 **Student Number:** s5353249  
 **Student Name:** Eden Moss  
 **Course:** 3813ICT Full Stack Development  
-**Application:** Fabuloso  
-**Repository:** `https://github.com/R4nd0mHUman/JustChatting`
+**Application:** Fabuloso / Fabulari
+**Repository:** `https://github.com/R4nd0mHUman/Fabulari`
 
 ## 1. Project specification
 
@@ -197,7 +197,7 @@ For this teaching build `x-user-id` is the session identity mechanism rather tha
 - Online/offline indicators update from live Socket.io presence state.
 - After shutting down and restarting the application, MongoDB still retains users, groups, memberships, channels, profile-picture paths and the latest five chat messages.
 
-### Recommended marking run
+### Recommended Run
 
 ```text
 # Terminal 1 - MongoDB service running
@@ -228,9 +228,8 @@ The direct inspection command uses the official `mongodb` driver and displays th
 
 ```text
 First run -> Bootstrap Super Admin -> Login
-Normal user -> Register/Login -> User Home -> Discover/Request Group
-           -> Approval -> My Groups -> Channel -> Live Chat
-           -> Profile -> edit details/password/profile image
+Normal user -> Register/Login -> User Home -> Discover/Request Group -> Approval -> My Groups
+           -> Channel -> Live Chat -> Profile -> edit details/password/profile image
 Group Admin -> Group Admin -> requests/members/channels/settings
 Super Admin -> Dashboard -> group requests / users / banned users / audit logs
 ```
