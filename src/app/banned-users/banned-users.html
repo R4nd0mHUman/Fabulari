@@ -1,0 +1,164 @@
+<!--
+  Main container for the entire Banned / Deleted Emails administrative page.
+  This wrapper groups the Fabulari logo and the main administrative panel together.
+-->
+<div class="admin-page-shell">
+
+  <!--
+    Fabulari logo displayed at the top of the page.
+
+    class="fabulari-logo":
+      Applies CSS styling to control the logo's appearance and positioning.
+
+    src:
+      Specifies the location of the logo image relative to the application.
+
+    alt:
+      Provides alternative text for accessibility and is displayed if the
+      image cannot be loaded.
+  -->
+  <img
+    class="fabulari-logo"
+    src="assets/Images/fabulari-logo.png"
+    alt="Fabulari logo"
+  />
+
+  <!--
+    Main content area containing the banned/deleted email management information.
+
+    The "admin-panel" class is used to apply the visual styling for the administrative section of the page.
+  -->
+  <section class="admin-panel">
+
+    <!--
+      Navigation link that takes the administrator back to the Super Admin dashboard.
+
+      routerLink="/super-admin":
+        Angular's RouterLink directive performs client-side navigation to the /super-admin route.
+        Unlike a normal href link, RouterLink allows Angular to change the displayed route without requiring a complete
+                                                  browser page reload.
+
+      The arrow is simply visual text indicating that this is a "back" or return link.
+    -->
+    <a routerLink="/super-admin">← Super Admin</a>
+
+    <!--
+      Main heading for the current page.
+      This identifies the page as the Banned / Deleted Emails section.
+    -->
+    <h1>Banned / Deleted Emails</h1>
+
+    <!--
+      Supporting description explaining the purpose of the page.
+
+      It informs the administrator that the email addresses displayed below have been permanently blocked and cannot be used
+                                                  to register another account.
+    -->
+    <p>These addresses are permanently blocked from registration.</p>
+
+    <!--
+      Loading message displayed while the banned email information is being retrieved.
+
+      *ngIf="loading":
+        Angular's *ngIf structural directive conditionally adds this paragraph to the page only while the component's
+                                                  "loading" property is true.
+
+        Once loading has finished and "loading" becomes false, Angular removes this paragraph from the DOM.
+    -->
+    <p *ngIf="loading">Loading…</p>
+
+    <!--
+      Error message displayed if an error occurs while retrieving the banned emails.
+
+      class="error":
+        Applies CSS styling used to visually distinguish an error message from normal page content.
+
+      *ngIf="error":
+        Displays this paragraph only when the component's "error" property contains a truthy value.
+
+      {{ error }}:
+        Angular interpolation displays the error message stored in the component's "error" property.
+    -->
+    <p
+      class="error"
+      *ngIf="error"
+    >
+      {{ error }}
+    </p>
+
+    <!--
+      Empty-state message displayed when there are no banned email addresses.
+
+      *ngIf="!loading && !error && banned.length === 0":
+        This paragraph is only displayed when all three conditions are true:
+
+        - "!loading":
+            The application has finished loading the banned email data.
+
+        - "!error":
+            No error occurred while retrieving the data.
+
+        - "banned.length === 0":
+            The "banned" array contains no banned email records.
+
+        Checking all three conditions prevents the empty-state message from appearing while data is still loading or when an
+                                                        error has occurred.
+    -->
+    <p *ngIf="!loading && !error && banned.length === 0">
+      No banned email addresses.
+    </p>
+
+    <!--
+      Repeated row used to display each banned or deleted email record.
+
+      class="ban-row":
+        Applies CSS styling to each individual banned email entry.
+
+      *ngFor="let item of banned":
+        Angular's *ngFor structural directive loops through the "banned" collection defined in the component's TypeScript class.
+
+        For every object in the "banned" array, Angular creates one copy of this <div> and makes the current object available
+                                                  through the "item" variable.
+
+      For example, if "banned" contains five records, Angular will generate five separate "ban-row" elements.
+    -->
+    <div
+      class="ban-row"
+      *ngFor="let item of banned"
+    >
+
+      <!--
+        Display the banned email address for the current record.
+
+        <strong>:
+          Gives the email address semantic importance and normally displays the text using a bold font weight.
+
+        {{ item.email }}:
+          Angular interpolation retrieves and displays the "email" property from the current banned email object.
+      -->
+      <strong>
+        {{ item.email }}
+      </strong>
+
+      <!--
+        Display the date and time associated with the deletion or ban.
+
+        <small>:
+          Represents secondary or supplementary information and is normally displayed using a smaller font size.
+
+        {{ item.deletedAt }}:
+          Retrieves the "deletedAt" timestamp from the current banned email record.
+
+        | date:'medium':
+          Angular's date pipe converts the timestamp into a human-readable medium-format date and time.
+
+          This makes the raw date value easier for the administrator to read.
+      -->
+      <small>
+        {{ item.deletedAt | date:'medium' }}
+      </small>
+
+    </div>
+
+  </section>
+</div>

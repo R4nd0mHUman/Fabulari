@@ -1,0 +1,49 @@
+<div class="guest-page">
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Contains the main guest-mode welcome content. -->
+    <div class="guest-card">
+
+        <!-- Displays the application name. -->
+        <h1>
+            FABULOSO
+        </h1>
+
+        <!-- Identifies the current user role. -->
+        <p class="role">
+            GUEST
+        </p>
+
+        <!-- Explains what guests can access without creating an account. -->
+        <p>
+            You can browse public group information without an account.
+        </p>
+
+
+        <!-- Opens the public group browsing page. -->
+        <button routerLink="/guest/groups">
+            Browse Groups
+        </button>
+
+        <!-- Opens the login page for existing users. -->
+        <button routerLink="/login">
+            Login
+        </button>
+
+        <!-- Opens the registration page for new users. -->
+        <button routerLink="/register">
+            Register
+        </button>
+
+        <!-- Leaves guest mode and returns the user to the appropriate page. -->
+        <button
+            class="secondary"
+            (click)="leaveGuest()"
+        >
+            Leave Guest Mode
+        </button>
+
+    </div>
+
+</div>

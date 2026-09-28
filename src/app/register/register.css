@@ -1,0 +1,271 @@
+/* Main registration screen */
+.register-screen {
+
+    position: relative; /* Makes this the reference point for positioned children */
+
+    width: 100%;
+    min-height: 100vh;
+
+    /* Allows the registration page to scroll if the screen is too small */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Uses the same pink cursor as the login screen */
+    cursor: url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'), auto;
+
+}
+
+
+/* JustChatting title */
+.title-image {
+
+    position: relative;
+
+    /* Same general title styling as the login screen */
+    display: block;
+    width: 350px;
+
+    margin: 30px auto 20px;
+
+    z-index: 2;
+
+}
+
+
+/* Registration form */
+.register-form {
+
+    /* Keeps the form centred on the page */
+    display: flex;
+    flex-direction: column;
+
+    width: 350px;
+
+    margin: 0 auto;
+    padding: 25px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* Labels */
+.register-form label {
+
+    margin-top: 12px;
+    margin-bottom: 5px;
+
+    /* Uses the same font as the input fields */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    font-size: 18px;
+    font-weight: normal;
+
+    color: rgb(185, 105, 168);
+
+    /* Uses the same pink cursor as the login screen */
+    cursor: url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'), auto;
+
+
+    /* White outline around the text */
+    text-shadow:
+        -1px -1px 0 white,
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white;
+
+}
+
+
+/* Input fields */
+.register-form input {
+
+    width: 100%;
+    height: 45px;
+
+    padding: 0 12px;
+
+    box-sizing: border-box;
+
+    background: white;
+
+    border: 3px solid rgb(185, 105, 168);
+    border-radius: 12px;
+
+    outline: none;
+
+    /* Same font styling as login inputs */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+    color: rgb(185, 105, 168);
+    font-size: 20px;
+
+    /* Same custom text cursor */
+    cursor: url('/assets/cursor/Cute%20Pink%20Text.cur'), text;
+
+}
+
+
+/* Placeholder text */
+.register-form input::placeholder {
+
+    color: rgb(185, 105, 168);
+
+    opacity: 0.6;
+
+}
+
+
+/* Input focus effect */
+.register-form input:focus {
+
+    border-color: rgb(218, 135, 197);
+
+    box-shadow: 0 0 12px rgba(218, 135, 197, 0.5);
+
+}
+
+
+/* Create account button */
+.register-button {
+
+    margin-top: 25px;
+
+    width: 100%;
+    height: 50px;
+
+    border: 3px solid rgb(185, 105, 168);
+    border-radius: 12px;
+
+    background: white;
+
+    /* Same font as the rest of the interface */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+    color: rgb(185, 105, 168);
+    font-size: 20px;
+
+    cursor: url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'), pointer;
+
+}
+
+
+/* Create account button hover */
+.register-button:hover {
+
+    border-color: rgb(218, 135, 197);
+
+    box-shadow: 0 0 12px rgba(218, 135, 197, 0.5);
+
+}
+
+
+/* Back button */
+.back-button {
+
+    margin-top: 10px;
+
+    width: 100%;
+    height: 45px;
+
+    border: 3px solid rgb(185, 105, 168);
+    border-radius: 12px;
+
+    background: white;
+
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+    color: rgb(185, 105, 168);
+    font-size: 18px;
+
+    cursor: url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'), pointer;
+
+}
+
+
+/* Back button hover */
+.back-button:hover {
+
+    border-color: rgb(218, 135, 197);
+
+    box-shadow: 0 0 12px rgba(218, 135, 197, 0.5);
+
+}
+
+
+/* Mobile registration layout */
+@media (max-width: 768px) {
+
+    .register-screen {
+
+        /* Allows the form to extend beyond the viewport */
+        min-height: 100vh;
+
+        overflow-y: auto;
+
+    }
+
+
+    .title-image {
+
+        /* Matches the smaller login title on mobile */
+        width: 70%;
+
+        margin-top: 15px;
+        margin-bottom: 10px;
+
+    }
+
+
+    .register-form {
+
+        /* Makes the form responsive */
+        width: 80vw;
+        max-width: 350px;
+
+        padding: 15px;
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .register-form label {
+
+        font-size: 16px;
+
+        margin-top: 10px;
+
+    }
+
+
+    .register-form input {
+
+        width: 100%;
+
+        height: 45px;
+
+        font-size: 18px;
+
+    }
+
+
+    .register-button {
+
+        height: 48px;
+
+        font-size: 18px;
+
+    }
+
+
+    .back-button {
+
+        height: 45px;
+
+        font-size: 17px;
+
+    }
+
+}

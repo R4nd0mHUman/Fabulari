@@ -1,0 +1,31 @@
+<!-- Defines the document type as HTML5. -->
+<!doctype html>
+
+<html lang="en"> <!-- Opens the HTML document and sets the page language to English. -->
+
+<head>
+
+  <!-- Sets the character encoding to support standard text characters. -->
+  <meta charset="utf-8">
+
+  <title>Fabuloso</title> <!-- Sets the title displayed in the browser tab. -->
+  <base href="/"> <!-- Defines the base URL used for resolving relative links and assets. -->
+
+  <!-- Makes the page responsive by matching the viewport size to the device width. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Sets the browser tab icon. -->
+  <link rel="icon" type="image/x-icon" href="JustChattingICON.ico">
+
+</head>
+
+<body>
+
+  <!-- Angular inserts the root application component inside this element. -->
+  <app-root></app-root>
+
+  <!-- Socket.io browser client served by the Phase 2 backend. -->
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+</body>
+
+</html>

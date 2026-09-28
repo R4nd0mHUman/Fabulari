@@ -1,0 +1,79 @@
+<div
+    class="user-screen"
+    [ngStyle]="{'background-image':'url(' + currentBase + ')'}"
+>
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Displays the user's profile picture. -->
+    <img
+        class="profile-picture"
+        [src]="profilePicture"
+        alt="User Profile"
+    />
+
+
+    <!-- Displays the user's username. -->
+    <h1 class="username">
+        {{ username }}
+    </h1>
+
+
+    <!-- Contains the navigation and account action buttons. -->
+    <section class="chat-hub-card">
+        <h2>Chat Hub</h2>
+        <p>Your groups and channels are organised around chat. Join a group, choose a channel, then open its conversation.</p>
+    </section>
+
+    <div class="buttons">
+
+        <!-- Opens the group search page. -->
+        <button routerLink="/groups/search">
+            Search Groups
+        </button>
+
+
+        <!-- Opens the user's groups page. -->
+        <button routerLink="/groups">
+            My Groups
+        </button>
+
+
+        <!-- Opens the page for requesting a new group. -->
+        <button routerLink="/groups/create">
+            Create Group
+        </button>
+
+
+        <!-- Opens the user's group request page. -->
+        <button routerLink="/groups/requests">
+            Group Requests
+        </button>
+
+
+        <!-- Displays the membership requests option when pending admin requests exist. -->
+        <button
+            *ngIf="hasPendingAdminRequests"
+            routerLink="/groups/requests"
+        >
+            Membership Requests
+        </button>
+
+
+        <!-- Opens the user's profile page. -->
+        <button routerLink="/profile">
+            Profile
+        </button>
+
+
+        <!-- Logs the user out of the application. -->
+        <button
+            type="button"
+            (click)="logout()"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</div>

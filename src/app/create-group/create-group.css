@@ -1,0 +1,224 @@
+/* Defines the custom font used throughout the group creation page. */
+/* Main group creation page */
+:host {
+
+    /* Uses Flexbox to arrange the page contents vertically. */
+    display: flex;
+
+    /* Stacks the page contents from top to bottom. */
+    flex-direction: column;
+
+    /* Centres the page contents horizontally. */
+    align-items: center;
+
+    /* Makes the page at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Gives the page its soft pink background colour. */
+    background: #fcecf8;
+}
+
+
+/* Main page title */
+.page-title {
+
+    /* Adds space above the title and a small amount of space below it. */
+    margin-top: 40px;
+    margin-bottom: 5px;
+
+    /* Uses the custom Tempus Sans font for the title. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the title large and prominent. */
+    font-size: 42px;
+
+    /* Keeps the title at the font's normal weight. */
+    font-weight: normal;
+
+    /* Gives the title its pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Creates a white outline around the title text. */
+    text-shadow:
+        -2px -2px 0 white, /* Adds the top-left part of the white outline. */
+         2px -2px 0 white, /* Adds the top-right part of the white outline. */
+        -2px  2px 0 white, /* Adds the bottom-left part of the white outline. */
+         2px  2px 0 white; /* Adds the bottom-right part of the white outline. */
+}
+
+
+/* Description underneath the page title */
+.page-description {
+
+    /* Removes the default space above the description. */
+    margin-top: 0;
+
+    /* Adds space below the description before the form begins. */
+    margin-bottom: 30px;
+
+    /* Uses the custom font for the description. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the description text size. */
+    font-size: 18px;
+
+    /* Gives the description the same pink/purple colour as the title. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* Group creation form */
+.group-form {
+
+    /* Uses Flexbox to arrange the form elements vertically. */
+    display: flex;
+
+    /* Stacks the labels, inputs and button from top to bottom. */
+    flex-direction: column;
+
+    /* Gives the form a fixed width of 350 pixels. */
+    width: 350px;
+}
+
+
+/* Labels inside the group form */
+.group-form label {
+
+    /* Adds space above each label. */
+    margin-top: 12px;
+
+    /* Adds a small amount of space between the label and its input. */
+    margin-bottom: 5px;
+
+    /* Uses the custom font for the labels. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the label text size. */
+    font-size: 18px;
+
+    /* Gives the labels their pink/purple colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* Group form inputs */
+.group-input {
+
+    /* Makes each input use the full width of the form. */
+    width: 100%;
+
+    /* Ensures each input is at least 45 pixels tall. */
+    min-height: 45px;
+
+    /* Adds space inside the input around the text. */
+    padding: 10px 12px;
+
+    /* Includes the padding and border within the input's defined width. */
+    box-sizing: border-box;
+
+    /* Gives the inputs a clean white background. */
+    background: white;
+
+    /* Adds a 3-pixel purple border around the inputs. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the input corners. */
+    border-radius: 12px;
+
+    /* Removes the browser's default focus outline. */
+    outline: none;
+
+    /* Uses the custom font for typed text. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the input text size. */
+    font-size: 18px;
+
+    /* Gives the typed text its pink/purple colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* Group description textarea */
+.description-input {
+
+    /* Gives the description box a taller starting height. */
+    height: 120px;
+
+    /* Allows the user to resize the textarea vertically. */
+    resize: vertical;
+}
+
+
+/* Form input focus effect */
+.group-input:focus {
+
+    /* Changes the border to a brighter pink when the input is selected. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the active input. */
+    box-shadow:
+        0 0 12px
+        rgba(218, 135, 197, 0.5);
+}
+
+
+/* Create group button */
+.group-button {
+
+    /* Makes the button fill the full width of the form. */
+    width: 100%;
+
+    /* Gives the button a fixed height of 50 pixels. */
+    height: 50px;
+
+    /* Adds space between the final input and the button. */
+    margin-top: 20px;
+
+    /* Adds a 3-pixel purple border around the button. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the button corners. */
+    border-radius: 12px;
+
+    /* Gives the button a clean white background. */
+    background: white;
+
+    /* Uses the custom font for the button text. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the button text size. */
+    font-size: 20px;
+
+    /* Gives the button text its pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink link cursor when hovering over the clickable button. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'),
+        pointer;
+}
+
+
+/* Create group button hover effect */
+.group-button:hover {
+
+    /* Makes the button border brighter when hovered. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the button. */
+    box-shadow:
+        0 0 12px
+        rgba(218, 135, 197, 0.5);
+}
+
+
+/* Disabled create group button */
+.group-button:disabled {
+
+    /* Makes the disabled button appear faded. */
+    opacity: 0.6;
+
+    /* Changes the cursor to indicate that the button cannot currently be clicked. */
+    cursor: not-allowed;
+}

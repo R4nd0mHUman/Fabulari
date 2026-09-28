@@ -1,0 +1,235 @@
+<!-- Main profile screen -->
+<div class="profile-screen">
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Profile page title -->
+    <h1 class="profile-title">
+        Profile
+    </h1>
+
+    <!-- Description underneath the title -->
+    <p class="profile-description">
+        Manage your account information and profile picture.
+    </p>
+
+
+    <!-- Displays while the profile is being loaded -->
+    <div
+        class="loading-message"
+        *ngIf="loading"
+    >
+        Loading profile...
+    </div>
+
+
+    <!-- Profile content -->
+    <div
+        class="profile-container"
+        *ngIf="!loading"
+    >
+
+        <!-- Profile picture section -->
+        <div class="profile-picture-section">
+
+            <!-- Displays the selected preview if one exists. Otherwise displays the current profile picture. -->
+            <img
+                class="profile-picture"
+                [src]="profilePicturePreview || profilePicture"
+                alt="Profile Picture"
+            />
+
+            <!-- Allows the user to select a new profile picture -->
+            <label class="picture-button">
+
+                Change Profile Picture
+
+                <!-- Hides the actual file input through CSS while allowing the label above to open it. -->
+                <input
+                    type="file"
+                    accept="image/*"
+                    (change)="selectProfilePicture($event)"
+                />
+
+            </label>
+
+        </div>
+
+
+        <!-- Profile information form -->
+        <div class="profile-form">
+
+            <!-- Username -->
+            <label for="username">
+                Username
+            </label>
+
+            <input
+                id="username"
+                class="profile-input"
+                type="text"
+                [(ngModel)]="username"
+            />
+
+
+            <!-- First name -->
+            <label for="firstName">
+                First Name
+            </label>
+
+            <input
+                id="firstName"
+                class="profile-input"
+                type="text"
+                [(ngModel)]="firstName"
+            />
+
+
+            <!-- Last name -->
+            <label for="lastName">
+                Last Name
+            </label>
+
+            <input
+                id="lastName"
+                class="profile-input"
+                type="text"
+                [(ngModel)]="lastName"
+            />
+
+
+            <!-- Email -->
+            <label for="email">
+                Email
+            </label>
+
+            <!-- Email is intentionally disabled because the requirements state that users cannot change their email. -->
+            <input
+                id="email"
+                class="profile-input"
+                type="email"
+                [value]="email"
+                disabled
+            />
+
+            <small class="email-note">
+                Email cannot be changed.
+            </small>
+
+
+            <!-- Age -->
+            <label for="age">
+                Age
+            </label>
+
+            <input
+                id="age"
+                class="profile-input"
+                type="number"
+                min="1"
+                max="150"
+                [(ngModel)]="age"
+            />
+
+            <!-- Change Password Section -->
+            <div class="password-section">
+
+                <!-- Section heading -->
+                <h2 class="password-title">
+                    Change Password
+                </h2>
+
+                <!-- Current password -->
+                <label for="currentPassword">
+                    Current Password
+                </label>
+
+                <input
+                    id="currentPassword"
+                    class="profile-input"
+                    type="password"
+                    [(ngModel)]="currentPassword"
+                    placeholder="Current Password"
+                />
+
+
+                <!-- New password -->
+                <label for="newPassword">
+                    New Password
+                </label>
+
+                <input
+                    id="newPassword"
+                    class="profile-input"
+                    type="password"
+                    [(ngModel)]="newPassword"
+                    placeholder="New Password"
+                />
+
+                <!-- Password requirement -->
+                <small class="password-note">
+                    Password must be at least 8 characters and contain at least one uppercase letter.
+                </small>
+
+
+                <!-- Confirm new password -->
+                <label for="confirmPassword">
+                    Confirm New Password
+                </label>
+
+                <input
+                    id="confirmPassword"
+                    class="profile-input"
+                    type="password"
+                    [(ngModel)]="confirmPassword"
+                    placeholder="Confirm New Password"
+                />
+
+
+                <!-- Save password -->
+                <button
+                    class="profile-button password-button"
+                    type="button"
+                    (click)="changePassword()"
+                    [disabled]="changingPassword"
+                >
+
+                    {{ changingPassword ? 'Saving...' : 'Save Password' }}
+
+                </button>
+
+            </div>
+
+
+            <!-- Save changes -->
+            <button
+                class="profile-button save-button"
+                type="button"
+                (click)="saveProfile()"
+                [disabled]="saving"
+            >
+
+                {{ saving ? 'Saving...' : 'Save Changes' }}
+
+            </button>
+
+
+            <!-- Permanent account deletion used by the User3 test case. -->
+            <button class="profile-button" type="button" (click)="deleteAccount()">Delete My Account</button>
+
+            <!-- Return to dashboard -->
+            <button
+                class="profile-button back-button"
+                type="button"
+                (click)="backToDashboard()"
+            >
+
+                Back to Dashboard
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

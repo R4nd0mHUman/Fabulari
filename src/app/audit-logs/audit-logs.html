@@ -1,0 +1,214 @@
+<!--
+  Main container for the entire Super Admin audit log page.
+  This wrapper groups the logo and the main administrative panel together.
+-->
+<div class="admin-page-shell">
+
+  <!--
+    Fabulari logo displayed at the top of the page.
+
+    class="fabulari-logo":
+      Applies CSS styling to control the logo's appearance and positioning.
+
+    src:
+      Specifies the location of the logo image relative to the application.
+
+    alt:
+      Provides alternative text for accessibility and is displayed if the image cannot be loaded.
+  -->
+  <img
+    class="fabulari-logo"
+    src="assets/Images/fabulari-logo.png"
+    alt="Fabulari logo"
+  />
+
+  <!--
+    Main content area containing all of the audit log functionality.
+    The "admin-panel" class is used to apply the visual styling for the administrative section of the page.
+  -->
+  <section class="admin-panel">
+
+    <!--
+      Header section for the audit log page.
+
+      This contains:
+      - A link back to the Super Admin page.
+      - The page title.
+      - A short description explaining what audit logs represent.
+    -->
+    <div class="admin-heading">
+
+      <!--
+        Navigation link that takes the administrator back to the Super Admin dashboard.
+
+        href="/super-admin":
+          Navigates the browser to the /super-admin route.
+
+        The arrow is simply visual text indicating that this is a "back" or return link.
+      -->
+      <a class="back-link" href="/super-admin">← Super Admin</a>
+
+      <!--
+        Main heading for the current page.
+        This identifies the page as the Audit Logs section.
+      -->
+      <h1>Audit Logs</h1>
+
+      <!--
+        Supporting description explaining the purpose of the page.
+
+        It tells administrators that administrative actions are recorded by the server and can therefore be reviewed here.
+      -->
+      <p>Every administrative action is recorded on the server.</p>
+    </div>
+
+    <!--
+      Filter controls used to narrow down which audit log entries are displayed in the table.
+    -->
+    <div class="filter-bar">
+
+      <!--
+        Filter for the type of administrative action.
+
+        [(ngModel)]="type":
+          This is Angular two-way data binding.
+          The value entered into this input is stored in the component's "type" property.
+
+          If the component changes "type", the input is also updated.
+
+        placeholder:
+          Displays example text inside the input when it is empty.
+      -->
+      <label>
+        Action type
+        <input
+          [(ngModel)]="type"
+          placeholder="e.g. ADMIN_PROMOTED"
+        >
+      </label>
+
+      <!--
+        Filter for the date on which an audit log entry occurred.
+
+        [(ngModel)]="date":
+          Two-way binds the selected date to the component's "date" property.
+
+        type="date":
+          Tells the browser to display a date picker rather than a normal text input.
+      -->
+      <label>
+        Date
+        <input
+          [(ngModel)]="date"
+          type="date"
+        >
+      </label>
+
+      <!--
+        Button used to apply the selected filters.
+
+        (click)="load()":
+          Angular event binding.
+          When the administrator clicks this button, Angular calls the "load()" method in the component's TypeScript class.
+
+          The load method is responsible for retrieving the audit logs, normally using the current "type" and "date" filter values.
+      -->
+      <button (click)="load()">Filter</button>
+    </div>
+
+    <!--
+      Wrapper around the audit log table.
+
+      The "table-frame" class can be used by CSS to control things such as borders, spacing, scrolling, width, or the overall
+                                                      appearance of the table.
+    -->
+    <div class="table-frame">
+
+      <!--
+        Table containing the audit log records.
+        Each row represents one recorded administrative action.
+      -->
+      <table>
+
+        <!--
+          Table header row.
+
+          The four columns display:
+          - Time: when the action occurred.
+          - Actor: which user performed the action.
+          - Action: what administrative action occurred.
+          - Details: additional information about the action.
+        -->
+        <tr>
+          <th>Time</th>
+          <th>Actor</th>
+          <th>Action</th>
+          <th>Details</th>
+        </tr>
+
+        <!--
+          Angular *ngFor directive.
+
+          "let log of logs":
+            Loops through the "logs" collection defined in the component's TypeScript class.
+            For every item in "logs", Angular creates a new table row and makes the current item available through the
+                                                      "log" variable.
+
+          For example, if "logs" contains three audit records, Angular will generate three of these table rows.
+        -->
+        <tr *ngFor="let log of logs">
+
+          <!--
+            Display the timestamp for the current audit log.
+
+            {{ log.timestamp }}:
+              Angular interpolation used to display a value from the current "log" object.
+
+            | date:'medium':
+              Angular's date pipe formats the timestamp into a human-readable date and time format.
+          -->
+          <td>
+            {{ log.timestamp | date:'medium' }}
+          </td>
+
+          <!--
+            Display the username of the administrator who performed the recorded action.
+            "log.actorUsername" comes from the current audit log object.
+          -->
+          <td>
+            {{ log.actorUsername }}
+          </td>
+
+          <!--
+            Display the type/name of the administrative action.
+            For example, this might contain a value such as:
+            ADMIN_PROMOTED
+          -->
+          <td>
+            {{ log.action }}
+          </td>
+
+          <!--
+            Display additional information about the audit event.
+
+            <pre>:
+              Preserves whitespace and formatting, which is useful when displaying structured information such as JSON.
+
+            {{ log.details }}:
+              Retrieves the details associated with the current log entry.
+
+            | json:
+              Angular's JSON pipe converts the details object into a readable JSON representation.
+
+            This is useful for displaying additional information such as IDs, previous values, new values, or other metadata
+                                          associated with the administrative action.
+          -->
+          <td>
+            <pre>{{ log.details | json }}</pre>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </section>
+</div>

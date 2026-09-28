@@ -1,0 +1,537 @@
+/* =========================================================
+   ADMIN PAGE
+   ---------------------------------------------------------
+   Main wrapper for the entire admin page.
+
+   The page uses:
+   - A full-screen background image
+   - A dark overlay for readability
+   - Warm red/orange colours to match the admin theme
+   - Responsive padding for different screen sizes
+   ========================================================= */
+.admin-page-shell {
+    /* Ensures the page is at least as tall as the viewport. */
+    min-height: 100vh;
+
+    /* Prevents padding from increasing the element's total width/height. */
+    box-sizing: border-box;
+
+    /*
+     * Top padding leaves room for a header/navigation area.
+     * clamp(min, preferred, max) makes the padding responsive:
+     * - Minimum: 82px
+     * - Preferred: 10% of the viewport height
+     * - Maximum: 110px
+     */
+    padding: clamp(82px, 10vh, 110px) 20px 40px;
+
+    /*
+     * Background consists of two layers:
+     * 1. A semi-transparent dark gradient that sits on top of the image and improves text readability.
+     * 2. The actual background image.
+     *
+     * "center / cover" keeps the image centered and makes it cover the entire available area.
+     * "fixed" keeps the background stationary while scrolling.
+     */
+    background:
+        linear-gradient(
+            rgba(31, 24, 27, 0.78),
+            rgba(31, 24, 27, 0.90)
+        ),
+        url('/assets/Images/JustChattingBaseWindowSuperAdmin.png')
+            center / cover fixed no-repeat;
+
+    /* Main text colour used throughout the admin page. */
+    color: rgb(245, 220, 215);
+
+    /* Primary font, with common fallbacks. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* =========================================================
+   ADMIN PANEL
+   ---------------------------------------------------------
+   Main content container used for admin pages.
+   ========================================================= */
+.admin-panel {
+    /*
+     * The panel can never become wider than 1100px, while still shrinking to fit smaller screens.
+     */
+    width: min(1100px, 100%);
+
+    /* Centers the panel horizontally. */
+    margin: auto;
+
+    /* Makes padding and borders part of the defined width. */
+    box-sizing: border-box;
+
+    /*
+     * Responsive internal spacing.
+     * The padding grows with the viewport but stays between 18px and 30px.
+     */
+    padding: clamp(18px, 3vw, 30px);
+
+    /* Red border matching the rest of the admin theme. */
+    border: 3px solid rgb(180, 65, 65);
+
+    /* Rounded corners give the panel a softer appearance. */
+    border-radius: 20px;
+
+    /*
+     * Slightly transparent dark background allows some of the page styling to remain visible underneath.
+     */
+    background: rgba(49, 36, 40, 0.94);
+
+    /*
+     * Two shadows:
+     * - A larger dark shadow creates depth.
+     * - A subtle red glow reinforces the theme.
+     */
+    box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.32),
+        0 0 18px rgba(225, 85, 70, 0.18);
+}
+
+
+/*
+ * Smaller version of the admin panel.
+ * Useful for pages that do not need the full 1100px width, such as simple forms or login-style admin pages.
+ */
+.compact-panel {
+    max-width: 760px;
+}
+
+
+/* =========================================================
+   HEADINGS AND TEXT
+   ========================================================= */
+
+/*
+ * Main heading inside an admin panel.
+ */
+.admin-panel h1 {
+    /* Adds vertical spacing around the heading. */
+    margin: 10px 0;
+
+    /* Uses the same light colour as the main page text. */
+    color: rgb(245, 220, 215);
+
+    /*
+     * Responsive font size:
+     * - Minimum: 30px
+     * - Preferred: 5% of viewport width
+     * - Maximum: 44px
+     */
+    font-size: clamp(30px, 5vw, 44px);
+
+    /* Prevents the browser from making the heading bold. */
+    font-weight: normal;
+}
+
+
+/*
+ * Paragraphs inside the admin panel.
+ * Increased line-height makes longer pieces of text easier to read.
+ */
+.admin-panel p {
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BACK LINK
+   ---------------------------------------------------------
+   Used for navigation back to a previous/admin page.
+   ========================================================= */
+.back-link {
+    /* Allows margin to work while keeping the link inline. */
+    display: inline-block;
+
+    /* Orange accent colour. */
+    color: rgb(235, 125, 65);
+
+    /* Removes the default underline. */
+    text-decoration: none;
+
+    /* Adds a small amount of space underneath the link. */
+    margin-bottom: 8px;
+}
+
+
+/*
+ * Re-enable the underline when the user hovers over the navigation link to make it clear that it is clickable.
+ */
+.back-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   FILTER BAR
+   ---------------------------------------------------------
+   Container for search fields, filters, and buttons.
+   ========================================================= */
+.filter-bar {
+    /*
+     * Flexbox allows the controls to sit next to each other when there is enough horizontal space.
+     */
+    display: flex;
+
+    /*
+     * Allows controls to move onto another line when the available width is too small.
+     */
+    flex-wrap: wrap;
+
+    /*
+     * Aligns the bottom of the controls, which is useful when labels sit above input fields.
+     */
+    align-items: flex-end;
+
+    /* Space between filter controls. */
+    gap: 14px;
+
+    /* Adds vertical spacing around the filter bar. */
+    margin: 22px 0;
+}
+
+
+/*
+ * Each label inside the filter bar becomes a vertical group:
+ * Label text
+ * Input/select/etc.
+ */
+.filter-bar label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+/* =========================================================
+   INPUT FIELDS
+   ========================================================= */
+
+/*
+ * Styles all input elements contained inside an admin panel.
+ */
+.admin-panel input {
+    /*
+     * Ensures inputs have a comfortable minimum height.
+     */
+    min-height: 40px;
+
+    /* Prevents padding/borders from changing the intended size. */
+    box-sizing: border-box;
+
+    /* Internal spacing around the input text. */
+    padding: 8px 10px;
+
+    /* Red themed border. */
+    border: 2px solid rgb(180, 65, 65);
+
+    /* Rounded corners. */
+    border-radius: 10px;
+
+    /*
+     * Light background provides strong contrast against the dark admin panel.
+     */
+    background: rgb(255, 242, 238);
+
+    /* Dark text makes the input easy to read. */
+    color: rgb(49, 36, 40);
+
+    /*
+     * Inherit the font from the admin panel instead of using the browser's default input font.
+     */
+    font: inherit;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.admin-panel button {
+    /* Keeps buttons a comfortable touch/click size. */
+    min-height: 42px;
+
+    /* Horizontal and vertical internal spacing. */
+    padding: 8px 16px;
+
+    /* Matches the input and panel borders. */
+    border: 2px solid rgb(180, 65, 65);
+
+    /* Rounded button corners. */
+    border-radius: 11px;
+
+    /* Dark button background. */
+    background: rgb(49, 36, 40);
+
+    /* Light button text. */
+    color: rgb(245, 220, 215);
+
+    /* Uses the same font as the rest of the admin page. */
+    font: inherit;
+
+    /*
+     * Changes the cursor to indicate that the button can be clicked.
+     */
+    cursor: pointer;
+}
+
+
+/*
+ * Button hover state.
+ * Provides visual feedback when the mouse is over a button.
+ */
+.admin-panel button:hover {
+    /* Brightens the border on hover. */
+    border-color: rgb(225, 85, 70);
+
+    /* Changes the text to the orange accent colour. */
+    color: rgb(235, 125, 65);
+
+    /* Adds a subtle red/orange glow around the button. */
+    box-shadow: 0 0 8px rgba(225, 85, 70, 0.55);
+}
+
+
+/* =============================================================================================================
+   TABLE
+   -------------------------------------------------------------------------------------------------------------
+   The table-frame provides horizontal scrolling on smaller screens so the table does not break the page layout.
+   ============================================================================================================= */
+
+/*
+ * Outer wrapper around the table.
+ */
+.table-frame {
+    /* Makes the table wrapper fill its parent. */
+    width: 100%;
+
+    /*
+     * Allows the table to scroll horizontally if it becomes wider than the available screen space.
+     */
+    overflow-x: auto;
+
+    /* Matches the rounded styling used elsewhere. */
+    border-radius: 12px;
+}
+
+
+/*
+ * Main table styling.
+ */
+table {
+    /*
+     * Makes the table use the full available width.
+     */
+    width: 100%;
+
+    /*
+     * Prevents the table from becoming too narrow.
+     * On small screens, .table-frame will provide horizontal scrolling instead of forcing the table to become cramped.
+     */
+    min-width: 720px;
+
+    /* Removes gaps between table cells. */
+    border-collapse: collapse;
+
+    /* Slightly transparent dark table background. */
+    background: rgba(30, 24, 26, 0.55);
+}
+
+
+/*
+ * Applies common styling to both table headers and cells.
+ */
+th,
+td {
+    /* Subtle red divider between cells. */
+    border: 1px solid rgba(225, 85, 70, 0.38);
+
+    /* Adds spacing inside each cell. */
+    padding: 0.7rem;
+
+    /* Aligns text to the left. */
+    text-align: left;
+
+    /*
+     * Keeps content aligned to the top when cells contain different amounts of text.
+     */
+    vertical-align: top;
+}
+
+
+/*
+ * Table header-specific styling.
+ */
+th {
+    /* Slightly stronger background to distinguish headers. */
+    background: rgba(180, 65, 65, 0.3);
+
+    /* Bright text for improved readability. */
+    color: rgb(255, 231, 225);
+}
+
+
+/*
+ * <pre> is commonly used for formatted/raw data.
+ * These settings prevent it from adding unwanted margins and allow long lines to wrap instead of overflowing.
+ */
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    color: inherit;
+}
+
+
+/* =========================================================
+   USER LIST
+   ---------------------------------------------------------
+   Styles the container that holds multiple user cards.
+   ========================================================= */
+
+.user-list {
+    /*
+     * CSS Grid is used to stack the user cards vertically.
+     */
+    display: grid;
+
+    /* Space between individual user cards. */
+    gap: 12px;
+
+    /* Adds space above the list. */
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   USER CARD
+   ---------------------------------------------------------
+   Individual card containing user information and actions.
+   ========================================================= */
+
+.user-card {
+    /*
+     * Places user information and the action button side by side.
+     */
+    display: flex;
+
+    /*
+     * Pushes the information to the left and the button/action area to the right.
+     */
+    justify-content: space-between;
+
+    /* Vertically centers the contents. */
+    align-items: center;
+
+    /* Space between the card's main sections. */
+    gap: 18px;
+
+    /* Internal spacing around the card contents. */
+    padding: 14px;
+
+    /* Subtle red border. */
+    border: 1px solid rgba(225, 85, 70, 0.35);
+
+    /* Rounded card corners. */
+    border-radius: 12px;
+
+    /* Semi-transparent dark background. */
+    background: rgba(30, 24, 26, 0.5);
+}
+
+
+/*
+ * The inner <div> of a user card is also a flex container.
+ * This allows multiple pieces of user information to sit beside one another and wrap when necessary.
+ */
+.user-card div {
+    display: flex;
+    flex-wrap: wrap;
+
+    /*
+     * 8px vertical gap and 16px horizontal gap.
+     */
+    gap: 8px 16px;
+
+    /*
+     * Aligns text along its baseline so different font sizes appear visually aligned.
+     */
+    align-items: baseline;
+}
+
+
+/*
+ * Secondary user information such as usernames, IDs, timestamps, or other metadata.
+ */
+.user-card span,
+.user-card small {
+    color: rgb(224, 190, 185);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ---------------------------------------------------------
+   Used when there are no users/results/items to display.
+   ========================================================= */
+
+.empty-card {
+    /* Adds space above the empty-state message. */
+    margin-top: 20px;
+
+    /* Gives the message comfortable internal spacing. */
+    padding: 18px;
+
+    /* Matches the styling of user cards. */
+    border: 1px solid rgba(225, 85, 70, 0.35);
+    border-radius: 12px;
+
+    /* Dark semi-transparent background. */
+    background: rgba(30, 24, 26, 0.5);
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE STYLES
+   ---------------------------------------------------------
+   These rules apply when the viewport is 600px wide or less.
+   ========================================================= */
+@media (max-width: 600px) {
+
+    /*
+     * Reduce page padding on smaller screens.
+     * The background image is also replaced with a dedicated mobile version, which should be better suited to the smaller viewport.
+     */
+    .admin-page-shell {
+        padding: 72px 10px 20px;
+
+        background-image:
+            linear-gradient(
+                rgba(31, 24, 27, 0.80),
+                rgba(31, 24, 27, 0.92)
+            ),
+            url('/assets/Images/JustChattingBaseWindowSuperAdminMobile.png');
+    }
+
+
+    /*
+     * Stack the user card contents vertically on mobile.
+     * This prevents the user information and button from becoming cramped next to each other.
+     */
+    .user-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    /*
+     * Make user-card buttons span the full available width on small screens, making them easier to tap.
+     */
+    .user-card button {
+        width: 100%;
+    }
+}

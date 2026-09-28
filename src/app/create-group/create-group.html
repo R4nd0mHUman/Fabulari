@@ -1,0 +1,80 @@
+<!-- Group creation request page -->
+
+<h1 class="page-title">
+    Request Group Creation
+</h1>
+
+<!-- Explains that the group requires Super Admin approval before it is created. -->
+<p class="page-description">
+    Your group will only be created after Super Admin approval.
+</p>
+
+
+<!-- Group creation request form -->
+<div class="group-form">
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Group name -->
+    <label for="groupName">
+        Group Name
+    </label>
+
+    <input
+        id="groupName"
+        class="group-input"
+        type="text"
+        [(ngModel)]="name"
+        placeholder="Enter group name"
+    />
+
+
+    <!-- Group description -->
+    <label for="description">
+        Description
+    </label>
+
+    <textarea
+        id="description"
+        class="group-input description-input"
+        [(ngModel)]="description"
+        placeholder="Describe your group"
+    ></textarea>
+
+
+    <!-- Minimum age requirement -->
+    <label for="ageLimit">
+        Minimum Age
+    </label>
+
+    <input
+        id="ageLimit"
+        class="group-input"
+        type="number"
+        min="0"
+        [(ngModel)]="ageLimit"
+        placeholder="0 = no age restriction"
+    />
+
+
+    <!-- Submit group creation request -->
+    <button
+        class="group-button"
+        type="button"
+        (click)="createGroup()"
+        [disabled]="creating"
+    >
+        {{ creating ? 'Submitting...' : 'Submit Group Request' }}
+    </button>
+
+
+    <!-- Return to dashboard -->
+    <button
+        class="group-button"
+        type="button"
+        (click)="backToDashboard()"
+    >
+        Back to Dashboard
+    </button>
+
+</div>

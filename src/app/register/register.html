@@ -1,0 +1,121 @@
+<!-- Creates the main registration screen -->
+<div
+    class="register-screen"
+    [ngStyle]="{'background-image':'url(' + currentBase + ')'}"
+>
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Displays the Fabuloso title -->
+    <img
+        class="title-image"
+        [src]="titleImage"
+        alt="Fabuloso"
+    >
+
+    <!-- Registration form container -->
+    <div class="register-form">
+
+        <!-- First Name -->
+        <label for="firstName">
+            First Name
+        </label>
+
+        <input
+            id="firstName"
+            type="text"
+            [(ngModel)]="firstName"
+            placeholder="First Name"
+        >
+
+
+        <!-- Last Name -->
+        <label for="lastName">
+            Last Name
+        </label>
+
+        <input
+            id="lastName"
+            type="text"
+            [(ngModel)]="lastName"
+            placeholder="Last Name"
+        >
+
+
+        <!-- Username -->
+        <label for="username">
+            Username
+        </label>
+
+        <input
+            id="username"
+            type="text"
+            [(ngModel)]="username"
+            placeholder="Username"
+        >
+
+
+        <!-- Email -->
+        <label for="email">
+            Email
+        </label>
+
+        <input
+            id="email"
+            type="email"
+            [(ngModel)]="email"
+            placeholder="Email"
+        >
+
+
+        <!-- Date of birth is used by the server to calculate the user's current age. -->
+        <label for="dob">Date of Birth</label>
+        <input id="dob" type="date" [(ngModel)]="dob">
+
+
+        <!-- Password -->
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            id="password"
+            type="password"
+            [(ngModel)]="password"
+            placeholder="Password"
+        >
+
+
+        <!-- Confirm Password -->
+        <label for="confirmPassword">
+            Confirm Password
+        </label>
+
+        <input
+            id="confirmPassword"
+            type="password"
+            [(ngModel)]="confirmPassword"
+            placeholder="Confirm Password"
+        >
+
+
+        <!-- Create account button -->
+        <button
+            class="register-button"
+            (click)="register()"
+        >
+            Create Account
+        </button>
+
+
+        <!-- Return to login -->
+        <button
+            class="back-button"
+            (click)="backToLogin()"
+        >
+            Back to Login
+        </button>
+
+    </div>
+
+</div>

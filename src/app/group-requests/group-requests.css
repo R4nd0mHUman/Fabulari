@@ -1,0 +1,1249 @@
+/* ============================================================
+   CUSTOM FONT
+============================================================ */
+
+/* Defines the custom Tempus Sans font used throughout the page. */
+/* ============================================================
+   MAIN REQUESTS PAGE
+============================================================ */
+
+.requests-page {
+
+    /* Makes the page at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Includes padding within the element's overall dimensions. */
+    box-sizing: border-box;
+
+    /* Adds responsive space above, horizontal space on the sides, and space below the page content. */
+    padding: 6vh 20px 40px;
+
+    /* Allows the page itself to scroll vertically if its content becomes taller than the available screen space. */
+    overflow-y: auto;
+
+    /* Centres text throughout the page by default. */
+    text-align: center;
+
+    /* Uses the custom Tempus Sans font throughout the page. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* ============================================================
+   REGULAR USER + GROUP ADMIN
+   Uses the same visual theme as profile.css
+============================================================ */
+
+.user-page {
+
+    /* Gives regular users and group admins a soft pink background. */
+    background: #fcecf8;
+
+    /* Gives the page its main pink/purple text colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink normal-selection cursor. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'),
+        auto;
+}
+
+
+/* ============================================================
+   SUPER ADMIN
+   Keeps the existing dark/red visual theme.
+============================================================ */
+
+.super-admin-page {
+
+    /* Gives the super-admin page its dark background. */
+    background: rgb(38, 29, 32);
+
+    /* Gives the super-admin page a soft pale-pink text colour. */
+    color: rgb(245, 220, 215);
+
+    /* Uses the custom normal-selection cursor for the dark theme. */
+    cursor:
+        url('/assets/cursor/1%20Selecci├│n%20normal.cur'),
+        auto;
+}
+
+
+/* ============================================================
+   PAGE TITLE
+============================================================ */
+
+.page-title {
+
+    /* Removes the default top margin and adds 10px below the title. */
+    margin: 0 0 10px;
+
+    /* Uses the custom font for the page title. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the title 42px on larger screens. */
+    font-size: 42px;
+
+    /* Keeps the title at its normal font weight. */
+    font-weight: normal;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN TITLE
+============================================================ */
+
+.user-page .page-title {
+
+    /* Gives the title its pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Creates a white outline around the title text by placing
+       white shadows around all four sides of the letters. */
+    text-shadow:
+        -2px -2px 0 white,
+         2px -2px 0 white,
+        -2px  2px 0 white,
+         2px  2px 0 white;
+}
+
+
+/* ============================================================
+   SUPER ADMIN TITLE
+============================================================ */
+
+.super-admin-page .page-title {
+
+    /* Gives the super-admin title its pale pink colour. */
+    color: rgb(245, 220, 215);
+
+    /* Removes the text outline used by the pink user theme. */
+    text-shadow: none;
+}
+
+
+/* ============================================================
+   PAGE DESCRIPTION
+============================================================ */
+
+.page-description {
+
+    /* Prevents the description from becoming excessively wide. */
+    max-width: 700px;
+
+    /* Centres the description and adds 35px of space below it. */
+    margin: 0 auto 35px;
+
+    /* Uses the custom font for the description. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the description text size. */
+    font-size: 18px;
+
+    /* Adds comfortable spacing between lines of text. */
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN DESCRIPTION
+============================================================ */
+
+.user-page .page-description {
+
+    /* Gives the description the main pink/purple colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   SUPER ADMIN DESCRIPTION
+============================================================ */
+
+.super-admin-page .page-description {
+
+    /* Gives the description a softer pale-pink colour. */
+    color: rgb(225, 185, 180);
+}
+
+
+/* ============================================================
+   REQUEST SECTIONS
+============================================================ */
+
+.request-section {
+
+    /* Allows the request section to use the full available width. */
+    width: 100%;
+}
+
+
+/* ============================================================
+   LOADING / EMPTY TEXT
+============================================================ */
+
+.loading,
+.empty {
+
+    /* Centres the message and adds vertical spacing around it. */
+    margin: 30px auto;
+
+    /* Uses the custom font for loading and empty-state messages. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the messages slightly larger than normal text. */
+    font-size: 20px;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN LOADING / EMPTY TEXT
+============================================================ */
+
+.user-page .loading,
+.user-page .empty {
+
+    /* Uses the pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   SUPER ADMIN LOADING / EMPTY TEXT
+============================================================ */
+
+.super-admin-page .loading,
+.super-admin-page .empty {
+
+    /* Uses the pale-pink colour from the dark theme. */
+    color: rgb(225, 185, 180);
+}
+
+
+/* ============================================================
+   REQUEST CARDS
+============================================================ */
+
+.request-card {
+
+    /* Makes cards 650px wide at most, while preventing them from becoming wider than 90% of the viewport. */
+    width: min(650px, 90vw);
+
+    /* Centres each card and adds 25px of space below it. */
+    margin: 0 auto 25px;
+
+    /* Adds space inside the card around its contents. */
+    padding: 25px;
+
+    /* Includes padding and borders inside the card's defined width. */
+    box-sizing: border-box;
+
+    /* Rounds the corners of the request cards. */
+    border-radius: 15px;
+
+    /* Aligns the content inside the cards to the left. */
+    text-align: left;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN CARDS
+   Profile-style pink theme
+============================================================ */
+
+.user-page .request-card {
+
+    /* Gives the cards a thick pink/purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Gives the cards a clean white background. */
+    background: white;
+
+    /* Adds a soft pink/purple glow around the cards. */
+    box-shadow:
+        0 0 15px rgba(185, 105, 168, 0.35);
+}
+
+
+/* User/group-admin card hover effect. */
+.user-page .request-card:hover {
+
+    /* Makes the card glow slightly brighter when hovered. */
+    box-shadow:
+        0 0 18px rgba(218, 135, 197, 0.50);
+}
+
+
+/* ============================================================
+   SUPER ADMIN CARDS
+   Existing dark/red theme
+============================================================ */
+
+.super-admin-page .request-card {
+
+    /* Gives super-admin cards a red border. */
+    border: 3px solid rgb(170, 55, 55);
+
+    /* Keeps the cards dark like the rest of the super-admin page. */
+    background: rgb(38, 29, 32);
+
+    /* Adds a subtle red glow around the cards. */
+    box-shadow:
+        0 0 18px rgba(200, 55, 55, 0.25);
+}
+
+
+/* Super-admin card hover effect. */
+.super-admin-page .request-card:hover {
+
+    /* Makes the red glow stronger when the card is hovered. */
+    box-shadow:
+        0 0 22px rgba(225, 65, 55, 0.40);
+}
+
+
+/* ============================================================
+   CARD HEADINGS
+============================================================ */
+
+.request-card h2 {
+
+    /* Removes the default top margin and adds 20px below the heading. */
+    margin: 0 0 20px;
+
+    /* Uses the custom font for card headings. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the card heading size. */
+    font-size: 26px;
+
+    /* Keeps the heading at normal weight. */
+    font-weight: normal;
+
+    /* Centres the heading inside the card. */
+    text-align: center;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN CARD HEADINGS
+============================================================ */
+
+.user-page .request-card h2 {
+
+    /* Gives the heading the pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   SUPER ADMIN CARD HEADINGS
+============================================================ */
+
+.super-admin-page .request-card h2 {
+
+    /* Gives the heading a brighter red colour. */
+    color: rgb(220, 90, 90);
+}
+
+
+/* ============================================================
+   CARD SUBHEADINGS
+============================================================ */
+
+.request-card h3 {
+
+    /* Removes the default top margin and adds 15px below the heading. */
+    margin: 0 0 15px;
+
+    /* Uses the custom font. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the subheading size. */
+    font-size: 26px;
+
+    /* Keeps the subheading at normal weight. */
+    font-weight: normal;
+
+    /* Centres the subheading. */
+    text-align: center;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN SUBHEADINGS
+============================================================ */
+
+.user-page .request-card h3 {
+
+    /* Gives the subheading the pink/purple colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   SUPER ADMIN SUBHEADINGS
+============================================================ */
+
+.super-admin-page .request-card h3 {
+
+    /* Gives the subheading the pale-pink colour. */
+    color: rgb(245, 220, 215);
+}
+
+
+/* ============================================================
+   CARD TEXT
+============================================================ */
+
+.request-card p {
+
+    /* Adds 10px of vertical spacing around paragraphs. */
+    margin: 10px 0;
+
+    /* Uses the custom font. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the paragraph text size. */
+    font-size: 18px;
+
+    /* Adds comfortable spacing between lines. */
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN CARD TEXT
+============================================================ */
+
+.user-page .request-card p {
+
+    /* Uses the main pink/purple colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   SUPER ADMIN CARD TEXT
+============================================================ */
+
+.super-admin-page .request-card p {
+
+    /* Uses the pale-pink colour. */
+    color: rgb(245, 220, 215);
+}
+
+
+/* ============================================================
+   STRONG TEXT
+============================================================ */
+
+.request-card strong {
+
+    /* Prevents bold text from becoming visually heavier. */
+    font-weight: normal;
+}
+
+
+/* User/group-admin strong text colour. */
+.user-page .request-card strong {
+
+    /* Keeps emphasized text within the pink theme. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* Super-admin strong text colour. */
+.super-admin-page .request-card strong {
+
+    /* Uses red to make emphasized information stand out. */
+    color: rgb(220, 90, 90);
+}
+
+
+/* ============================================================
+   REQUEST ITEMS
+============================================================ */
+
+.request-item {
+
+    /* Allows each request item to use the full available width. */
+    width: 100%;
+}
+
+
+/* ============================================================
+   REQUEST STATUS
+============================================================ */
+
+.status {
+
+    /* Keeps status text at normal font weight. */
+    font-weight: normal;
+
+    /* Adds extra spacing between letters to make the status stand out. */
+    letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN STATUS COLOURS
+============================================================ */
+
+/* Pending requests use the main pink/purple colour. */
+.user-page .status.pending {
+
+    color: rgb(185, 105, 168);
+}
+
+
+/* Approved requests use a soft green colour. */
+.user-page .status.approved {
+
+    color: rgb(100, 175, 110);
+}
+
+
+/* Rejected requests use a soft red/pink colour. */
+.user-page .status.rejected {
+
+    color: rgb(205, 100, 120);
+}
+
+
+/* ============================================================
+   SUPER ADMIN STATUS COLOURS
+============================================================ */
+
+/* Pending super-admin requests use an orange colour. */
+.super-admin-page .status.pending {
+
+    color: rgb(235, 125, 65);
+}
+
+
+/* Approved super-admin requests use green. */
+.super-admin-page .status.approved {
+
+    color: rgb(130, 205, 135);
+}
+
+
+/* Rejected super-admin requests use red. */
+.super-admin-page .status.rejected {
+
+    color: rgb(220, 90, 90);
+}
+
+
+/* ============================================================
+   REQUEST FORM
+============================================================ */
+
+.request-form {
+
+    /* Adds space above the form. */
+    margin-top: 25px;
+
+    /* Adds space between the separator and the form contents. */
+    padding-top: 20px;
+
+    /* Adds a subtle separator line above the form. */
+    border-top:
+        1px solid rgba(185, 105, 168, 0.25);
+}
+
+
+/* Labels inside request forms. */
+.request-form label {
+
+    /* Makes each label occupy its own line. */
+    display: block;
+
+    /* Adds space above and below each label. */
+    margin: 15px 0 6px;
+
+    /* Sets the label text size. */
+    font-size: 17px;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN FORM LABELS
+============================================================ */
+
+.user-page .request-form label {
+
+    /* Uses the pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink normal cursor over labels. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'),
+        auto;
+}
+
+
+/* ============================================================
+   SUPER ADMIN FORM LABELS
+============================================================ */
+
+.super-admin-page .request-form label {
+
+    /* Uses the pale-pink dark-theme colour. */
+    color: rgb(225, 185, 180);
+}
+
+
+/* ============================================================
+   REQUEST FORM INPUTS
+============================================================ */
+
+.request-form input,
+.request-form textarea {
+
+    /* Makes the inputs fill the available form width. */
+    width: 100%;
+
+    /* Includes padding and borders within the input width. */
+    box-sizing: border-box;
+
+    /* Adds space inside the inputs around their text. */
+    padding: 10px 12px;
+
+    /* Rounds the input corners. */
+    border-radius: 10px;
+
+    /* Uses the custom font. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the input text size. */
+    font-size: 17px;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN FORM INPUTS
+============================================================ */
+
+.user-page .request-form input,
+.user-page .request-form textarea {
+
+    /* Gives the inputs a thick pink/purple border. */
+    border:
+        3px solid rgb(185, 105, 168);
+
+    /* Gives the inputs a white background. */
+    background: white;
+
+    /* Uses the pink/purple text colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom text cursor while typing. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Text.cur'),
+        text;
+}
+
+
+/* Placeholder text inside user/group-admin inputs. */
+.user-page .request-form input::placeholder,
+.user-page .request-form textarea::placeholder {
+
+    /* Gives placeholder text the pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Makes the placeholder slightly transparent. */
+    opacity: 0.6;
+}
+
+
+/* Focus effect for user/group-admin inputs. */
+.user-page .request-form input:focus,
+.user-page .request-form textarea:focus {
+
+    /* Removes the browser's default focus outline. */
+    outline: none;
+
+    /* Changes the border to a brighter pink. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the focused input. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   SUPER ADMIN FORM INPUTS
+============================================================ */
+
+.super-admin-page .request-form input,
+.super-admin-page .request-form textarea {
+
+    /* Gives the inputs a darker red border. */
+    border:
+        2px solid rgb(180, 65, 65);
+
+    /* Keeps the inputs dark like the page background. */
+    background: rgb(38, 29, 32);
+
+    /* Uses pale pink text inside the inputs. */
+    color: rgb(245, 220, 215);
+}
+
+
+/* Focus effect for super-admin inputs. */
+.super-admin-page .request-form input:focus,
+.super-admin-page .request-form textarea:focus {
+
+    /* Removes the browser's default focus outline. */
+    outline: none;
+
+    /* Changes the border to a brighter red. */
+    border-color: rgb(225, 85, 70);
+
+    /* Adds a subtle red glow around the focused input. */
+    box-shadow:
+        0 0 8px rgba(225, 85, 70, 0.35);
+}
+
+
+/* ============================================================
+   DISABLED INPUTS
+============================================================ */
+
+.request-form input:disabled,
+.request-form textarea:disabled {
+
+    /* Makes disabled fields partially transparent. */
+    opacity: 0.6;
+}
+
+
+/* Disabled user/group-admin inputs. */
+.user-page .request-form input:disabled,
+.user-page .request-form textarea:disabled {
+
+    /* Gives disabled fields a light grey background. */
+    background: #f3f3f3;
+
+    /* Makes disabled text grey. */
+    color: #888;
+
+    /* Uses the custom unavailable cursor. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Unvailable.cur'),
+        text;
+}
+
+
+/* ============================================================
+   REQUEST SEPARATORS
+============================================================ */
+
+.request-card hr {
+
+    /* Adds vertical spacing around the separator. */
+    margin: 25px 0;
+
+    /* Removes the browser's default border. */
+    border: 0;
+
+    /* Creates a subtle pink separator line. */
+    border-top:
+        1px solid rgba(185, 105, 168, 0.25);
+}
+
+
+/* ============================================================
+   SUPER ADMIN SEPARATOR
+============================================================ */
+
+.super-admin-page .request-card hr {
+
+    /* Uses a subtle pale-pink separator for the dark theme. */
+    border-top:
+        1px solid rgba(225, 185, 180, 0.2);
+}
+
+
+/* ============================================================
+   GROUP ADMIN MEMBERSHIP REQUESTS
+============================================================ */
+
+.admin-requests-card {
+
+    /* Adds space below the membership request card. */
+    margin-bottom: 25px;
+}
+
+
+/* Description for the admin membership request section. */
+.admin-request-description {
+
+    /* Adds space below the description.
+       !important ensures this value takes priority. */
+    margin-bottom: 25px !important;
+
+    /* Centres the description text. */
+    text-align: center;
+}
+
+
+/* User/group-admin membership request description. */
+.user-page .admin-request-description {
+
+    /* Uses a softer purple colour for the description. */
+    color: rgb(150, 100, 140) !important;
+}
+
+
+/* Individual membership request. */
+.user-page .admin-membership-request {
+
+    /* Adds vertical space around each membership request. */
+    padding: 20px 0;
+
+    /* Adds a subtle separator below each request. */
+    border-bottom:
+        1px solid rgba(185, 105, 168, 0.25);
+}
+
+
+/* Removes the separator from the final membership request. */
+.user-page .admin-membership-request:last-of-type {
+
+    border-bottom: none;
+}
+
+
+/* Membership request heading. */
+.user-page .admin-membership-request h3 {
+
+    /* Adds space below the heading. */
+    margin-bottom: 15px;
+
+    /* Uses the main pink/purple colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   ACTION BUTTONS
+============================================================ */
+
+.actions {
+
+    /* Places action buttons in a Flexbox row. */
+    display: flex;
+
+    /* Centres the buttons horizontally. */
+    justify-content: center;
+
+    /* Adds 15px of space between the buttons. */
+    gap: 15px;
+
+    /* Adds space above the action buttons. */
+    margin-top: 25px;
+}
+
+
+/* Base styling for action buttons. */
+.actions button {
+
+    /* Gives the buttons a minimum height. */
+    min-height: 50px;
+
+    /* Adds horizontal and vertical space inside the buttons. */
+    padding: 8px 25px;
+
+    /* Rounds the button corners. */
+    border-radius: 15px;
+
+    /* Uses the custom font. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the button text size. */
+    font-size: 19px;
+
+    /* Uses the custom pink link cursor for clickable buttons. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'),
+        pointer;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN BUTTONS
+============================================================ */
+
+.user-page .actions button {
+
+    /* Gives the buttons a pink/purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Gives the buttons a white background. */
+    background: white;
+
+    /* Gives the button text the pink/purple colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* User/group-admin action button hover effect. */
+.user-page .actions button:hover:not(:disabled) {
+
+    /* Makes the border brighter when hovered. */
+    border-color: rgb(218, 135, 197);
+
+    /* Keeps the button text pink/purple. */
+    color: rgb(185, 105, 168);
+
+    /* Adds a soft pink glow. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   SUPER ADMIN BUTTONS
+============================================================ */
+
+.super-admin-page .actions button {
+
+    /* Gives super-admin buttons a red border. */
+    border: 3px solid rgb(170, 55, 55);
+
+    /* Keeps the buttons dark. */
+    background: rgb(38, 29, 32);
+
+    /* Uses pale pink text. */
+    color: rgb(245, 220, 215);
+
+    /* Uses the custom link cursor for the dark theme. */
+    cursor:
+        url('/assets/cursor/15%20Selecci├│n%20de%20v├¡nculo.cur'),
+        auto;
+}
+
+
+/* Super-admin action button hover effect. */
+.super-admin-page .actions button:hover:not(:disabled) {
+
+    /* Brightens the red border. */
+    border-color: rgb(225, 65, 55);
+
+    /* Changes the button text to brighter red. */
+    color: rgb(220, 90, 90);
+
+    /* Adds a stronger red glow. */
+    box-shadow:
+        0 0 10px rgba(225, 65, 55, 0.70);
+}
+
+
+/* ============================================================
+   DISABLED BUTTONS
+============================================================ */
+
+.actions button:disabled {
+
+    /* Makes disabled buttons partially transparent. */
+    opacity: 0.5;
+
+    /* Removes any existing button glow. */
+    box-shadow: none;
+}
+
+
+/* Disabled user/group-admin buttons. */
+.user-page .actions button:disabled {
+
+    /* Uses the custom unavailable cursor. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Unvailable.cur'),
+        text;
+}
+
+
+/* Disabled super-admin buttons. */
+.super-admin-page .actions button:disabled {
+
+    /* Uses the browser's standard unavailable cursor. */
+    cursor: not-allowed;
+}
+
+
+/* ============================================================
+   APPROVE BUTTON
+============================================================ */
+
+.actions .approve {
+
+    /* Gives the approve button a green border. */
+    border-color: rgb(110, 150, 110);
+}
+
+
+/* Approve button hover effect. */
+.actions .approve:hover:not(:disabled) {
+
+    /* Brightens the green border. */
+    border-color: rgb(130, 205, 135);
+
+    /* Changes the text to a brighter green. */
+    color: rgb(100, 160, 110);
+
+    /* Adds a soft green glow. */
+    box-shadow:
+        0 0 8px rgba(130, 205, 135, 0.55);
+}
+
+
+/* ============================================================
+   REJECT BUTTON
+============================================================ */
+
+.actions .reject {
+
+    /* Gives the reject button a pink/red border. */
+    border-color: rgb(205, 100, 120);
+}
+
+
+/* User/group-admin reject button. */
+.user-page .actions .reject {
+
+    /* Keeps the reject button within the pink theme. */
+    border-color: rgb(205, 100, 120);
+}
+
+
+/* User/group-admin reject hover effect. */
+.user-page .actions .reject:hover:not(:disabled) {
+
+    /* Changes the border to the brighter pink used elsewhere. */
+    border-color: rgb(218, 135, 197);
+
+    /* Uses the main pink/purple text colour. */
+    color: rgb(185, 105, 168);
+
+    /* Adds a soft pink glow. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   SUPER ADMIN REJECT BUTTON
+============================================================ */
+
+.super-admin-page .actions .reject {
+
+    /* Gives the super-admin reject button a dark red border. */
+    border-color: rgb(180, 65, 65);
+}
+
+
+/* Super-admin reject hover effect. */
+.super-admin-page .actions .reject:hover:not(:disabled) {
+
+    /* Brightens the red border. */
+    border-color: rgb(225, 85, 70);
+
+    /* Changes the text to orange/red. */
+    color: rgb(235, 125, 65);
+
+    /* Adds a stronger red glow. */
+    box-shadow:
+        0 0 8px rgba(225, 85, 70, 0.65);
+}
+
+
+/* ============================================================
+   BACK BUTTON
+============================================================ */
+
+.back {
+
+    /* Makes the button at least 55px tall. */
+    display: block;
+
+    /* Sets the minimum height. */
+    min-height: 55px;
+
+    /* Makes the button at most 300px wide while preventing it from becoming wider than 90% of the viewport. */
+    width: min(300px, 90vw);
+
+    /* Centres the button and adds 20px of space above it. */
+    margin: 20px auto 0;
+
+    /* Rounds the button corners. */
+    border-radius: 15px;
+
+    /* Uses the custom font. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the Back button text size. */
+    font-size: 20px;
+}
+
+
+/* ============================================================
+   USER + GROUP ADMIN BACK BUTTON
+============================================================ */
+
+.user-page .back {
+
+    /* Gives the Back button a thick pink/purple border. */
+    border:
+        3px solid rgb(185, 105, 168);
+
+    /* Gives it a white background. */
+    background: white;
+
+    /* Gives the button pink/purple text. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink link cursor. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'),
+        pointer;
+}
+
+
+/* User/group-admin Back button hover effect. */
+.user-page .back:hover {
+
+    /* Brightens the border when hovered. */
+    border-color: rgb(218, 135, 197);
+
+    /* Keeps the text pink/purple. */
+    color: rgb(185, 105, 168);
+
+    /* Adds a soft pink glow. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   SUPER ADMIN BACK BUTTON
+============================================================ */
+
+.super-admin-page .back {
+
+    /* Gives the button a red border. */
+    border-color: rgb(170, 55, 55);
+
+    /* Keeps the button dark. */
+    background: rgb(38, 29, 32);
+
+    /* Uses pale-pink text. */
+    color: rgb(245, 220, 215);
+
+    /* Uses the custom dark-theme link cursor. */
+    cursor:
+        url('/assets/cursor/15%20Selecci├│n%20de%20v├¡nculo.cur'),
+        auto;
+}
+
+
+/* Super-admin Back button hover effect. */
+.super-admin-page .back:hover {
+
+    /* Brightens the red border. */
+    border-color: rgb(225, 65, 55);
+
+    /* Changes the text to brighter red. */
+    color: rgb(220, 90, 90);
+
+    /* Adds a stronger red glow. */
+    box-shadow:
+        0 0 10px rgba(225, 65, 55, 0.70);
+}
+
+
+/* ============================================================
+   MOBILE RESPONSIVE STYLES
+============================================================ */
+
+@media (max-width: 600px) {
+
+    /* Reduces the page padding on smaller screens. */
+    .requests-page {
+        padding: 4vh 15px 30px;
+    }
+
+    /* Makes the main page title smaller on mobile. */
+    .page-title {
+        font-size: 32px;
+    }
+
+    /* Makes the page description smaller and reduces the space below it. */
+    .page-description {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    /* Makes request cards slightly wider on mobile while reducing their internal padding. */
+    .request-card {
+        width: 95vw;
+        padding: 20px;
+    }
+
+    /* Reduces the main card heading size. */
+    .request-card h2 {
+        font-size: 22px;
+    }
+
+    /* Reduces the card subheading size. */
+    .request-card h3 {
+        font-size: 22px;
+    }
+
+    /* Reduces paragraph text size for smaller screens. */
+    .request-card p {
+        font-size: 16px;
+    }
+
+    /* Changes action buttons from a horizontal row into a vertical column on mobile. */
+    .actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Makes each action button use the full available width. */
+    .actions button {
+        width: 100%;
+    }
+
+    /* Makes the Back button use almost the entire mobile width. */
+    .back {
+        width: 95vw;
+    }
+
+}
+/* Give the Super Admin request queue the same dark/red illustrated frame as the dashboard. */
+.super-admin-page {
+    padding-top: clamp(82px, 10vh, 110px);
+    background:
+        linear-gradient(rgba(31,24,27,.78), rgba(31,24,27,.9)),
+        url('/assets/Images/JustChattingBaseWindowSuperAdmin.png') center / cover fixed no-repeat;
+}
+
+.super-admin-page .request-card {
+    background: rgba(49,36,40,.94);
+    border-color: rgb(180,65,65);
+    box-shadow: 0 12px 30px rgba(0,0,0,.3), 0 0 16px rgba(225,85,70,.15);
+}
+
+@media (max-width: 600px) {
+    .super-admin-page {
+        padding-top: 72px;
+        background-image:
+            linear-gradient(rgba(31,24,27,.8), rgba(31,24,27,.92)),
+            url('/assets/Images/JustChattingBaseWindowSuperAdminMobile.png');
+    }
+}

@@ -1,0 +1,146 @@
+<!--
+  Main container for the Super Admin dashboard.
+
+  This screen displays the Super Admin's profile information and provides navigation to the main administrative features.
+
+  class="super-admin-screen":
+    Applies CSS styling to the overall Super Admin dashboard, including its layout, dimensions, positioning, and appearance.
+
+  [ngStyle]="{'background-image':'url(' + currentBase + ')'}":
+    Angular property binding used to dynamically apply inline CSS styles to this element.
+
+    The "background-image" CSS property is constructed using the component's "currentBase" property.
+    Angular combines "url(" with the value stored in "currentBase" and ")" to create a valid CSS background image value.
+
+    If "currentBase" changes, Angular automatically updates the background image displayed on the dashboard.
+-->
+<div
+  class="super-admin-screen"
+  [ngStyle]="{'background-image':'url(' + currentBase + ')'}"
+>
+
+  <!--
+    Fabulari logo displayed on the Super Admin dashboard.
+
+    class="fabulari-logo":
+      Applies CSS styling to control the logo's appearance and positioning.
+
+    src:
+      Specifies the location of the Fabulari logo image relative to the application.
+
+    alt:
+      Provides alternative text for accessibility and is displayed if the image cannot be loaded.
+  -->
+  <img
+    class="fabulari-logo"
+    src="assets/Images/fabulari-logo.png"
+    alt="Fabulari logo"
+  />
+
+  <!--
+    Profile picture belonging to the currently signed-in Super Admin.
+
+    class="profile-picture":
+      Applies CSS styling to control the profile picture's size, shape, appearance, and positioning.
+
+    [src]="profilePicture":
+      Angular property binding used to dynamically set the image's "src" attribute to the value stored in the component's
+                                                  "profilePicture" property.
+
+      If the "profilePicture" property changes, Angular automatically updates the displayed image.
+
+    alt:
+      Provides descriptive alternative text for accessibility and is displayed if the profile picture cannot be loaded.
+  -->
+  <img
+    class="profile-picture"
+    [src]="profilePicture"
+    alt="Super Admin Profile"
+  />
+
+  <!--
+    Displays the username of the currently signed-in Super Admin.
+
+    class="username":
+      Applies CSS styling to the displayed username.
+
+    {{ username }}:
+      Angular interpolation retrieves the value stored in the component's "username" property and displays it as the heading text.
+
+      If the username property changes, Angular automatically updates the value displayed on the page.
+  -->
+  <h1 class="username">{{ username }}</h1>
+
+  <!--
+    Container for the Super Admin navigation and account action buttons.
+
+    class="buttons":
+      Applies CSS styling to control the layout, spacing, positioning, and appearance of the dashboard buttons.
+  -->
+  <div class="buttons">
+
+    <!--
+      Navigation button used to open the Group Requests administration page.
+
+      routerLink="/super-admin/group-requests":
+        Angular's RouterLink directive performs client-side navigation to the /super-admin/group-requests route without requiring
+                                                        a complete browser page reload.
+    -->
+    <button routerLink="/super-admin/group-requests">
+      Group Requests
+    </button>
+
+    <!--
+      Navigation button used to open the User Management page.
+
+      routerLink="/super-admin/users":
+        Angular's RouterLink directive navigates to the /super-admin/users route, where the Super Admin can access user
+                                                        management functionality.
+    -->
+    <button routerLink="/super-admin/users">
+      User Management
+    </button>
+
+    <!--
+      Navigation button used to open the Banned Users page.
+
+      routerLink="/super-admin/banned-users":
+        Angular's RouterLink directive navigates to the /super-admin/banned-users route, where permanently blocked or deleted
+                                                        users can be reviewed.
+    -->
+    <button routerLink="/super-admin/banned-users">
+      Banned Users
+    </button>
+
+    <!--
+      Navigation button used to open the Audit Logs page.
+
+      routerLink="/super-admin/audit":
+        Angular's RouterLink directive navigates to the /super-admin/audit route, where recorded administrative actions can be
+                                                              reviewed.
+    -->
+    <button routerLink="/super-admin/audit">
+      Audit Logs
+    </button>
+
+    <!--
+      Button used to log the current Super Admin out of the application.
+
+      type="button":
+        Explicitly identifies this element as a normal button rather than a form submission button.
+
+      (click)="logout()":
+        Angular event binding.
+        When the Super Admin clicks this button, Angular calls the "logout()" method defined in the component's TypeScript class.
+
+        The logout method is responsible for ending the current authenticated session and handling the application's logout process.
+    -->
+    <button
+      type="button"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+
+  </div>
+</div>

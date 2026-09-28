@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Applies the cursor style to the entire webpage. */
+
+@font-face {
+    font-family: 'Tempus Sans ITC';
+    src: url('/assets/font/Tempus%20Sans%20ITC%20STD/TempsSansITC%20Regular/Tempus%20Sans%20ITC%20Std%20Regular.otf')
+        format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html,
+body {
+
+    /* Tempus Sans ITC is the application's primary display font.
+    The remaining fonts are fallbacks if the custom font cannot load. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Replaces the default cursor with a custom pink cursor image. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'), auto;
+
+    .dashboard-button:hover {
+    cursor: url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'), pointer;
+}
+}
+/* Shared Fabulari brand mark used across authenticated application screens. */
+.fabulari-logo {
+    position: fixed;
+    top: 18px;
+    left: 20px;
+    z-index: 100;
+    width: clamp(90px, 11vw, 150px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 8px rgba(0,0,0,.18));
+}
+
+@media (max-width: 600px) {
+    .fabulari-logo { width: 82px; top: 10px; left: 10px; }
+}

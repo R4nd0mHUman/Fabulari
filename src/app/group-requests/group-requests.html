@@ -1,0 +1,476 @@
+<div
+    class="requests-page"
+    [class.user-page]="!isSuperAdmin"
+    [class.super-admin-page]="isSuperAdmin"
+>
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Displays the super-admin group approval queue. -->
+    <ng-container *ngIf="isSuperAdmin">
+
+        <!-- Page title for the super-admin approval queue. -->
+        <h1 class="page-title">
+            Group Approval Queue
+        </h1>
+
+        <!-- Explains what the super admin can review on this page. -->
+        <p class="page-description">
+            Review requests from users and group administrators
+            to create new groups.
+        </p>
+
+        <!-- Displays while group creation requests are loading. -->
+        <p
+            class="loading"
+            *ngIf="loading"
+        >
+            Loading group creation requests...
+        </p>
+
+        <!-- Contains all group creation requests once loading is complete. -->
+        <section
+            class="request-section"
+            *ngIf="!loading"
+        >
+
+            <!-- Displays each group creation request. -->
+            <article
+                class="request-card"
+                *ngFor="let request of creationApprovalRequests"
+            >
+
+                <!-- Identifies the request as a group creation request. -->
+                <h2>
+                    Group Creation Request
+                </h2>
+
+                <!-- Displays the requested group name. -->
+                <h3>
+                    {{ request.groupName }}
+                </h3>
+
+                <!-- Displays the username of the person who submitted the request. -->
+                <p>
+                    <strong>Requested by:</strong>
+                    {{ request.requesterUsername || 'Unknown user' }}
+                </p>
+
+                <!-- Displays the requested group description. -->
+                <p>
+                    <strong>Description:</strong>
+                    {{ request.description || 'No description provided.' }}
+                </p>
+
+                <!-- Displays the minimum age required to join the group. -->
+                <p>
+                    <strong>Age limit:</strong>
+                    {{
+                        request.ageLimit > 0
+                            ? request.ageLimit
+                            : 'None'
+                    }}
+                </p>
+
+                <!-- Displays when the request was submitted, if available. -->
+                <p *ngIf="request.createdAt">
+                    <strong>Submitted:</strong>
+                    {{ request.createdAt | date:'medium' }}
+                </p>
+
+                <!-- Displays the current request status. -->
+                <p>
+                    <strong>Status:</strong>
+
+                    <span class="status pending">
+                        {{ request.status | uppercase }}
+                    </span>
+                </p>
+
+                <!-- Contains the approval and rejection actions. -->
+                <div class="actions">
+
+                    <!-- Approves the group creation request. -->
+                    <button
+                        class="approve"
+                        type="button"
+                        (click)="approveCreation(request)"
+                    >
+                        APPROVE
+                    </button>
+
+                    <!-- Rejects the group creation request. -->
+                    <button
+                        class="reject"
+                        type="button"
+                        (click)="rejectCreation(request)"
+                    >
+                        REJECT
+                    </button>
+
+                </div>
+
+            </article>
+
+            <!-- Displays when there are no group creation requests to review. -->
+            <p
+                class="empty"
+                *ngIf="creationApprovalRequests.length === 0"
+            >
+                There are currently no group creation requests
+                waiting for approval.
+            </p>
+
+        </section>
+
+    </ng-container>
+
+
+    <!-- Displays the request information available to regular users and group admins. -->
+    <ng-container *ngIf="!isSuperAdmin">
+
+        <!-- Page title for regular users and group admins. -->
+        <h1 class="page-title">
+            Group Requests
+        </h1>
+
+        <!-- Describes the requests available based on the user's role. -->
+        <p class="page-description">
+
+            <!-- Description shown to group administrators. -->
+            <ng-container *ngIf="isGroupAdmin">
+                Manage your own group requests and review
+                membership requests for the groups you administer.
+            </ng-container>
+
+            <!-- Description shown to regular users. -->
+            <ng-container *ngIf="isRegularUser">
+                Request new groups, request to join groups,
+                and track the status of your requests.
+            </ng-container>
+
+        </p>
+
+
+        <!-- Provides access to the group creation request page. -->
+        <section class="request-section">
+
+            <!-- Group creation request card. -->
+            <article class="request-card">
+
+                <!-- Section heading. -->
+                <h2>
+                    Request a Group
+                </h2>
+
+                <!-- Explains how to submit a group creation request. -->
+                <p>
+                    Want to create a new group?
+                    Go to the Create Group tab to submit your request.
+                </p>
+
+                <!-- Contains the button for creating a group request. -->
+                <div class="actions">
+
+                    <!-- Opens the group creation page. -->
+                    <button
+                        type="button"
+                        (click)="goToCreateGroup()"
+                    >
+                        CREATE GROUP
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- Displays the user's submitted group creation requests. -->
+        <section class="request-section">
+
+            <!-- Contains the user's group creation request history. -->
+            <article class="request-card">
+
+                <!-- Section heading. -->
+                <h2>
+                    My Group Creation Requests
+                </h2>
+
+                <!-- Displays each group creation request submitted by the user. -->
+                <div
+                    class="request-item"
+                    *ngFor="let request of creationRequests"
+                >
+
+                    <!-- Displays the requested group name. -->
+                    <h3>
+                        {{ request.groupName }}
+                    </h3>
+
+                    <!-- Displays the requested group description. -->
+                    <p>
+                        <strong>Description:</strong>
+                        {{ request.description || 'No description provided.' }}
+                    </p>
+
+                    <!-- Displays the minimum age required for the group. -->
+                    <p>
+                        <strong>Age limit:</strong>
+                        {{
+                            request.ageLimit > 0
+                                ? request.ageLimit
+                                : 'None'
+                        }}
+                    </p>
+
+                    <!-- Displays the current request status. -->
+                    <p>
+                        <strong>Status:</strong>
+
+                        <span
+                            class="status"
+                            [class.pending]="request.status === 'pending'"
+                            [class.approved]="request.status === 'approved'"
+                            [class.rejected]="request.status === 'rejected'"
+                        >
+                            {{ request.status | uppercase }}
+                        </span>
+                    </p>
+
+                    <!-- Displays when the request was submitted, if available. -->
+                    <p *ngIf="request.createdAt">
+                        <strong>Submitted:</strong>
+                        {{ request.createdAt | date:'medium' }}
+                    </p>
+
+                    <!-- Separates this request from the next request. -->
+                    <hr />
+
+                </div>
+
+                <!-- Displays when the user has no group creation requests. -->
+                <p
+                    class="empty"
+                    *ngIf="creationRequests.length === 0"
+                >
+                    You have not submitted any group creation requests.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- Provides access to the group search and membership request page. -->
+        <section class="request-section">
+
+            <!-- Group membership request card. -->
+            <article class="request-card">
+
+                <!-- Section heading. -->
+                <h2>
+                    Join a Group
+                </h2>
+
+                <!-- Explains how to request membership in an existing group. -->
+                <p>
+                    Search for an existing group and submit
+                    a membership request.
+                </p>
+
+                <!-- Contains the button for searching for groups. -->
+                <div class="actions">
+
+                    <!-- Opens the group search page. -->
+                    <button
+                        type="button"
+                        (click)="goToGroupSearch()"
+                    >
+                        REQUEST TO JOIN
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- Displays the user's submitted membership requests. -->
+        <section class="request-section">
+
+            <!-- Contains the user's membership request history. -->
+            <article class="request-card">
+
+                <!-- Section heading. -->
+                <h2>
+                    My Group Membership Requests
+                </h2>
+
+                <!-- Displays each membership request submitted by the user. -->
+                <div
+                    class="request-item"
+                    *ngFor="let request of membershipRequests"
+                >
+
+                    <!-- Displays the name of the requested group. -->
+                    <h3>
+                        {{ request.groupName || 'Unknown group' }}
+                    </h3>
+
+                    <!-- Displays the current membership request status. -->
+                    <p>
+                        <strong>Status:</strong>
+
+                        <span
+                            class="status"
+                            [class.pending]="request.status === 'pending'"
+                            [class.approved]="request.status === 'approved'"
+                            [class.rejected]="request.status === 'rejected'"
+                        >
+                            {{ request.status | uppercase }}
+                        </span>
+                    </p>
+
+                    <!-- Displays when the membership request was submitted, if available. -->
+                    <p *ngIf="request.createdAt">
+                        <strong>Submitted:</strong>
+                        {{ request.createdAt | date:'medium' }}
+                    </p>
+
+                    <!-- Separates this request from the next request. -->
+                    <hr />
+
+                </div>
+
+                <!-- Displays when the user has no membership requests. -->
+                <p
+                    class="empty"
+                    *ngIf="membershipRequests.length === 0"
+                >
+                    You have not submitted any group membership requests.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- Displays membership requests for groups managed by the group administrator. -->
+        <ng-container *ngIf="isGroupAdmin">
+
+            <!-- Group administrator membership request section. -->
+            <section class="request-section">
+
+                <!-- Contains membership requests submitted by other users. -->
+                <article class="request-card admin-requests-card">
+
+                    <!-- Section heading. -->
+                    <h2>
+                        Membership Requests
+                    </h2>
+
+                    <!-- Explains which users appear in this section. -->
+                    <p class="admin-request-description">
+                        Users who want to join groups that you administer
+                        will appear here.
+                    </p>
+
+
+                    <!-- Displays each membership request submitted to the administrator. -->
+                    <div
+                        class="admin-membership-request"
+                        *ngFor="let request of adminMembershipRequests"
+                    >
+
+                        <!-- Displays the username of the person requesting membership. -->
+                        <h3>
+                            {{ request.requesterUsername || 'Unknown user' }}
+                        </h3>
+
+                        <!-- Displays the group the user wants to join. -->
+                        <p>
+                            <strong>Wants to join:</strong>
+                            {{ request.groupName || 'Unknown group' }}
+                        </p>
+
+                        <!-- Displays the current membership request status. -->
+                        <p>
+                            <strong>Status:</strong>
+
+                            <span
+                                class="status"
+                                [class.pending]="request.status === 'pending'"
+                                [class.approved]="request.status === 'approved'"
+                                [class.rejected]="request.status === 'rejected'"
+                            >
+                                {{ request.status | uppercase }}
+                            </span>
+                        </p>
+
+                        <!-- Displays when the membership request was submitted, if available. -->
+                        <p *ngIf="request.createdAt">
+                            <strong>Submitted:</strong>
+                            {{ request.createdAt | date:'medium' }}
+                        </p>
+
+
+                        <!-- Displays action buttons only for pending membership requests. -->
+                        <div
+                            class="actions"
+                            *ngIf="request.status === 'pending'"
+                        >
+
+                            <!-- Approves the membership request. -->
+                            <button
+                                class="approve"
+                                type="button"
+                                (click)="approveMembership(request)"
+                            >
+                                APPROVE
+                            </button>
+
+                            <!-- Rejects the membership request. -->
+                            <button
+                                class="reject"
+                                type="button"
+                                (click)="rejectMembership(request)"
+                            >
+                                REJECT
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Displays when there are no membership requests to review. -->
+                    <p
+                        class="empty"
+                        *ngIf="adminMembershipRequests.length === 0"
+                    >
+                        There are currently no users waiting to join
+                        your groups.
+                    </p>
+
+                </article>
+
+            </section>
+
+        </ng-container>
+
+    </ng-container>
+
+
+    <!-- Shared Back button used by all users to return to the dashboard. -->
+    <button
+        class="back"
+        type="button"
+        (click)="backToDashboard()"
+    >
+        BACK
+    </button>
+
+</div>

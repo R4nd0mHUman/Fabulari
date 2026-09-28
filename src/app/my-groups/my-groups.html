@@ -1,0 +1,133 @@
+<div class="page">
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Displays the title for the user's groups page. -->
+    <h1 class="page-title">
+        My Groups
+    </h1>
+
+    <!-- Explains what information is available on the page. -->
+    <p class="page-description">
+        Your persistent group memberships and channels.
+    </p>
+
+
+    <!-- Displays while the user's groups are loading. -->
+    <p
+        class="loading-message"
+        *ngIf="loading"
+    >
+        Loading groups...
+    </p>
+
+
+    <!-- Displays the user's groups once loading is complete. -->
+    <div
+        class="groups"
+        *ngIf="!loading"
+    >
+
+        <!-- Displays each group that the user is a member of. -->
+        <article
+            class="group-card"
+            *ngFor="let group of groups"
+        >
+
+            <!-- Contains the group's information and management button. -->
+            <div class="group-header">
+
+                <!-- Displays the main information about the group. -->
+                <div>
+
+                    <!-- Displays the group name. -->
+                    <h2>
+                        {{ group.name }}
+                    </h2>
+
+                    <!-- Displays the group description. -->
+                    <p>
+                        {{ group.description || 'No description provided.' }}
+                    </p>
+
+                    <!-- Displays the user's role within the group. -->
+                    <p>
+                        Your role:
+                        <strong>
+                            {{ group.membershipRole | uppercase }}
+                        </strong>
+                    </p>
+
+                    <!-- Displays the minimum age required to join the group. -->
+                    <p>
+                        Age limit:
+                        {{ group.ageLimit > 0 ? group.ageLimit : 'None' }}
+                    </p>
+
+                </div>
+
+
+                <!-- Allows group administrators to manage their group. -->
+                <button
+                    *ngIf="group.membershipRole === 'admin'"
+                    class="manage-button"
+                    type="button"
+                    (click)="openGroup(group.id)"
+                >
+                    Manage Group
+                </button>
+
+            </div>
+
+
+            <!-- Displays the heading for the group's available channels. -->
+            <h3>
+                Channels
+            </h3>
+
+
+            <!-- Contains the buttons for the group's channels. -->
+            <div class="channels">
+
+                <!-- Opens the selected channel. -->
+                <button
+                    *ngFor="let channel of group.channels"
+                    type="button"
+                    class="channel-button"
+                    (click)="openChannel(group.id, channel.id)"
+                >
+                    {{ channel.name }}
+                </button>
+
+
+                <!-- Displays when the group has no channels. -->
+                <p *ngIf="group.channels?.length === 0">
+                    No channels have been created yet.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- Displays when the user is not a member of any groups. -->
+        <p
+            class="no-groups"
+            *ngIf="groups.length === 0"
+        >
+            You are not currently a member of any groups.
+        </p>
+
+    </div>
+
+
+    <!-- Returns the user to the dashboard. -->
+    <button
+        class="back-button"
+        type="button"
+        (click)="backToDashboard()"
+    >
+        Back to Dashboard
+    </button>
+
+</div>

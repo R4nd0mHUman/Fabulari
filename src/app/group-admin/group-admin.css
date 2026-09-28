@@ -1,0 +1,497 @@
+/* Defines the custom font used throughout the admin page. */
+/* Main admin page */
+:host {
+
+    /* Makes the host element behave like a normal block-level element. */
+    display: block;
+
+    /* Makes the page at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Adds space around the admin page, with extra space at the bottom. */
+    padding: 30px 15px 50px;
+
+    /* Includes the padding inside the element's defined dimensions. */
+    box-sizing: border-box;
+
+    /* Gives the page its soft pink background colour. */
+    background: #fcecf8;
+
+    /* Uses the custom Tempus Sans font throughout the admin page. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* Main admin page content */
+.admin-page {
+
+    /* Makes the page use up to 900 pixels while remaining responsive on smaller screens. */
+    width: min(900px, 100%);
+
+    /* Centres the admin content horizontally. */
+    margin: auto;
+}
+
+
+/* Main page heading */
+h1 {
+
+    /* Centres the heading text. */
+    text-align: center;
+
+    /* Gives the heading its pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Makes the heading responsive, ranging from 32px to 46px depending on screen width. */
+    font-size: clamp(32px, 5vw, 46px);
+
+    /* Keeps the heading at the font's normal weight. */
+    font-weight: normal;
+}
+
+
+/* Page subtitle */
+.subtitle {
+
+    /* Centres the subtitle text. */
+    text-align: center;
+
+    /* Gives the subtitle a softer purple colour. */
+    color: rgb(150, 100, 140);
+}
+
+
+/* Main admin content panels */
+.panel {
+
+    /* Gives the panel a clean white background. */
+    background: white;
+
+    /* Adds a 3-pixel purple border around the panel. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the panel corners. */
+    border-radius: 18px;
+
+    /* Adds space inside the panel around its contents. */
+    padding: 22px;
+
+    /* Adds space above each panel. */
+    margin-top: 22px;
+
+    /* Adds a soft purple glow around the panel. */
+    box-shadow: 0 0 15px rgba(185, 105, 168, 0.18);
+}
+
+
+/* Panel headings */
+.panel h2 {
+
+    /* Gives panel headings the main pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Keeps panel headings at the font's normal weight. */
+    font-weight: normal;
+}
+
+
+/* Form labels */
+label {
+
+    /* Makes each label occupy its own line. */
+    display: block;
+
+    /* Adds space above each label. */
+    margin-top: 15px;
+
+    /* Adds a small gap between the label and its form control. */
+    margin-bottom: 6px;
+
+    /* Gives labels a darker purple colour for readability. */
+    color: rgb(110, 75, 100);
+}
+
+
+/* ============================================================
+   TEXT INPUTS / TEXTAREA / SELECT
+============================================================ */
+
+/* Common styling for text inputs, textareas and dropdowns */
+input,
+textarea,
+select {
+
+    /* Makes each form control use the full available width. */
+    width: 100%;
+
+    /* Includes padding and borders inside the element's defined width. */
+    box-sizing: border-box;
+
+    /* Adds a 3-pixel purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the form control corners. */
+    border-radius: 12px;
+
+    /* Adds space inside the controls around their contents. */
+    padding: 10px 12px;
+
+    /* Gives the controls a white background. */
+    background: white;
+
+    /* Gives typed and selected text a darker purple colour. */
+    color: rgb(110, 75, 100);
+
+    /* Inherits the Tempus Sans font and other relevant font properties. */
+    font: inherit;
+}
+
+
+/* ============================================================
+   TEXT CURSOR
+============================================================ */
+
+/* Custom text cursor for text inputs and textareas */
+input[type="text"]:hover,
+input[type="text"]:focus,
+input[type="number"]:hover,
+input[type="number"]:focus,
+textarea:hover,
+textarea:focus {
+
+    /* Uses the custom pink vertical text cursor while editing text. */
+    cursor: url("/assets/cursor/Cute Pink Vertical.cur"), text;
+}
+
+
+/* ============================================================
+   TEXTAREA
+============================================================ */
+
+/* Description or multi-line text area */
+textarea {
+
+    /* Ensures the textarea starts at least 100 pixels tall. */
+    min-height: 100px;
+
+    /* Allows the user to resize the textarea vertically. */
+    resize: vertical;
+}
+
+
+/* ============================================================
+   THEME DROPDOWN
+============================================================ */
+
+/* Theme selection dropdown */
+select {
+
+    /* Uses the custom pink link cursor when interacting with the dropdown. */
+    cursor: url("/assets/cursor/Cute Pink Link Select.cur"), pointer;
+
+    /* Keeps the browser's normal dropdown appearance. */
+    appearance: auto;
+}
+
+
+/* Theme dropdown hover and focus effects */
+select:hover,
+select:focus {
+
+    /* Changes the border to a brighter pink. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the dropdown. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.35);
+
+    /* Removes the browser's default focus outline. */
+    outline: none;
+
+    /* Keeps the custom clickable cursor while interacting with the dropdown. */
+    cursor: url("/assets/cursor/Cute Pink Link Select.cur"), pointer;
+}
+
+
+/* ============================================================
+   COLOUR PICKER
+============================================================ */
+
+/* Colour picker input */
+input[type="color"] {
+
+    /* Makes the colour picker use the full available width. */
+    width: 100%;
+
+    /* Gives the colour picker a fixed height. */
+    height: 50px;
+
+    /* Adds a small amount of space between the colour control and its border. */
+    padding: 4px;
+
+    /* Adds a 3-pixel purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the colour picker corners. */
+    border-radius: 12px;
+
+    /* Gives the colour picker a white background. */
+    background: white;
+
+    /* Uses the custom clickable cursor. */
+    cursor: url("/assets/cursor/Cute Pink Link Select.cur"), pointer;
+}
+
+
+/* Colour picker hover and focus effects */
+input[type="color"]:hover,
+input[type="color"]:focus {
+
+    /* Changes the border to a brighter pink. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the colour picker. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+
+    /* Removes the browser's default focus outline. */
+    outline: none;
+
+    /* Uses the custom clickable cursor. */
+    cursor: url("/assets/cursor/Cute Pink Link Select.cur"), pointer;
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+/* General button styling */
+button {
+
+    /* Ensures buttons are at least 45 pixels tall. */
+    min-height: 45px;
+
+    /* Adds space above each button. */
+    margin-top: 15px;
+
+    /* Adds horizontal and vertical space inside the button. */
+    padding: 8px 15px;
+
+    /* Rounds the button corners. */
+    border-radius: 12px;
+
+    /* Adds a 3-pixel purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Gives buttons a clean white background. */
+    background: white;
+
+    /* Gives button text its pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Inherits the page's custom font and other relevant font properties. */
+    font: inherit;
+
+    /* Uses the custom clickable pink cursor. */
+    cursor: url("/assets/cursor/Cute Pink Link Select.cur"), pointer;
+}
+
+
+/* General button hover effect */
+button:hover {
+
+    /* Adds a soft pink glow around the button when hovered. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   MEMBERS
+============================================================ */
+
+/* Individual member row */
+.member {
+
+    /* Uses Flexbox to arrange the member information and controls. */
+    display: flex;
+
+    /* Pushes the member information and controls to opposite sides. */
+    justify-content: space-between;
+
+    /* Adds space between the member sections. */
+    gap: 15px;
+
+    /* Vertically centres the member contents. */
+    align-items: center;
+
+    /* Adds vertical space inside each member row. */
+    padding: 12px 0;
+
+    /* Adds a faint divider underneath each member. */
+    border-bottom: 1px solid rgba(185, 105, 168, 0.2);
+
+    /* Gives member text a darker purple colour. */
+    color: rgb(110, 75, 100);
+}
+
+
+/* ============================================================
+   CHANNELS
+============================================================ */
+
+/* Individual channel row */
+.channel {
+
+    /* Uses Flexbox to arrange the channel information and controls. */
+    display: flex;
+
+    /* Centres the channel contents vertically. */
+    align-items: center;
+
+    /* Pushes the channel information and actions apart. */
+    justify-content: space-between;
+
+    /* Adds a small gap between channel sections. */
+    gap: 1rem;
+
+    /* Allows channel contents to move onto another line when necessary. */
+    flex-wrap: wrap;
+
+    /* Gives channel text a darker purple colour. */
+    color: rgb(110, 75, 100);
+
+    /* Adds vertical space inside the channel row. */
+    padding: 12px 0;
+
+    /* Adds a faint divider underneath each channel. */
+    border-bottom: 1px solid rgba(185, 105, 168, 0.2);
+}
+
+
+/* Stacks channel name and supporting information vertically */
+.channel > div:first-child {
+
+    /* Uses Flexbox for the channel information. */
+    display: flex;
+
+    /* Stacks the information vertically. */
+    flex-direction: column;
+
+    /* Adds a small gap between the information lines. */
+    gap: 0.25rem;
+}
+
+
+/* Channel action buttons */
+.channel-actions {
+
+    /* Places the channel action buttons beside each other. */
+    display: flex;
+
+    /* Adds a small gap between action buttons. */
+    gap: 0.5rem;
+}
+
+
+/* Secondary control or button */
+.secondary {
+
+    /* Makes the secondary control use the full available width. */
+    width: 100%;
+}
+
+
+/* Back button */
+.back {
+
+    /* Makes the back button behave as a block element. */
+    display: block;
+
+    /* Gives the back button a fixed width on larger screens. */
+    width: 250px;
+
+    /* Centres the button horizontally and adds space above it. */
+    margin: 30px auto 0;
+}
+
+
+/* ============================================================
+   ONLINE STATUS
+============================================================ */
+
+/* Small status indicator dot */
+.status-dot {
+
+    /* Allows the dot to sit naturally beside text. */
+    display: inline-block;
+
+    /* Sets the dot's width. */
+    width: 9px;
+
+    /* Sets the dot's height. */
+    height: 9px;
+
+    /* Adds space between the dot and its accompanying text. */
+    margin-right: 7px;
+
+    /* Makes the dot completely circular. */
+    border-radius: 50%;
+
+    /* Gives the default status dot a grey colour. */
+    background: #8b8b8b;
+}
+
+
+/* Online status */
+.status-dot.online {
+
+    /* Gives online users a bright green status indicator. */
+    background: #35c76f;
+}
+
+
+/* Offline status */
+.status-dot.offline {
+
+    /* Gives offline users a grey status indicator. */
+    background: #8b8b8b;
+}
+
+
+/* ============================================================
+   RESPONSIVE LAYOUT
+============================================================ */
+
+/* Adjusts member rows on smaller screens */
+@media (max-width: 600px) {
+
+    /* Stacks member information and controls vertically. */
+    .member {
+        flex-direction: column;
+
+        /* Allows the member contents to stretch across the available width. */
+        align-items: stretch;
+    }
+
+    /* Makes the Back button use the full available width. */
+    .back {
+        width: 100%;
+    }
+}
+
+
+/* Adjusts channel action buttons on smaller screens */
+@media (max-width: 768px) {
+
+    /* Makes the channel action area use the full available width. */
+    .channel-actions {
+        width: 100%;
+    }
+
+    /* Makes each channel action button share the available width evenly. */
+    .channel-actions button {
+        flex: 1;
+    }
+}

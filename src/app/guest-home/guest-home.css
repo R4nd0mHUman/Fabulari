@@ -1,0 +1,176 @@
+/* ============================================================
+   CUSTOM FONT
+============================================================ */
+
+/* Defines the custom Tempus Sans font used throughout the page. */
+/* ============================================================
+   HOST ELEMENT
+============================================================ */
+
+:host {
+
+    /* Makes the host element behave like a block-level element. */
+    display: block;
+
+    /* Makes the host element at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Gives the page its soft pink background. */
+    background: #fcecf8;
+
+    /* Uses the custom Tempus Sans font throughout the component. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* ============================================================
+   GUEST PAGE
+============================================================ */
+
+.guest-page {
+
+    /* Makes the guest page at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Uses CSS Grid to position the guest card. */
+    display: grid;
+
+    /* Centres the guest card horizontally and vertically. */
+    place-items: center;
+
+    /* Adds space around the card on smaller screens. */
+    padding: 20px;
+
+    /* Includes the padding within the element's overall dimensions. */
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   GUEST CARD
+============================================================ */
+
+.guest-card {
+
+    /* Makes the card at most 500px wide while allowing it to shrink on smaller screens. */
+    width: min(500px, 100%);
+
+    /* Adds comfortable space inside the card around its contents. */
+    padding: 35px;
+
+    /* Includes padding and borders within the card's defined width. */
+    box-sizing: border-box;
+
+    /* Centres the text inside the guest card. */
+    text-align: center;
+
+    /* Gives the card a clean white background. */
+    background: white;
+
+    /* Gives the card a thick pink/purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the card corners. */
+    border-radius: 20px;
+
+    /* Adds a soft pink/purple glow around the card. */
+    box-shadow:
+        0 0 20px rgba(185, 105, 168, 0.2);
+}
+
+
+/* ============================================================
+   GUEST CARD HEADING
+============================================================ */
+
+h1 {
+
+    /* Gives the heading the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+
+    /* Keeps the heading at its normal font weight. */
+    font-weight: normal;
+}
+
+
+/* ============================================================
+   ROLE TEXT
+============================================================ */
+
+.role {
+
+    /* Gives the role text a darker muted purple colour. */
+    color: rgb(110, 75, 100);
+
+    /* Adds spacing between each letter to make the role stand out. */
+    letter-spacing: 4px;
+}
+
+
+/* ============================================================
+   GUEST CARD TEXT
+============================================================ */
+
+p {
+
+    /* Uses the darker muted purple colour for paragraph text. */
+    color: rgb(110, 75, 100);
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+button {
+
+    /* Makes the button occupy its own line. */
+    display: block;
+
+    /* Makes the button use the full width of the guest card. */
+    width: 100%;
+
+    /* Gives the button a minimum height for comfortable clicking. */
+    min-height: 50px;
+
+    /* Adds 15px of space above the button. */
+    margin-top: 15px;
+
+    /* Gives the button a thick pink/purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the button corners. */
+    border-radius: 12px;
+
+    /* Gives the button a clean white background. */
+    background: white;
+
+    /* Gives the button pink/purple text. */
+    color: rgb(185, 105, 168);
+
+    /* Inherits the Tempus Sans font and surrounding font settings. */
+    font: inherit;
+
+    /* Uses the browser's pointer cursor over the clickable button. */
+    cursor: pointer;
+}
+
+
+/* Button hover effect. */
+button:hover {
+
+    /* Adds a soft pink glow when the button is hovered. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   SECONDARY CONTENT
+============================================================ */
+
+.secondary {
+
+    /* Makes secondary content slightly less prominent than the main content. */
+    opacity: 0.8;
+}

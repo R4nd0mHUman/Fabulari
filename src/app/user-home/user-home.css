@@ -1,0 +1,217 @@
+/* Styles the main User screen container */
+.user-screen{
+
+    /* Positions child elements relative to this container */
+    position:relative;
+
+    /* Makes the container span the full width and height of the page */
+    width:100%;
+    height:100vh;
+
+    /* Scales the background image to cover the entire container, centers it and prevents repeating */
+    background-size:cover;
+    background-position:center;
+    overflow:hidden;
+}
+
+
+/* Styles the User profile picture */
+.profile-picture{
+
+    /* Positions the profile picture relative to the parent container */
+    position:absolute;
+
+    /* Sets the width of the profile picture */
+    width:180px;
+
+    /* Moves the image horizontally to the middle of the screen and positions it 18% down from the top */
+    left:50%;
+    top:18%;
+
+    /* Offsets the image by half its width to perfectly center it */
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    /* Uses a deeper berry colour instead of matching the background */
+    border:5px solid rgb(184,79,118);
+
+    /* Creates a soft berry/pink glow */
+    box-shadow:
+        0 0 12px rgba(214,95,136,0.45),
+        0 0 24px rgba(184,79,118,0.25);
+}
+
+
+/* Styles the username text */
+.username{
+
+    /* Positions the username relative to the parent container */
+    position:absolute;
+
+    /* Allows the heading to span the full width of the screen */
+    width:100%;
+
+    /* Places the username 38% down from the top of the screen */
+    top:38%;
+
+    /* Centers the username text horizontally */
+    text-align:center;
+
+    /* Applies the custom font */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Uses a dark berry colour for contrast */
+    color:rgb(113,54,79);
+
+    /* Larger username */
+    font-size:35px;
+
+    /* Gives the username a subtle berry glow */
+    text-shadow:
+        0 0 8px rgba(214,95,136,0.35);
+}
+
+
+/* Styles the container that holds all of the buttons */
+.buttons{
+
+    /* Positions the button container relative to the parent container */
+    position:absolute;
+
+    /* Places the button container 50% down from the top and in the horizontal center */
+    top:50%;
+    left:50%;
+
+    /* Offsets the container by half its width to perfectly center it */
+    transform:translateX(-50%);
+
+    /* Displays the buttons using a flexbox layout */
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+
+/* Styles every button on the User page */
+button{
+
+    /* Sets the width and height of each button */
+    width:250px;
+    height:55px;
+
+    /* Rounds the corners of the button */
+    border-radius:15px;
+
+    /* Uses a deeper berry administration-style accent */
+    border:3px solid rgb(184,79,118);
+
+    /* Uses a pale pink panel that is distinct from the background */
+    background:rgb(244,209,217);
+
+    /* Sets button text size */
+    font-size:20px;
+
+    /* Uses dark berry text for strong contrast */
+    color:rgb(113,54,79);
+
+    /* Applies the custom font */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Removes default button styling */
+    outline:none;
+
+    /* Adds smooth hover animations */
+    transition:0.2s ease;
+
+    /* Uses the custom pink cursor */
+    cursor:url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'), pointer;
+}
+
+
+/* Button hover effect */
+button:hover{
+
+    /* Changes the border to a brighter raspberry */
+    border-color:rgb(214,95,136);
+
+    /* Brightens the button without matching either background colour */
+    background:rgb(255,225,232);
+
+    /* Makes the text slightly darker for contrast */
+    color:rgb(100,45,69);
+
+    /* Creates a layered raspberry glow */
+    box-shadow:
+        0 0 8px rgba(214,95,136,0.65),
+        0 0 18px rgba(184,79,118,0.35);
+
+    /* Slightly enlarges the button */
+    transform:scale(1.05);
+}
+/* ============================================================
+   RESPONSIVE USER-HOME FRAMING
+   Keeps every account action, including Logout, reachable when the
+   browser is resized instead of clipping the absolutely-positioned list.
+============================================================ */
+.user-screen {
+    min-height: 100vh;
+    height: auto;
+    box-sizing: border-box;
+    padding: clamp(90px, 12vh, 130px) 20px 42px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-picture {
+    position: static;
+    width: clamp(120px, 16vw, 180px);
+    height: clamp(120px, 16vw, 180px);
+    object-fit: cover;
+    transform: none;
+    flex: 0 0 auto;
+}
+
+.username {
+    position: static;
+    width: auto;
+    margin: 18px 0 10px;
+    font-size: clamp(28px, 4vw, 35px);
+}
+
+.chat-hub-card {
+    width: min(520px, calc(100vw - 40px));
+    box-sizing: border-box;
+    margin: 0 auto 18px;
+    padding: 1rem;
+    border: 2px solid rgba(184,79,118,.32);
+    border-radius: 14px;
+    background: rgba(255,255,255,.88);
+    color: rgb(113,54,79);
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+    box-shadow: 0 8px 24px rgba(113,54,79,.12);
+}
+
+.chat-hub-card h2 { margin: 0 0 .35rem; }
+.chat-hub-card p { margin: 0; line-height: 1.45; }
+
+.buttons {
+    position: static;
+    transform: none;
+    width: min(300px, calc(100vw - 40px));
+    gap: 14px;
+    padding-bottom: 20px;
+}
+
+.buttons button { width: 100%; flex: 0 0 auto; }
+
+@media (max-height: 760px), (max-width: 600px) {
+    .user-screen { padding-top: 78px; }
+    .profile-picture { width: 110px; height: 110px; }
+    .username { margin: 10px 0; }
+    .buttons { gap: 10px; }
+    .buttons button { min-height: 48px; height: auto; padding: 8px 12px; }
+}

@@ -1,0 +1,516 @@
+/* Defines the custom font used throughout the profile page. */
+/* Main profile screen */
+.profile-screen {
+
+    /* Makes the profile screen the reference point for positioned elements. */
+    position: relative;
+
+    /* Allows the profile screen to use the full width and at least as tall as of the browser. */
+    width: 100%;
+    min-height: 100vh;
+
+    /* Allows the page to scroll vertically when the content is too tall for the screen. */
+    overflow-y: auto;
+
+    /* Prevents horizontal scrolling caused by content extending outside the screen. */
+    overflow-x: hidden;
+
+    /* Uses the custom pink cursor when the cursor is over the profile page. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'), auto;
+
+    /* Uses Flexbox to arrange the profile page content, placing the content verically (top-bottom) and centers it horizontally. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Gives the profile page its soft pink background colour. */
+    background: #fcecf8;
+}
+
+
+/* Profile page title */
+.profile-title {
+
+    /* Adds space above the profile page title and a small amount of space below it. */
+    margin-top: 40px;
+    margin-bottom: 5px;
+
+    /* Uses the custom font for the title, sizing it to 42p and not having it in bold. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+    font-size: 42px;
+    font-weight: normal;
+
+    /* Gives the title its pink colour. */
+    color: rgb(185, 105, 168);
+
+    /* Creates a white outline around the title text. */
+    text-shadow:
+        -2px -2px 0 white, /* Adds the top-left part of the white outline. */
+         2px -2px 0 white, /* Adds the top-right part of the white outline. */
+        -2px  2px 0 white, /* Adds the bottom-left part of the white outline. */
+         2px  2px 0 white; /* Adds the bottom-right part of the white outline. */
+}
+
+
+/* Description underneath the title */
+.profile-description {
+
+    /* Removes the extra space above the description but adds space below it before the main profile content. */
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    /* Uses the custom font for the description, setting its text to 10px. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+    font-size: 18px;
+
+    /* Gives the description its pink colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* Loading message */
+.loading-message {
+
+    /* Adds space above the loading message. */
+    margin-top: 50px;
+
+    /* Uses the custom font for the loading message. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the loading message text size to 22 pixels. */
+    font-size: 22px;
+
+    /* Gives the loading message its pink colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* Main profile container */
+.profile-container {
+
+    /* Places and aligns the profile picture and form to the top of the container, beside each other. */
+    display: flex;
+    align-items: flex-start;
+
+    /* Centres the picture and form horizontally within the container. */
+    justify-content: center;
+
+    /* Adds 50 pixels of space between the picture and form. */
+    gap: 50px;
+
+    /* Makes the container use 90% of the available screen width and prevents it from becoming wider than 850px. */
+    width: 90%;
+    max-width: 850px;
+
+    /* Adds space below the profile container. */
+    margin-bottom: 50px;
+}
+
+
+/* Profile picture section */
+.profile-picture-section {
+
+    /* Uses Flexbox to arrange the picture section's contents. */
+    display: flex;
+
+    /* Places the picture and button vertically with them both centered horizontally. */
+    flex-direction: column;
+    align-items: center;
+
+    /* Adds 15 pixels of space between the picture and button. */
+    gap: 15px;
+}
+
+
+/* Profile picture */
+.profile-picture {
+
+    /* Sets the profile picture width and height to 220 pixels. */
+    width: 220px;
+    height: 220px;
+
+    /* Makes the image fill its area while maintaining its proportions. */
+    object-fit: cover;
+
+    /* Makes the square image completely circular. */
+    border-radius: 50%;
+
+    /* Adds a 4-pixel pink border around the profile picture. */
+    border: 4px solid rgb(185, 105, 168);
+
+    /* Gives the profile picture a white background. */
+    background: white;
+
+    /* Adds a soft pink glow around the profile picture. */
+    box-shadow:
+        0 0 15px rgba(185, 105, 168, 0.35);
+}
+
+
+/* Change profile picture button */
+.picture-button {
+
+    /* Adds space inside the button around its text. */
+    padding: 10px 15px;
+
+    /* Adds a 3-pixel pink border around the button. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the corners of the button. */
+    border-radius: 12px;
+
+    /* Gives the button a white background. */
+    background: white;
+
+    /* Uses the custom font for the button text. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the button text size to 16 pixels. */
+    font-size: 16px;
+
+    /* Gives the button text its pink colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink link cursor when hovering over the button. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'), pointer;
+}
+
+
+/* Hides the actual file input while keeping the custom button visible. */
+.picture-button input {
+
+    /* Removes the file input from the visible page. */
+    display: none;
+}
+
+
+/* Profile form */
+.profile-form {
+
+    /* Uses Flexbox to arrange the form elements. */
+    display: flex;
+
+    /* Places the form elements vertically from top to bottom. */
+    flex-direction: column;
+
+    /* Sets the form width to 350 pixels. */
+    width: 350px;
+}
+
+
+/* Profile labels */
+.profile-form label {
+
+    /* Adds space above each label and a small amount of space below each label. */
+    margin-top: 12px;
+    margin-bottom: 5px;
+
+    /* Uses the custom font for the labels. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the label text size to 18 pixels. */
+    font-size: 18px;
+
+    /* Gives the labels their pink colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink cursor when the cursor is over the words. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'), auto;
+}
+
+
+/* Profile input fields */
+.profile-input {
+
+    /* Makes the input use the full width of its parent form yet only have an input height of 45px. */
+    width: 100%;
+    height: 45px;
+
+    /* Adds 12 pixels of horizontal space inside the input. */
+    padding: 0 12px;
+
+    /* Includes the padding and border inside the input's defined width. */
+    box-sizing: border-box;
+
+    /* Gives the input a white background. */
+    background: white;
+
+    /* Adds a 3-pixel pink border around the input. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the corners of the input field. */
+    border-radius: 12px;
+
+    /* Removes the browser's default outline. */
+    outline: none;
+
+    /* Uses the custom font inside the input. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the input text size to 20 pixels. */
+    font-size: 20px;
+
+    /* Gives the input text its pink colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink text cursor while typing in the input. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Text.cur'), text;
+}
+
+
+/* Placeholder text */
+.profile-input::placeholder {
+
+    /* Gives placeholder text the same pink colour as the input text. */
+    color: rgb(185, 105, 168);
+
+    /* Makes the placeholder text slightly transparent. */
+    opacity: 0.6;
+}
+
+
+/* Input focus effect */
+.profile-input:focus {
+
+    /* Changes the border to a lighter pink when the input is selected. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the selected input. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* Disabled email field */
+.profile-input:disabled {
+
+    /* Gives the disabled field a light grey background. */
+    background: #f3f3f3;
+
+    /* Changes the disabled text colour to grey. */
+    color: #888;
+
+    /* Uses the custom pink not-allowed cursor over the disabled field. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Unvailable.cur'), text;
+
+    /* Keeps the border visible while using the normal pink colour. */
+    border-color: rgb(185, 105, 168);
+}
+
+
+/* Email explanation */
+.email-note {
+
+    /* Adds a small amount of space above the explanation text. */
+    margin-top: 4px;
+
+    /* Uses the custom font for the explanation. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the explanation smaller than the main form text. */
+    font-size: 13px;
+
+    /* Gives the explanation a darker pink colour. */
+    color: rgb(150, 100, 140);
+}
+
+/* Change password section */
+.password-section {
+
+    /* Separates the password section from the normal profile fields. */
+    margin-top: 25px;
+
+    /* Adds space below the password section before the normal save button. */
+    margin-bottom: 10px;
+
+}
+
+
+
+/* Change password section heading */
+.password-title {
+
+    /* Removes the default heading margins and adds a small amount of spacing. */
+    margin-top: 0;
+    margin-bottom: 5px;
+
+    /* Uses the custom font throughout the password section. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the password heading slightly larger than the labels. */
+    font-size: 26px;
+
+    /* Keeps the heading at normal font weight. */
+    font-weight: normal;
+
+    /* Gives the heading the same pink colour as the rest of the profile page. */
+    color: rgb(185, 105, 168);
+
+}
+
+
+
+/* Password requirements explanation */
+.password-note {
+
+    /* Adds a small amount of space above the requirement text. */
+    display: block;
+    margin-top: 4px;
+
+    /* Uses the same custom font as the rest of the profile page. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the password requirement smaller than the inputs. */
+    font-size: 13px;
+
+    /* Uses a slightly darker pink so the requirement is visually secondary. */
+    color: rgb(150, 100, 140);
+
+}
+
+
+
+/* Password save button */
+.password-button {
+
+    /* Keeps the password button visually separate from the final profile save button. */
+    margin-top: 15px;
+
+}
+
+/* Shared profile buttons */
+.profile-button {
+
+    /* Makes the button use the full width of the form but height only 50px. */
+    width: 100%;
+    height: 50px;
+
+    /* Adds space above the button. */
+    margin-top: 20px;
+
+    /* Adds a 3-pixel pink border around the button and rounds the corners of it. */
+    border: 3px solid rgb(185, 105, 168);
+    border-radius: 12px;
+
+    /* Gives the button a white background. */
+    background: white;
+
+    /* Uses the custom font for the button text. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the button text size to 20 pixels. */
+    font-size: 20px;
+
+    /* Gives the button text its pink colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink link cursor when hovering over the button. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'), pointer;
+}
+
+
+/* Button hover effect */
+.profile-button:hover {
+
+    /* Changes the button border to a lighter pink when hovered over. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the button when hovered over. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* Disabled save button */
+.profile-button:disabled {
+
+    /* Makes the disabled button appear faded. */
+    opacity: 0.6;
+
+    /* Uses the custom pink not-allowed cursor when the button is disabled. */
+    cursor: url('/assets/cursor/Cute%20Pink%20Unvailable.cur'), text;
+
+}
+
+
+/* Mobile profile layout */
+@media (max-width: 768px) {
+
+    /* Reduces the space above the title on smaller screens. */
+    .profile-title {
+        margin-top: 25px;
+
+        /* Reduces the title size for mobile screens. */
+        font-size: 34px;
+    }
+
+
+    /* Adjusts the profile description for smaller screens. */
+    .profile-description {
+
+        /* Makes the description use 85% of the screen width. */
+        width: 85%;
+
+        /* Centres the description text. */
+        text-align: center;
+
+        /* Reduces the description text size for mobile screens. */
+        font-size: 16px;
+    }
+
+
+    /* Changes the main profile layout for mobile screens. */
+    .profile-container {
+
+        /* Places the picture and form vertically instead of side by side. */
+        flex-direction: column;
+
+        /* Centres the picture and form horizontally. */
+        align-items: center;
+
+        /* Reduces the space between the picture and form. */
+        gap: 30px;
+    }
+
+
+    /* Reduces the profile picture size on mobile screens. */
+    .profile-picture {
+
+        /* Sets the mobile profile picture width and height to 180 pixels. */
+        width: 180px;
+        height: 180px;
+    }
+
+
+    /* Adjusts the profile form width for mobile screens. */
+    .profile-form {
+
+        /* Makes the form use 80% of the viewport width with the max width being 350px. */
+        width: 80vw;
+        max-width: 350px;
+    }
+
+
+    /* Adjusts the profile labels for mobile screens. */
+    .profile-form label {
+
+        /* Reduces the label text size to 16 pixels. */
+        font-size: 16px;
+    }
+
+
+    /* Adjusts the profile input text for mobile screens. */
+    .profile-input {
+
+        /* Reduces the input text size to 18 pixels. */
+        font-size: 18px;
+    }
+
+
+    /* Adjusts the profile button text for mobile screens. */
+    .profile-button {
+
+        /* Reduces the button text size to 18 pixels. */
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,277 @@
+/* ============================================================
+   CUSTOM FONT
+============================================================ */
+
+/* Defines the custom Tempus Sans font used throughout the page. */
+/* ============================================================
+   HOST ELEMENT
+============================================================ */
+
+:host {
+
+    /* Makes the host element behave like a block-level element. */
+    display: block;
+
+    /* Makes the host element at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Adds responsive space around the page content. */
+    padding: 30px 15px 50px;
+
+    /* Includes padding within the element's overall dimensions. */
+    box-sizing: border-box;
+
+    /* Gives the page its soft pink background. */
+    background: #fcecf8;
+
+    /* Uses the custom Tempus Sans font throughout the page. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* ============================================================
+   MAIN PAGE
+============================================================ */
+
+.page {
+
+    /* Makes the page at most 900px wide while allowing it to shrink on smaller screens. */
+    width: min(900px, 100%);
+
+    /* Centres the page horizontally. */
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   PAGE TITLE
+============================================================ */
+
+.page-title {
+
+    /* Centres the page title. */
+    text-align: center;
+
+    /* Gives the title the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+
+    /* Makes the title responsive while keeping it within a comfortable size range. */
+    font-size: clamp(32px, 5vw, 44px);
+
+    /* Keeps the title at its normal font weight. */
+    font-weight: normal;
+}
+
+
+/* ============================================================
+   PAGE INFORMATION
+============================================================ */
+
+.page-description,
+.loading-message,
+.no-groups {
+
+    /* Centres descriptions and status messages on the page. */
+    text-align: center;
+
+    /* Uses a softer purple colour for supporting information. */
+    color: rgb(150, 100, 140);
+}
+
+
+/* ============================================================
+   GROUP LIST
+============================================================ */
+
+.groups {
+
+    /* Displays the group cards using CSS Grid. */
+    display: grid;
+
+    /* Adds 20px of space between group cards. */
+    gap: 20px;
+
+    /* Adds space above the group list. */
+    margin-top: 30px;
+}
+
+
+/* ============================================================
+   GROUP CARD
+============================================================ */
+
+.group-card {
+
+    /* Gives each group card a clean white background. */
+    background: white;
+
+    /* Gives the card a thick pink/purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the corners of the group card. */
+    border-radius: 18px;
+
+    /* Adds comfortable space inside the card around its contents. */
+    padding: 22px;
+
+    /* Adds a soft pink/purple glow around the card. */
+    box-shadow:
+        0 0 15px rgba(185, 105, 168, 0.18);
+}
+
+
+/* ============================================================
+   GROUP HEADER
+============================================================ */
+
+.group-header {
+
+    /* Places the group heading and management controls in a Flexbox row. */
+    display: flex;
+
+    /* Pushes the heading and button toward opposite sides of the card. */
+    justify-content: space-between;
+
+    /* Adds 20px of space between header elements. */
+    gap: 20px;
+}
+
+
+/* ============================================================
+   GROUP CARD HEADINGS
+============================================================ */
+
+.group-card h2,
+.group-card h3 {
+
+    /* Gives group headings the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+
+    /* Keeps the headings at their normal font weight. */
+    font-weight: normal;
+}
+
+
+/* ============================================================
+   GROUP CARD TEXT
+============================================================ */
+
+.group-card p {
+
+    /* Uses a darker muted purple for paragraph text. */
+    color: rgb(110, 75, 100);
+
+    /* Adds comfortable spacing between lines of paragraph text. */
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   GROUP ACTION BUTTONS
+============================================================ */
+
+.manage-button,
+.channel-button,
+.back-button {
+
+    /* Gives the buttons a minimum height for comfortable clicking. */
+    min-height: 45px;
+
+    /* Adds space inside the buttons around their text. */
+    padding: 8px 15px;
+
+    /* Rounds the button corners. */
+    border-radius: 12px;
+
+    /* Gives the buttons a thick pink/purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Gives the buttons a clean white background. */
+    background: white;
+
+    /* Gives the button text the main pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom Tempus Sans font for button text. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Uses the browser's pointer cursor over clickable buttons. */
+    cursor: pointer;
+}
+
+
+/* Group action button hover effect. */
+.manage-button:hover,
+.channel-button:hover,
+.back-button:hover {
+
+    /* Adds a soft pink glow when a button is hovered. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   CHANNEL LIST
+============================================================ */
+
+.channels {
+
+    /* Places channel buttons in a flexible row. */
+    display: flex;
+
+    /* Allows channel buttons to move onto additional lines when needed. */
+    flex-wrap: wrap;
+
+    /* Adds 10px of space between channel buttons. */
+    gap: 10px;
+}
+
+
+/* ============================================================
+   BACK BUTTON
+============================================================ */
+
+.back-button {
+
+    /* Makes the Back button occupy its own line. */
+    display: block;
+
+    /* Makes the Back button 250px wide on larger screens. */
+    width: 250px;
+
+    /* Centres the button and adds 35px of space above it. */
+    margin: 35px auto 0;
+}
+
+
+/* ============================================================
+   MOBILE RESPONSIVE STYLES
+============================================================ */
+
+@media (max-width: 650px) {
+
+    /* Stacks the group header contents vertically on smaller screens. */
+    .group-header {
+
+        /* Changes the header from a horizontal row into a vertical column. */
+        flex-direction: column;
+    }
+
+
+    /* Makes the management button use the full available card width on mobile. */
+    .manage-button {
+
+        /* Expands the management button across the card. */
+        width: 100%;
+    }
+
+
+    /* Makes the Back button use the full available width on mobile. */
+    .back-button {
+
+        /* Expands the Back button across the available screen width. */
+        width: 100%;
+    }
+
+}

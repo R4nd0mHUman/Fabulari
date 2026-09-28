@@ -1,0 +1,324 @@
+<!-- Main group administration page -->
+<div class="admin-page">
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Displays while the group administration page is loading. -->
+    <p
+        class="loading"
+        *ngIf="loading"
+    >
+        Loading group administration...
+    </p>
+
+
+    <!-- Group administration content -->
+    <div *ngIf="!loading && group">
+
+        <!-- Page title -->
+        <h1>
+            Manage Group
+        </h1>
+
+        <!-- Displays the group name and the current user's administrator role. -->
+        <p class="subtitle">
+            {{ group.name }} · Group Administrator
+        </p>
+
+
+        <!-- Group settings -->
+        <section class="panel">
+
+            <!-- Section heading -->
+            <h2>
+                Group Settings
+            </h2>
+
+
+            <!-- Group name -->
+            <label for="name">
+                Group Name <span>({{ name.length }}/30)</span>
+            </label>
+
+            <input
+                id="name"
+                maxlength="30"
+                [(ngModel)]="name"
+            />
+
+
+            <!-- Group description -->
+            <label for="description">
+                Description <span>({{ description.length }}/250)</span>
+            </label>
+
+            <textarea
+                id="description"
+                maxlength="250"
+                [(ngModel)]="description"
+            ></textarea>
+
+
+            <!-- Minimum age requirement -->
+            <label for="ageLimit">
+                Minimum Age
+            </label>
+
+            <input
+                id="ageLimit"
+                type="number"
+                min="0"
+                [(ngModel)]="ageLimit"
+            />
+
+
+            <!-- Group theme -->
+            <label for="themeMode">
+                Theme
+            </label>
+
+            <select
+                id="themeMode"
+                [(ngModel)]="themeMode"
+            >
+                <option value="default">Default</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="custom">Custom Colour</option>
+            </select>
+
+
+            <!-- Optional custom theme colour -->
+            <label for="themeColour">
+                Optional Colour
+            </label>
+
+            <input
+                id="themeColour"
+                type="color"
+                [(ngModel)]="themeColour"
+            />
+
+
+            <!-- Save group settings -->
+            <button
+                type="button"
+                (click)="saveGroup()"
+                [disabled]="saving"
+            >
+                {{ saving ? 'Saving...' : 'Save Group' }}
+            </button>
+
+        </section>
+
+
+        <!-- Group members -->
+        <section class="panel">
+
+            <!-- Section heading -->
+            <h2>
+                Members
+            </h2>
+
+
+            <!-- Displays each member of the group. -->
+            <div
+                class="member"
+                *ngFor="let member of members"
+            >
+
+                <!-- Member name, status, and role -->
+                <span>
+
+                    <span
+                        class="status-dot"
+                        [class.online]="member.online"
+                        [class.offline]="!member.online"
+                        aria-hidden="true"
+                    ></span>
+
+                    {{ member.username }}
+
+                    <!-- Identifies the group administrator. -->
+                    <strong *ngIf="member.role === 'admin'">
+                        · ADMIN
+                    </strong>
+
+                </span>
+
+
+                <!-- Group-scoped role controls required by the Phase 2 test plan. -->
+                <div>
+                    <button *ngIf="member.role !== 'admin'" type="button" (click)="promoteMember(member)">Promote to Admin</button>
+                    <button *ngIf="member.role === 'admin'" type="button" (click)="demoteMember(member)">Demote to User</button>
+                    <button *ngIf="member.role !== 'admin'" type="button" (click)="removeMember(member)">Remove</button>
+                </div>
+
+            </div>
+
+
+            <!-- Opens the membership request management page. -->
+            <button
+                class="secondary"
+                type="button"
+                (click)="openRequests()"
+            >
+                Open Membership Requests
+            </button>
+
+        </section>
+
+
+        <!-- Group channels -->
+        <section class="panel">
+
+            <!-- Section heading -->
+            <h2>
+                Channels
+            </h2>
+
+
+            <!-- Displays each channel belonging to the group. -->
+            <div
+                class="channel"
+                *ngFor="let channel of channels"
+            >
+
+                <!-- Channel name and description -->
+                <div>
+
+                    <strong>
+                        # {{ channel.name }}
+                    </strong>
+
+                    <span>
+                        {{ channel.description || 'No description.' }}
+                    </span>
+
+                </div>
+
+
+                <!-- Channel management actions -->
+                <div class="channel-actions">
+
+                    <!-- Opens the inline rename controls for the selected channel. -->
+                    <button
+                        type="button"
+                        (click)="startRenameChannel(channel)"
+                    >
+                        Rename
+                    </button>
+
+                    <!-- Deletes the selected channel. -->
+                    <button
+                        type="button"
+                        (click)="deleteChannel(channel)"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+
+                <!--
+                Displays the channel rename controls only for the channel
+                currently selected by the Group Admin.
+                -->
+                <div
+                    class="channel-rename"
+                    *ngIf="renamingChannelId === channel.id"
+                >
+
+                    <!--
+                    Allows the Group Admin to enter the channel's new name.
+
+                    [(ngModel)] keeps the input value synchronised with
+                    renameChannelName in the component.
+                    -->
+                    <input
+                        type="text"
+                        [(ngModel)]="renameChannelName"
+                        maxlength="30"
+                        placeholder="Channel name"
+                        aria-label="New channel name"
+                    />
+
+                    <!-- Saves the proposed channel name through the backend API. -->
+                    <button
+                        type="button"
+                        (click)="renameChannel(channel)"
+                    >
+                        Save
+                    </button>
+
+                    <!-- Closes the rename controls without modifying the channel. -->
+                    <button
+                        type="button"
+                        (click)="cancelRenameChannel()"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Displays when the group does not have any channels. -->
+            <p *ngIf="channels.length === 0">
+                This group currently has no channels.
+            </p>
+
+
+            <!-- Create channel section -->
+            <h3>
+                Create Channel
+            </h3>
+
+
+            <!-- New channel name -->
+            <label for="channelName">
+                Channel Name
+            </label>
+
+            <input
+                id="channelName"
+                [(ngModel)]="channelName"
+            />
+
+
+            <!-- New channel description -->
+            <label for="channelDescription">
+                Description
+            </label>
+
+            <textarea
+                id="channelDescription"
+                [(ngModel)]="channelDescription"
+            ></textarea>
+
+
+            <!-- Creates the new channel -->
+            <button
+                type="button"
+                (click)="createChannel()"
+                [disabled]="creatingChannel"
+            >
+                {{ creatingChannel ? 'Creating...' : 'Create Channel' }}
+            </button>
+
+        </section>
+
+
+        <!-- Return to the user's groups -->
+        <button
+            class="back"
+            type="button"
+            (click)="back()"
+        >
+            Back to My Groups
+        </button>
+
+    </div>
+
+</div>

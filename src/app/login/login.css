@@ -1,0 +1,362 @@
+/* ============================================================
+   CUSTOM FONT
+============================================================ */
+
+/* Defines the custom Tempus Sans font used throughout the login screen. */
+/* ============================================================
+   LOGIN SCREEN
+============================================================ */
+
+.login-screen {
+
+    /* Positions child elements relative to the login screen. */
+    position: relative;
+
+    /* Makes the login screen span the full available width. */
+    width: 100%;
+
+    /* Makes the login screen fill the browser viewport vertically. */
+    height: 100vh;
+
+    /* Allows a background image to be displayed behind the login elements. */
+    background-size: cover;
+
+    /* Centres the background image within the screen. */
+    background-position: center;
+
+    /* Prevents the background image from repeating. */
+    background-repeat: no-repeat;
+
+    /* Prevents positioned elements from creating visible overflow outside the screen. */
+    overflow: hidden;
+}
+
+
+/* ============================================================
+   LOGIN TITLE IMAGE
+============================================================ */
+
+.title {
+
+    /* Positions the title independently of the normal document flow. */
+    position: absolute;
+
+    /* Sets the title image width on larger screens. */
+    width: 350px;
+
+    /* Centres the title horizontally using 50% of the screen width. */
+    left: 50%;
+
+    /* Places the title near the top of the screen. */
+    top: 8%;
+
+    /* Moves the title back by half of its own width to centre it. */
+    transform: translateX(-50%);
+
+    /* Places the title above lower-priority elements. */
+    z-index: 2;
+}
+
+
+/* ============================================================
+   COMPUTER IMAGE
+============================================================ */
+
+.computer {
+
+    /* Positions the computer image independently of the normal document flow. */
+    position: absolute;
+
+    /* Sets the computer image width on larger screens. */
+    width: 500px;
+
+    /* Centres the computer horizontally. */
+    left: 50%;
+
+    /* Places the computer below the title. */
+    top: 25%;
+
+    /* Moves the computer back by half of its own width to centre it. */
+    transform: translateX(-50%);
+
+    /* Places the computer above the background but below interactive controls. */
+    z-index: 2;
+}
+
+
+/* ============================================================
+   LOGIN / SIGNUP / GUEST BUTTONS
+============================================================ */
+
+.login-button,
+.signup-button,
+.guest-button {
+
+    /* Positions each button independently around the computer image. */
+    position: absolute;
+
+    /* Sets the default button image width. */
+    width: 160px;
+
+    /* Places the login and signup buttons around the middle of the screen. */
+    top: 45%;
+
+    /* Uses the custom pink link-selection cursor over clickable buttons. */
+    cursor:
+        url("/assets/cursor/Cute Pink Link Select.cur"),
+        pointer;
+
+    /* Places the buttons above the decorative images. */
+    z-index: 3;
+}
+
+
+/* ============================================================
+   LOGIN BUTTON
+============================================================ */
+
+.login-button {
+
+    /* Places the login button to the left of the centred computer. */
+    left: calc(50% - 440px);
+}
+
+
+/* ============================================================
+   SIGNUP BUTTON
+============================================================ */
+
+.signup-button {
+
+    /* Places the signup button to the right of the centred computer. */
+    left: calc(50% + 280px);
+}
+
+
+/* ============================================================
+   GUEST BUTTON
+============================================================ */
+
+.guest-button {
+
+    /* Centres the guest button horizontally. */
+    left: 50%;
+
+    /* Places the guest button below the login form. */
+    top: 68%;
+
+    /* Moves the button back by half its own width to centre it. */
+    transform: translateX(-50%);
+
+    /* Makes the guest button slightly narrower than the other buttons. */
+    width: 150px;
+}
+
+
+/* ============================================================
+   USERNAME / PASSWORD INPUTS
+============================================================ */
+
+.username,
+.password {
+
+    /* Positions the input fields independently over the computer image. */
+    position: absolute;
+
+    /* Centres both input fields horizontally. */
+    left: 50%;
+
+    /* Sets the width of the input fields. */
+    width: 306px;
+
+    /* Sets the height of the input fields. */
+    height: 45px;
+
+    /* Moves each input back by half its own width to centre it. */
+    transform: translateX(-50%);
+
+    /* Gives the inputs a clean white background. */
+    background: white;
+
+    /* Gives the inputs a thick pink/purple border. */
+    border: 3px solid rgb(185, 105, 168);
+
+    /* Rounds the input corners. */
+    border-radius: 12px;
+
+    /* Removes the browser's default focus outline. */
+    outline: none;
+
+    /* Includes the border and padding within the input's defined dimensions. */
+    box-sizing: border-box;
+
+    /* Uses the custom Tempus Sans font inside the inputs. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Gives typed text the main pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Makes the input text comfortably large. */
+    font-size: 22px;
+
+    /* Uses the custom pink text cursor while typing. */
+    cursor:
+        url("/assets/cursor/Cute Pink Text.cur"),
+        text;
+
+    /* Places the inputs above the decorative computer image and buttons. */
+    z-index: 4;
+}
+
+
+/* ============================================================
+   INPUT PLACEHOLDERS
+============================================================ */
+
+.username::placeholder,
+.password::placeholder {
+
+    /* Gives placeholder text the main pink/purple colour. */
+    color: rgb(185, 105, 168);
+
+    /* Keeps the placeholder fully visible. */
+    opacity: 1;
+
+    /* Uses the custom Tempus Sans font for placeholder text. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* ============================================================
+   USERNAME INPUT POSITION
+============================================================ */
+
+.username {
+
+    /* Places the username field above the password field. */
+    top: 32%;
+}
+
+
+/* ============================================================
+   PASSWORD INPUT POSITION
+============================================================ */
+
+.password {
+
+    /* Places the password field below the username field. */
+    top: 40%;
+}
+
+
+/* ============================================================
+   INPUT FOCUS EFFECT
+============================================================ */
+
+.username:focus,
+.password:focus {
+
+    /* Changes the border to a brighter pink when the field is focused. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the focused input. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   MOBILE RESPONSIVE STYLES
+============================================================ */
+
+@media (max-width: 768px) {
+
+    /* Reduces the title width and moves it closer to the top on smaller screens. */
+    .title {
+
+        /* Makes the title responsive to the screen width. */
+        width: 70%;
+
+        /* Moves the title closer to the top of the screen. */
+        top: 2%;
+    }
+
+
+    /* Reduces the computer image size on smaller screens. */
+    .computer {
+
+        /* Makes the computer use 80% of the available screen width. */
+        width: 80%;
+
+        /* Keeps the computer positioned below the title. */
+        top: 25%;
+    }
+
+
+    /* Reduces the login and signup button sizes on smaller screens. */
+    .login-button,
+    .signup-button {
+
+        /* Makes the side buttons narrower on mobile. */
+        width: 110px;
+
+        /* Moves the buttons lower on smaller screens. */
+        top: 55%;
+    }
+
+
+    /* Moves the login button closer to the left edge on mobile. */
+    .login-button {
+
+        /* Leaves a small gap between the button and the screen edge. */
+        left: 3%;
+    }
+
+
+    /* Moves the signup button closer to the right edge on mobile. */
+    .signup-button {
+
+        /* Clears the desktop left positioning. */
+        left: auto;
+
+        /* Leaves a small gap between the button and the screen edge. */
+        right: 3%;
+    }
+
+
+    /* Adjusts the guest button for smaller screens. */
+    .guest-button {
+
+        /* Makes the guest button narrower on mobile. */
+        width: 105px;
+
+        /* Places the guest button lower on the screen. */
+        top: 72%;
+    }
+
+
+    /* Makes the username and password fields responsive on mobile. */
+    .username,
+    .password {
+
+        /* Makes each input 60% of the viewport width. */
+        width: 60vw;
+    }
+
+
+    /* Adjusts the username field position on mobile. */
+    .username {
+
+        /* Moves the username field slightly lower on smaller screens. */
+        top: 35%;
+    }
+
+
+    /* Adjusts the password field position on mobile. */
+    .password {
+
+        /* Moves the password field slightly lower on smaller screens. */
+        top: 43%;
+    }
+
+}

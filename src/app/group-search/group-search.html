@@ -1,0 +1,119 @@
+<div class="page">
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Displays the appropriate page title for guests and registered users. -->
+    <h1 class="page-title">
+        {{ isGuest ? 'Browse Groups' : 'Search Groups' }}
+    </h1>
+
+    <!-- Explains what the user can do on the group search page. -->
+    <p class="page-description">
+        {{ isGuest
+            ? 'Guests can view public group information.'
+            : 'Find groups to join.'
+        }}
+    </p>
+
+
+    <!-- Group search controls. -->
+    <div class="search-container">
+
+        <!-- Allows the user to enter a group name or search term. -->
+        <input
+            class="search-input"
+            type="text"
+            [(ngModel)]="search"
+            placeholder="Search groups..."
+            (keyup.enter)="searchGroups()"
+        />
+
+        <!-- Searches for groups using the entered search term. -->
+        <button
+            class="search-button"
+            type="button"
+            (click)="searchGroups()"
+        >
+            Search
+        </button>
+
+    </div>
+
+
+    <!-- Displays while the group search results are loading. -->
+    <p
+        class="loading-message"
+        *ngIf="loading"
+    >
+        Loading groups...
+    </p>
+
+
+    <!-- Displays the group search results once loading is complete. -->
+    <div
+        class="groups"
+        *ngIf="!loading"
+    >
+
+        <!-- Displays each group returned by the search. -->
+        <div
+            class="group-card"
+            *ngFor="let group of groups"
+        >
+
+            <!-- Displays the group name. -->
+            <h2>
+                {{ group.name }}
+            </h2>
+
+            <!-- Displays the group description. -->
+            <p>
+                {{ group.description || 'No description provided.' }}
+            </p>
+
+            <!-- Displays the minimum age required to join the group. -->
+            <p>
+                Age limit:
+                {{ group.ageLimit > 0 ? group.ageLimit : 'None' }}
+            </p>
+
+            <!-- Displays the current number of group members. -->
+            <p>
+                Members:
+                {{ group.members?.length || 0 }}
+            </p>
+
+            <!-- Allows registered users to request membership in the group. -->
+            <button
+                class="group-button"
+                type="button"
+                *ngIf="!isGuest"
+                (click)="requestToJoin(group.id)"
+            >
+                Request to Join
+            </button>
+
+        </div>
+
+
+        <!-- Displays when no groups match the search. -->
+        <p
+            class="no-groups"
+            *ngIf="groups.length === 0"
+        >
+            No groups found.
+        </p>
+
+    </div>
+
+
+    <!-- Returns the user to the previous page. -->
+    <button
+        class="back-button"
+        type="button"
+        (click)="back()"
+    >
+        Back
+    </button>
+
+</div>

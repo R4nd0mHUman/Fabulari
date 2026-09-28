@@ -1,0 +1,105 @@
+/* =========================================================
+   BOOTSTRAP CARD
+   ---------------------------------------------------------
+   Main container for the bootstrap-style form/card.
+
+   The card uses:
+   - A fixed maximum width for readability
+   - Automatic horizontal centering
+   - Generous internal spacing
+   - A simple dark border
+   - A white background
+   - A standard Arial font
+   ========================================================= */
+.bootstrap-card {
+    /*
+     * Prevents the card from becoming excessively wide on larger screens while still allowing it to shrink naturally on smaller screens.
+     */
+    max-width: 520px;
+
+    /*
+     * Centers the card horizontally.
+     * The 6vh value adds responsive vertical spacing above and below the card.
+     */
+    margin: 6vh auto;
+
+    /* Adds internal spacing between the card edge and its contents. */
+    padding: 2rem;
+
+    /* Simple dark border around the card. */
+    border: 2px solid #333;
+
+    /* Gives the card rounded corners. */
+    border-radius: 16px;
+
+    /* White background keeps the form easy to read. */
+    background: #fff;
+
+    /* Uses Arial for a simple, widely available font. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* ====================================================================
+   FORM LABELS
+   --------------------------------------------------------------------
+   Controls the layout and spacing of labels within the bootstrap card.
+   ==================================================================== */
+.bootstrap-card label {
+    /*
+     * Makes each label occupy its own line so that the associated input can appear underneath it.
+     */
+    display: block;
+
+    /*
+     * Adds vertical spacing between individual form fields.
+     */
+    margin: 1rem 0;
+}
+
+
+/* ================================================================================
+   FORM INPUTS
+   --------------------------------------------------------------------------------
+   Styles text fields and other input controls contained within the bootstrap card.
+   ================================================================================ */
+.bootstrap-card input {
+    /*
+     * Makes the input occupy its own line underneath its label.
+     */
+    display: block;
+
+    /*
+     * Allows the input to use the full available width of the card's content area.
+     */
+    width: 100%;
+
+    /*
+     * Ensures padding and borders are included within the input's defined width.
+     */
+    box-sizing: border-box;
+
+    /* Adds comfortable internal spacing around the input text. */
+    padding: 0.7rem;
+
+    /*
+     * Adds a small amount of space between the label text and the input field.
+     */
+    margin-top: 0.35rem;
+}
+
+
+/* ==============================================================
+   FORM BUTTON
+   --------------------------------------------------------------
+   Basic styling for buttons contained within the bootstrap card.
+   ============================================================== */
+.bootstrap-card button {
+    /* Adds comfortable vertical and horizontal button spacing. */
+    padding: 0.8rem 1rem;
+
+    /*
+     * Changes the cursor to indicate that the button can be clicked.
+     */
+    cursor: pointer;
+}

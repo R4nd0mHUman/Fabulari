@@ -1,0 +1,138 @@
+<div class="chat-screen">
+  <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+  <div class="chat-shell">
+
+  <!--
+    CHAT HEADER
+    ===========
+    Remains at the top of the chat interface while the message history
+    independently scrolls underneath it.
+  -->
+  <header>
+    <button (click)="back()">← Groups</button>
+
+    <!-- Display a loading state until the actual channel has been retrieved from Express. -->
+    <ng-container *ngIf="loadingChannel">
+      <h1>Loading channel...</h1>
+    </ng-container>
+
+    <!-- Once loaded, display the actual channel and group names. -->
+    <ng-container *ngIf="!loadingChannel">
+      <h1># {{ channel?.name }}</h1>
+      <p>{{ group?.name }}</p>
+    </ng-container>
+  </header>
+
+
+  <!--
+    SCROLLABLE CHAT HISTORY
+    =======================
+    Only this section scrolls when the message history becomes taller
+    than the available chat window.
+
+    The header and message input remain visible.
+  -->
+  <main class="message-history" #messageHistory>
+
+    <!-- System messages such as users joining/leaving belong to the chat history. -->
+    <div
+      class="system"
+      *ngFor="let note of systemMessages"
+    >
+      {{ note }}
+    </div>
+
+
+    <!-- Display every message currently available during this chat session. -->
+    <article *ngFor="let m of messages">
+
+      <!-- Displays the sender's avatar, username, presence and message time. -->
+      <div class="message-header">
+
+        <!--
+          Displays the user's uploaded profile picture.
+          Users without one receive the default Fabuloso avatar.
+        -->
+        <img
+          class="message-avatar"
+          [src]="profilePictureUrl(m.profilePicture)"
+          alt="{{ m.username }} profile picture"
+        />
+
+        <!-- Displays the username belonging to this message. -->
+        <strong>
+          {{ m.username }}
+        </strong>
+
+        <!--
+          Green means the user currently has an active chat connection.
+          Grey means the user is currently offline.
+        -->
+        <span
+          class="presence-dot"
+          [class.online]="isUserOnline(m.userId)"
+          [class.offline]="!isUserOnline(m.userId)"
+          [attr.aria-label]="isUserOnline(m.userId) ? 'Online' : 'Offline'"
+          [title]="isUserOnline(m.userId) ? 'Online' : 'Offline'"
+        ></span>
+
+        <!-- Displays when the message was sent. -->
+        <small>
+          {{ m.timestamp | date: 'shortTime' }}
+        </small>
+
+      </div>
+
+      <!-- Display the normal message contents when the message has not been deleted. -->
+      <p *ngIf="!m.deleted && m.text">
+        {{ m.text }}
+      </p>
+
+      <img *ngIf="!m.deleted && m.image" class="chat-image" [src]="m.image" alt="Image shared by {{ m.username }}" />
+
+      <!-- Preserve the message slot when its owner deletes the message. -->
+      <p *ngIf="m.deleted">
+        <em>Message deleted</em>
+      </p>
+
+      <!-- Users may delete only their own non-deleted messages. -->
+      <button
+        *ngIf="m.userId === userId && !m.deleted"
+        (click)="deleteMessage(m)"
+      >
+        Delete
+      </button>
+
+    </article>
+
+  </main>
+
+
+  <!--
+    MESSAGE COMPOSER
+    ================
+    Remains visible at the bottom while the message history scrolls independently.
+  -->
+  <footer>
+
+    <input
+      [(ngModel)]="newMessage"
+      (keyup.enter)="send()"
+      placeholder="Message this channel"
+    />
+
+    <label class="image-button" title="Attach PNG, JPEG or GIF (max 2 MB)">
+      Image
+      <input type="file" accept="image/png,image/jpeg,image/gif" (change)="chooseImage($event)" />
+    </label>
+
+    <span class="image-name" *ngIf="pendingImageName">{{ pendingImageName }} <button type="button" (click)="clearPendingImage()">×</button></span>
+
+    <button (click)="send()">
+      Send
+    </button>
+
+  </footer>
+
+</div>
+</div>

@@ -1,0 +1,163 @@
+<!--
+  Main container for the Fabuloso first-run bootstrap page.
+
+  This page is used during the application's initial setup to create the single Super Admin account.
+
+  class="bootstrap-card":
+    Applies CSS styling to the bootstrap form, such as its layout, spacing, dimensions, background, borders, and overall
+                                                    card appearance.
+-->
+<div class="bootstrap-card">
+
+  <!--
+    Main heading for the bootstrap page.
+    This identifies the page as Fabuloso's first-run setup process.
+  -->
+  <h1>Fabuloso — First Run</h1>
+
+  <!--
+    Supporting description explaining the purpose and security behaviour of the bootstrap process.
+
+    The administrator can use this page to create the application's single Super Admin account.
+
+    After the account has been successfully created, the server disables the bootstrap functionality while that Super Admin account exists.
+
+    This prevents the bootstrap process from being repeatedly used to create additional Super Admin accounts.
+  -->
+  <p>
+    Create the single Super Admin. After this succeeds the server
+    permanently disables bootstrap while that account exists.
+  </p>
+
+  <!--
+    Email address field for the Super Admin account.
+
+    [(ngModel)]="email":
+      Angular two-way data binding.
+      The value entered into this input is stored in the component's "email" property.
+      If the component changes the value of "email", Angular also updates the value displayed inside this input.
+
+    type="email":
+      Identifies the input as an email address field.
+      This allows the browser to provide email-specific input behaviour and basic client-side format checking.
+  -->
+  <label>
+    Email
+    <input
+      [(ngModel)]="email"
+      type="email"
+    >
+  </label>
+
+  <!--
+    Username field for the Super Admin account.
+
+    [(ngModel)]="username":
+      Two-way binds the value entered into this input to the component's "username" property.
+
+      Changes made by the user update the component property, while changes made to the component property are
+                                                reflected in the input.
+  -->
+  <label>
+    Username
+    <input [(ngModel)]="username">
+  </label>
+
+  <!--
+    First name field for the Super Admin account.
+
+    [(ngModel)]="firstName":
+      Two-way binds this input to the component's "firstName" property.
+
+      The entered first name can later be accessed by the component when the administrator submits the bootstrap form.
+  -->
+  <label>
+    First name
+    <input [(ngModel)]="firstName">
+  </label>
+
+  <!--
+    Last name field for the Super Admin account.
+
+    [(ngModel)]="lastName":
+      Two-way binds this input to the component's "lastName" property.
+      This allows the component to keep track of the last name entered by the administrator.
+  -->
+  <label>
+    Last name
+    <input [(ngModel)]="lastName">
+  </label>
+
+  <!--
+    Date of birth field for the Super Admin account.
+
+    [(ngModel)]="dob":
+      Two-way binds the selected date to the component's "dob" property.
+
+    type="date":
+      Tells the browser that this input represents a date.
+
+      Supported browsers normally display a date picker, allowing the administrator to select a date instead of
+                                                manually entering one.
+  -->
+  <label>
+    Date of birth
+    <input
+      [(ngModel)]="dob"
+      type="date"
+    >
+  </label>
+
+  <!--
+    Password field for the Super Admin account.
+
+    [(ngModel)]="password":
+      Two-way binds the entered password to the component's "password" property.
+      The component can then use this value when sending the Super Admin creation request to the server.
+
+    type="password":
+      Tells the browser to conceal the entered characters rather than displaying the password as normal readable text.
+  -->
+  <label>
+    Password
+    <input
+      [(ngModel)]="password"
+      type="password"
+    >
+  </label>
+
+  <!--
+    Button used to submit the bootstrap information and create the
+    Super Admin account.
+
+    (click)="create()":
+      Angular event binding.
+      When the administrator clicks the button, Angular calls the "create()" method in the component's TypeScript class.
+      The create method is responsible for processing the entered account information and requesting creation of the initial Super Admin.
+
+    [disabled]="busy":
+      Angular property binding.
+      The button's disabled property is controlled by the component's "busy" value.
+
+      When "busy" is true, the button is disabled. This prevents the administrator from repeatedly clicking the button
+                            while the account creation request is already being processed.
+
+    {{ busy ? 'Creating…' : 'Bootstrap Super User' }}:
+      Angular interpolation containing a ternary conditional expression.
+
+      If "busy" is true:
+        The button displays "Creating…" to show that the request is currently being processed.
+
+      If "busy" is false:
+        The button displays "Bootstrap Super User", indicating that it can be used to begin the account creation process.
+
+      This gives the administrator immediate visual feedback about the current state of the bootstrap request.
+  -->
+  <button
+    (click)="create()"
+    [disabled]="busy"
+  >
+    {{ busy ? 'Creating…' : 'Bootstrap Super User' }}
+  </button>
+
+</div>

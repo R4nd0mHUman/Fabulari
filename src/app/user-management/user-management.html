@@ -1,0 +1,194 @@
+<!--
+  Main container for the entire User Management administrative page.
+
+  This wrapper groups the Fabulari logo and the main user management panel together.
+-->
+<div class="admin-page-shell">
+
+  <!--
+    Fabulari logo displayed at the top of the page.
+
+    class="fabulari-logo":
+      Applies CSS styling to control the logo's appearance and positioning.
+
+    src:
+      Specifies the location of the logo image relative to the application.
+
+    alt:
+      Provides alternative text for accessibility and is displayed if the image cannot be loaded.
+  -->
+  <img
+    class="fabulari-logo"
+    src="assets/Images/fabulari-logo.png"
+    alt="Fabulari logo"
+  />
+
+  <!--
+    Main content area containing the user management functionality.
+
+    class="admin-panel":
+      Applies CSS styling to the administrative panel, including its layout, spacing, dimensions, and appearance.
+  -->
+  <section class="admin-panel">
+
+    <!--
+      Navigation link that takes the administrator back to the Super Admin dashboard.
+
+      class="back-link":
+        Applies CSS styling to control the appearance and positioning of the return link.
+
+      href="/super-admin":
+        Navigates the browser to the /super-admin route.
+
+      The arrow is simply visual text indicating that this is a "back" or return link.
+    -->
+    <a
+      class="back-link"
+      href="/super-admin"
+    >
+      ← Super Admin
+    </a>
+
+    <!--
+      Main heading for the current page.
+      This identifies the page as the User Management section.
+    -->
+    <h1>User Management</h1>
+
+    <!--
+      Supporting description explaining an important consequence of permanently deleting a user account.
+
+      When a user is permanently deleted, their email address is also prevented from being used to register another account.
+      This informs the Super Admin that deletion affects both the existing account and future registration attempts.
+    -->
+    <p>
+      Permanent deletion also prevents the deleted email address from being registered again.
+    </p>
+
+    <!-- Displays feedback while the registered-user list is being retrieved. -->
+    <p
+      class="status-message"
+      *ngIf="loading"
+    >
+      Loading registered users...
+    </p>
+
+
+    <!-- Displays the backend error instead of silently showing an empty page. -->
+    <p
+      class="error-message"
+      *ngIf="!loading && errorMessage"
+    >
+      {{ errorMessage }}
+    </p>
+
+
+    <!--
+      Distinguishes a legitimate empty database from an HTTP request failure.
+    -->
+    <p
+      class="status-message"
+      *ngIf="!loading && !errorMessage && users.length === 0"
+    >
+      No registered users were found.
+    </p>
+
+    <!--
+      Container for the collection of user accounts displayed on the page.
+
+      class="user-list":
+        Applies CSS styling to control the layout, spacing, and overall appearance of the user account list.
+    -->
+    <div class="user-list">
+
+      <!--
+        Card representing an individual user account.
+
+        class="user-card":
+          Applies CSS styling to each user entry, allowing individual users to be visually separated and organised.
+
+        *ngFor="let u of users":
+          Angular's *ngFor structural directive loops through the "users" collection defined in the component's TypeScript class.
+
+          For every user object in the "users" array, Angular creates one copy of this <article> and makes the current user
+                                                available through the "u" variable.
+
+          For example, if "users" contains five user accounts, Angular will generate five separate user cards.
+      -->
+      <article
+        class="user-card"
+        *ngFor="let u of users"
+      >
+
+        <!--
+          Container grouping the identifying information for the current user.
+
+          The username, email address, and role are retrieved from the current "u" object created by the *ngFor directive.
+        -->
+        <div>
+
+          <!--
+            Displays the username of the current user.
+
+            <strong>:
+              Gives the username semantic importance and normally displays it using a bold font weight.
+
+            {{ u.username }}:
+              Angular interpolation retrieves and displays the "username" property from the current user object.
+          -->
+          <strong>{{ u.username }}</strong>
+
+          <!--
+            Displays the email address associated with the current user.
+
+            {{ u.email }}:
+              Angular interpolation retrieves and displays the "email" property from the current user object.
+          -->
+          <span>{{ u.email }}</span>
+
+          <!--
+            Displays the current user's assigned application role.
+
+            <small>:
+              Represents secondary information and normally displays the role using a smaller font size.
+
+            {{ u.role }}:
+              Angular interpolation retrieves and displays the "role" property from the current user object.
+
+            This allows the Super Admin to identify whether the account belongs to a normal user, administrator, or another
+                                                        supported role.
+          -->
+          <small>{{ u.role }}</small>
+
+        </div>
+
+        <!--
+          Button used to permanently delete the current user account.
+
+          *ngIf="u.role !== 'super-admin'":
+            Angular's *ngIf structural directive only displays this button when the current user's role is not "super-admin".
+
+            This prevents the delete button from being presented for a Super Admin account through this interface.
+
+          (click)="deleteUser(u)":
+            Angular event binding.
+            When the Super Admin clicks this button, Angular calls the "deleteUser()" method defined in the component's
+                                                        TypeScript class.
+
+            The current user object "u" is passed into the method so the component knows which account should be deleted.
+
+            The deletion process can then use information from that user object, such as its identifier, username, or email,
+                                                        when communicating with the server.
+        -->
+        <button
+          *ngIf="u.role !== 'super-admin'"
+          (click)="deleteUser(u)"
+        >
+          Delete User
+        </button>
+
+      </article>
+
+    </div>
+  </section>
+</div>

@@ -1,0 +1,74 @@
+<div
+    class="login-screen"
+    [ngStyle]="{ 'background-image': 'url(' + currentBase + ')' }"
+>
+
+    <img class="fabulari-logo" src="assets/Images/fabulari-logo.png" alt="Fabulari logo" />
+
+    <!-- Displays the Fabuloso title image at the top of the login screen. -->
+    <img
+        class="title"
+        [src]="titleImage"
+        alt="Fabuloso Title"
+    />
+
+
+    <!-- Displays the computer image behind the login controls. -->
+    <img
+        class="computer"
+        [src]="computerImage"
+        alt="Computer"
+    />
+
+
+    <!-- Displays the Login button and changes its image when hovered. -->
+    <img
+        class="login-button"
+        [src]="currentLoginFlower"
+        alt="Login"
+        (mouseenter)="loginHover(true)"
+        (mouseleave)="loginHover(false)"
+        (click)="login()"
+    />
+
+
+    <!-- Displays the Sign Up button and changes its image when hovered. -->
+    <img
+        class="signup-button"
+        [src]="currentSignUpFlower"
+        alt="Sign Up"
+        (mouseenter)="signUpHover(true)"
+        (mouseleave)="signUpHover(false)"
+        (click)="goToRegister()"
+    />
+
+
+    <!-- Displays the Guest button and changes its image when hovered. -->
+    <img
+        class="guest-button"
+        [src]="currentGuestFlower"
+        alt="Continue as Guest"
+        (mouseenter)="guestHover(true)"
+        (mouseleave)="guestHover(false)"
+        (click)="continueAsGuest()"
+    />
+
+
+    <!-- Allows the user to enter their username. -->
+    <input
+        type="text"
+        class="username"
+        [(ngModel)]="username"
+        placeholder="Enter your username:"
+    />
+
+
+    <!-- Allows the user to enter their password. -->
+    <input
+        type="password"
+        class="password"
+        [(ngModel)]="password"
+        placeholder="Enter your password:"
+    />
+
+</div>

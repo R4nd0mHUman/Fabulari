@@ -1,0 +1,39 @@
+﻿[Arrow]
+Path=Cute Pink Normal Select.cur
+
+[Help]
+Path=Cute Pink Help Select.cur
+
+[No]
+Path=Cute Pink Unvailable.cur
+
+[IBeam]
+Path=Cute Pink Text.cur
+
+[Crosshair]
+Path=Cute Pink Precision Select.cur
+
+[SizeAll]
+Path=Cute Pink Move Select.cur
+
+[SizeWE]
+Path=Cute Pink Horizontal.cur
+
+[SizeNS]
+Path=Cute Pink Vertical.cur
+
+[SizeNESW]
+Path=Cute Pink Diagonal 2.cur
+
+[SizeNWSE]
+Path=Cute Pink Diagonal 1.cur
+
+[Hand]
+Path=Cute Pink Link Select.cur
+
+[NWPen]
+Path=Cute Pink Handwriting.cur
+
+[UpArrow]
+Path=Cute Pink Alternate Select.ani
+

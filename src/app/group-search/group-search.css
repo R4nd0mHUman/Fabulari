@@ -1,0 +1,604 @@
+/* ============================================================
+   CUSTOM FONT
+============================================================ */
+
+/* Defines the custom Tempus Sans font used throughout the page. */
+/* ============================================================
+   MAIN PAGE
+============================================================ */
+
+.page {
+
+    /* Makes the page at least as tall as the browser window. */
+    min-height: 100vh;
+
+    /* Includes padding and borders inside the element's overall dimensions. */
+    box-sizing: border-box;
+
+    /* Adds responsive space above, horizontal space on the sides, and space below the page content. */
+    padding: 6vh 20px 40px;
+
+    /* Allows the page to scroll vertically when its content becomes taller than the available space. */
+    overflow-y: auto;
+
+    /* Centres text throughout the page by default. */
+    text-align: center;
+
+    /* Uses the custom Tempus Sans font throughout the page. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Gives the page its soft pink background. */
+    background: #fcecf8;
+
+    /* Gives the page its main pink/purple text colour. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom pink normal-selection cursor across the page. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Normal%20Select.cur'),
+        auto;
+}
+
+
+/* ============================================================
+   PAGE TITLE
+============================================================ */
+
+.page-title {
+
+    /* Removes the default top margin and adds 10px of space below the title. */
+    margin: 0 0 10px;
+
+    /* Uses the custom font for the page title. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the title 42px on larger screens. */
+    font-size: 42px;
+
+    /* Keeps the title at its normal font weight. */
+    font-weight: normal;
+
+    /* Gives the title the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+
+    /* Creates a white outline around the title text. */
+    text-shadow:
+        -2px -2px 0 white,
+         2px -2px 0 white,
+        -2px  2px 0 white,
+         2px  2px 0 white;
+}
+
+
+/* ============================================================
+   PAGE DESCRIPTION
+============================================================ */
+
+.page-description {
+
+    /* Prevents the description from becoming excessively wide. */
+    max-width: 700px;
+
+    /* Centres the description and adds 35px of space below it. */
+    margin: 0 auto 35px;
+
+    /* Uses the custom font for the description. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the description text size. */
+    font-size: 18px;
+
+    /* Adds comfortable spacing between lines of text. */
+    line-height: 1.5;
+
+    /* Gives the description the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   SEARCH CONTAINER
+============================================================ */
+
+.search-container {
+
+    /* Makes the search area at most 700px wide while keeping it responsive. */
+    width: min(700px, 90vw);
+
+    /* Centres the search area and adds 35px of space below it. */
+    margin: 0 auto 35px;
+
+    /* Places the search input and button in a Flexbox row. */
+    display: flex;
+
+    /* Vertically centres the input and button. */
+    align-items: center;
+
+    /* Adds 12px of space between the input and button. */
+    gap: 12px;
+}
+
+
+/* ============================================================
+   SEARCH INPUT
+============================================================ */
+
+.search-input {
+
+    /* Allows the input to use the remaining available space. */
+    flex: 1;
+
+    /* Includes padding and borders inside the input's overall width. */
+    box-sizing: border-box;
+
+    /* Gives the search input a minimum height. */
+    min-height: 52px;
+
+    /* Adds space inside the input around its text. */
+    padding: 10px 15px;
+
+    /* Gives the input a thick pink/purple border. */
+    border:
+        3px solid rgb(185, 105, 168);
+
+    /* Rounds the input corners. */
+    border-radius: 12px;
+
+    /* Gives the input a clean white background. */
+    background: white;
+
+    /* Uses the pink/purple theme colour for typed text. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom font inside the search input. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the search input text size. */
+    font-size: 18px;
+
+    /* Uses the custom text cursor while typing. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Text.cur'),
+        text;
+}
+
+
+/* Search input placeholder text. */
+.search-input::placeholder {
+
+    /* Gives placeholder text the pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+
+    /* Makes the placeholder slightly transparent. */
+    opacity: 0.6;
+}
+
+
+/* Search input focus effect. */
+.search-input:focus {
+
+    /* Removes the browser's default focus outline. */
+    outline: none;
+
+    /* Changes the border to a brighter pink when focused. */
+    border-color: rgb(218, 135, 197);
+
+    /* Adds a soft pink glow around the focused input. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   SEARCH BUTTON
+============================================================ */
+
+.search-button {
+
+    /* Gives the search button a minimum height matching the input. */
+    min-height: 52px;
+
+    /* Adds space inside the button around its text. */
+    padding: 8px 25px;
+
+    /* Gives the button a thick pink/purple border. */
+    border:
+        3px solid rgb(185, 105, 168);
+
+    /* Rounds the button corners. */
+    border-radius: 12px;
+
+    /* Gives the button a white background. */
+    background: white;
+
+    /* Gives the button pink/purple text. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom font inside the button. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the button text size. */
+    font-size: 18px;
+
+    /* Uses the custom pink link cursor over the clickable button. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'),
+        pointer;
+}
+
+
+/* Search button hover effect. */
+.search-button:hover {
+
+    /* Brightens the border when the button is hovered. */
+    border-color: rgb(218, 135, 197);
+
+    /* Keeps the button text pink/purple. */
+    color: rgb(185, 105, 168);
+
+    /* Adds a soft pink glow around the button. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* Search button pressed effect. */
+.search-button:active {
+
+    /* Moves the button down slightly while it is being pressed. */
+    transform: translateY(1px);
+}
+
+
+/* ============================================================
+   LOADING MESSAGE
+============================================================ */
+
+.loading-message {
+
+    /* Centres the loading message and adds vertical spacing around it. */
+    margin: 30px auto;
+
+    /* Uses the custom font for the loading message. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the loading message slightly larger than normal text. */
+    font-size: 20px;
+
+    /* Uses the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   GROUP LIST
+============================================================ */
+
+.groups {
+
+    /* Allows the group list to use the full available width. */
+    width: 100%;
+
+    /* Uses Flexbox to arrange the group cards. */
+    display: flex;
+
+    /* Places the group cards vertically. */
+    flex-direction: column;
+
+    /* Centres the group cards horizontally. */
+    align-items: center;
+
+    /* Adds 25px of space between each group card. */
+    gap: 25px;
+}
+
+
+/* ============================================================
+   GROUP CARD
+============================================================ */
+
+.group-card {
+
+    /* Makes cards 650px wide at most while keeping them responsive. */
+    width: min(650px, 90vw);
+
+    /* Includes padding and borders inside the card's overall width. */
+    box-sizing: border-box;
+
+    /* Adds space inside the card around its contents. */
+    padding: 25px;
+
+    /* Gives the card a thick pink/purple border. */
+    border:
+        3px solid rgb(185, 105, 168);
+
+    /* Rounds the card corners. */
+    border-radius: 15px;
+
+    /* Gives the card a clean white background. */
+    background: white;
+
+    /* Adds a soft pink/purple glow around the card. */
+    box-shadow:
+        0 0 15px rgba(185, 105, 168, 0.35);
+
+    /* Aligns the content inside the card to the left. */
+    text-align: left;
+}
+
+
+/* Group card hover effect. */
+.group-card:hover {
+
+    /* Makes the pink glow slightly brighter when the card is hovered. */
+    box-shadow:
+        0 0 18px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   GROUP CARD TITLE
+============================================================ */
+
+.group-card h2 {
+
+    /* Removes the default top margin and adds 20px below the heading. */
+    margin: 0 0 20px;
+
+    /* Uses the custom font for the group title. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the group title size. */
+    font-size: 28px;
+
+    /* Keeps the heading at its normal font weight. */
+    font-weight: normal;
+
+    /* Gives the heading the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+
+    /* Centres the group title inside the card. */
+    text-align: center;
+
+    /* Creates a subtle white outline around the group title. */
+    text-shadow:
+        -1px -1px 0 white,
+         1px -1px 0 white,
+        -1px  1px 0 white,
+         1px  1px 0 white;
+}
+
+
+/* ============================================================
+   GROUP CARD TEXT
+============================================================ */
+
+.group-card p {
+
+    /* Adds 10px of vertical spacing around paragraphs. */
+    margin: 10px 0;
+
+    /* Uses the custom font for group information. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the group text size. */
+    font-size: 18px;
+
+    /* Adds comfortable spacing between lines of text. */
+    line-height: 1.5;
+
+    /* Uses the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   GROUP BUTTON
+============================================================ */
+
+.group-button {
+
+    /* Makes the button a block element so it can be centred with auto margins. */
+    display: block;
+
+    /* Gives the button a minimum height. */
+    min-height: 50px;
+
+    /* Centres the button and adds 20px of space above it. */
+    margin: 20px auto 0;
+
+    /* Adds space inside the button around its text. */
+    padding: 8px 25px;
+
+    /* Gives the button a thick pink/purple border. */
+    border:
+        3px solid rgb(185, 105, 168);
+
+    /* Rounds the button corners. */
+    border-radius: 12px;
+
+    /* Gives the button a white background. */
+    background: white;
+
+    /* Gives the button pink/purple text. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom font inside the button. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the button text size. */
+    font-size: 18px;
+
+    /* Uses the custom pink link cursor over the clickable button. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'),
+        pointer;
+}
+
+
+/* Group button hover effect. */
+.group-button:hover {
+
+    /* Brightens the border when the button is hovered. */
+    border-color: rgb(218, 135, 197);
+
+    /* Keeps the button text pink/purple. */
+    color: rgb(185, 105, 168);
+
+    /* Adds a soft pink glow around the button. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   NO GROUPS MESSAGE
+============================================================ */
+
+.no-groups {
+
+    /* Centres the message and adds vertical spacing around it. */
+    margin: 30px auto;
+
+    /* Uses the custom font for the empty-state message. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Makes the message slightly larger than normal text. */
+    font-size: 20px;
+
+    /* Uses the main pink/purple theme colour. */
+    color: rgb(185, 105, 168);
+}
+
+
+/* ============================================================
+   BACK BUTTON
+============================================================ */
+
+.back-button {
+
+    /* Makes the button a block element so it can be centred. */
+    display: block;
+
+    /* Gives the Back button a minimum height. */
+    min-height: 55px;
+
+    /* Makes the button at most 300px wide while keeping it responsive. */
+    width: min(300px, 90vw);
+
+    /* Centres the button and adds 35px of space above it. */
+    margin: 35px auto 0;
+
+    /* Adds space inside the button around its text. */
+    padding: 8px 25px;
+
+    /* Includes padding and borders inside the button's overall width. */
+    box-sizing: border-box;
+
+    /* Gives the button a thick pink/purple border. */
+    border:
+        3px solid rgb(185, 105, 168);
+
+    /* Rounds the button corners. */
+    border-radius: 12px;
+
+    /* Gives the button a white background. */
+    background: white;
+
+    /* Gives the button pink/purple text. */
+    color: rgb(185, 105, 168);
+
+    /* Uses the custom font inside the button. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Sets the Back button text size. */
+    font-size: 20px;
+
+    /* Uses the custom pink link cursor over the clickable button. */
+    cursor:
+        url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'),
+        pointer;
+}
+
+
+/* Back button hover effect. */
+.back-button:hover {
+
+    /* Brightens the border when the button is hovered. */
+    border-color: rgb(218, 135, 197);
+
+    /* Keeps the button text pink/purple. */
+    color: rgb(185, 105, 168);
+
+    /* Adds a soft pink glow around the button. */
+    box-shadow:
+        0 0 12px rgba(218, 135, 197, 0.5);
+}
+
+
+/* ============================================================
+   MOBILE RESPONSIVE STYLES
+============================================================ */
+
+@media (max-width: 600px) {
+
+    /* Reduces the page padding on smaller screens. */
+    .page {
+        padding: 4vh 15px 30px;
+    }
+
+    /* Makes the page title smaller on mobile. */
+    .page-title {
+        font-size: 32px;
+    }
+
+    /* Makes the page description smaller and reduces the space below it. */
+    .page-description {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    /* Makes the search area slightly wider and stacks its contents vertically. */
+    .search-container {
+        width: 95vw;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Makes the search input use the full available width. */
+    .search-input {
+        width: 100%;
+    }
+
+    /* Makes the search button use the full available width. */
+    .search-button {
+        width: 100%;
+    }
+
+    /* Makes group cards slightly wider on mobile while reducing their internal padding. */
+    .group-card {
+        width: 95vw;
+        padding: 20px;
+    }
+
+    /* Reduces the group card title size on smaller screens. */
+    .group-card h2 {
+        font-size: 24px;
+    }
+
+    /* Reduces group card paragraph text on smaller screens. */
+    .group-card p {
+        font-size: 16px;
+    }
+
+    /* Makes the group button use the full available card width. */
+    .group-button {
+        width: 100%;
+    }
+
+    /* Makes the Back button use almost the entire mobile width. */
+    .back-button {
+        width: 95vw;
+    }
+
+}

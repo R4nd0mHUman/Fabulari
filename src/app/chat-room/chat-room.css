@@ -1,0 +1,625 @@
+/* =========================================================
+   CHAT SCREEN
+   ---------------------------------------------------------
+   Main wrapper for the user chat interface.
+
+   The page uses:
+   - A full-screen pink-themed background image
+   - A light overlay for readability
+   - Fabulari's pink/purple colour palette
+   - Responsive spacing for different screen sizes
+   ========================================================= */
+.chat-screen {
+    /* Makes the chat screen fill the available width. */
+    width: 100%;
+
+    /* Makes the chat screen fill the viewport vertically. */
+    height: 100vh;
+
+    /* Prevents padding from increasing the element's total size. */
+    box-sizing: border-box;
+
+    /*
+     * Responsive page spacing:
+     * - Minimum top padding: 74px
+     * - Preferred top padding: 10% of viewport height
+     * - Maximum top padding: 100px
+     */
+    padding: clamp(74px, 10vh, 100px) 18px 24px;
+
+    /*
+     * Prevents the overall page from scrolling.
+     * The message-history section handles its own scrolling instead.
+     */
+    overflow: hidden;
+
+    /*
+     * Background consists of two layers:
+     * 1. A semi-transparent pink overlay for improved readability.
+     * 2. The user's chat background image.
+     *
+     * "center / cover" keeps the image centered and ensures it covers the entire available area without repeating.
+     */
+    background:
+        linear-gradient(
+            rgba(252, 236, 248, 0.78),
+            rgba(252, 236, 248, 0.90)
+        ),
+        url('/assets/Images/JustChattingBaseWindowUser.png')
+            center / cover no-repeat;
+
+    /* Primary font used throughout the chat interface. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /* Main text colour used by the chat interface. */
+    color: rgb(113, 54, 79);
+}
+
+
+/* ==================================================================================
+   CHAT SHELL
+   ----------------------------------------------------------------------------------
+   Main container holding the chat header, message history, and message input/footer.
+
+   CSS Grid divides the shell into three rows:
+   - Header
+   - Scrollable message history
+   - Footer/input area
+   ================================================================================== */
+.chat-shell {
+    /*
+     * The shell can grow to 900px wide but will shrink to fit smaller screens.
+     */
+    width: min(900px, 100%);
+
+    /* Makes the chat shell fill the available height. */
+    height: 100%;
+
+    /* Centers the chat shell horizontally. */
+    margin: auto;
+
+    /* Includes padding and borders in the defined dimensions. */
+    box-sizing: border-box;
+
+    /* Uses CSS Grid to structure the chat interface. */
+    display: grid;
+
+    /*
+     * Three rows:
+     * - Header automatically sizes to its contents.
+     * - Message history takes all remaining available space.
+     * - Footer automatically sizes to its contents.
+     *
+     * minmax(0, 1fr) is important here because it allows the message history to shrink and scroll instead of expanding the entire chat shell.
+     */
+    grid-template-rows: auto minmax(0, 1fr) auto;
+
+    /*
+     * Prevents content inside the shell from overflowing outside its rounded boundaries.
+     */
+    overflow: hidden;
+
+    /* Pink border matching the Fabulari theme. */
+    border: 3px solid rgb(184, 79, 118);
+
+    /* Rounded outer corners. */
+    border-radius: 22px;
+
+    /*
+     * Slightly transparent white/pink background keeps the interface light while allowing some visual depth.
+     */
+    background: rgba(255, 250, 252, 0.94);
+
+    /* Soft purple/pink shadow around the chat shell. */
+    box-shadow: 0 14px 38px rgba(113, 54, 79, 0.20);
+}
+
+
+/* ================================================================================
+   CHAT HEADER AND FOOTER
+   --------------------------------------------------------------------------------
+   Shared layout and styling for the top and bottom sections of the chat interface.
+   ================================================================================ */
+.chat-shell header,
+.chat-shell footer {
+    /*
+     * Flexbox allows the header/footer contents to sit horizontally next to each other.
+     */
+    display: flex;
+
+    /* Adds consistent spacing between child elements. */
+    gap: 1rem;
+
+    /* Vertically centers the contents. */
+    align-items: center;
+
+    /* Adds internal spacing around the content. */
+    padding: 14px 18px;
+
+    /*
+     * Soft pink background differentiates the header and footer from the main message area.
+     */
+    background: rgba(244, 209, 217, 0.88);
+}
+
+
+/*
+ * Bottom border separates the header from the message history.
+ */
+.chat-shell header {
+    border-bottom: 2px solid rgba(184, 79, 118, 0.40);
+}
+
+
+/*
+ * Top border separates the footer from the message history.
+ */
+.chat-shell footer {
+    border-top: 2px solid rgba(184, 79, 118, 0.40);
+}
+
+
+/*
+ * Main heading displayed in the chat header.
+ */
+.chat-shell header h1 {
+    /* Removes the browser's default heading margin. */
+    margin: 0;
+
+    /*
+     * Responsive heading size:
+     * - Minimum: 24px
+     * - Preferred: 4% of viewport width
+     * - Maximum: 34px
+     */
+    font-size: clamp(24px, 4vw, 34px);
+
+    /* Keeps the heading at normal font weight. */
+    font-weight: normal;
+}
+
+
+/*
+ * Secondary information displayed in the chat header.
+ */
+.chat-shell header p {
+    /*
+     * Removes the default paragraph margin.
+     *
+     * "auto" on the left pushes the paragraph toward the right side of the header when space is available.
+     */
+    margin: 0 0 0 auto;
+}
+
+
+/* =========================================================================================================
+   MESSAGE HISTORY
+   ---------------------------------------------------------------------------------------------------------
+   Scrollable area containing all chat messages.
+   The parent chat shell prevents the entire page from scrolling, so this section handles message scrolling.
+   ========================================================================================================= */
+.message-history {
+    /*
+     * Allows the message history to shrink inside the minmax(0, 1fr) grid row.
+     */
+    min-height: 0;
+
+    /* Internal spacing around the messages. */
+    padding: 16px 18px;
+
+    /*
+     * Enables vertical scrolling when the message history becomes taller than the available space.
+     */
+    overflow-y: auto;
+
+    /* Prevents horizontal scrolling. */
+    overflow-x: hidden;
+
+    /*
+     * Makes programmatic/anchor scrolling move smoothly.
+     */
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   CHAT MESSAGES
+   ---------------------------------------------------------
+   Individual message/article containers.
+   ========================================================= */
+.chat-shell article {
+    /*
+     * Adds spacing between individual messages.
+     * The bottom margin separates each message from the next.
+     */
+    margin: 0 0 12px;
+
+    /* Internal spacing around the message contents. */
+    padding: 12px 14px;
+
+    /* Subtle pink border around each message. */
+    border: 1px solid rgba(184, 79, 118, 0.25);
+
+    /* Rounded message corners. */
+    border-radius: 14px;
+
+    /* Slightly transparent white message background. */
+    background: rgba(255, 255, 255, 0.82);
+}
+
+
+/*
+ * Highlights the username/sender name inside a message.
+ */
+.chat-shell article strong {
+    color: rgb(151, 65, 99);
+}
+
+
+/*
+ * Styles smaller metadata such as message timestamps.
+ */
+.chat-shell article small {
+    /* Adds spacing between the sender name and metadata. */
+    margin-left: 8px;
+
+    /* Uses a softer muted colour for secondary information. */
+    color: rgb(135, 100, 114);
+}
+
+
+/*
+ * Styles the main text content of a chat message.
+ */
+.chat-shell article p {
+    /*
+     * Provides a small amount of vertical spacing without creating excessive gaps between message elements.
+     */
+    margin: 0.35rem 0;
+
+    /*
+     * Allows long URLs, usernames, or other long strings to wrap instead of overflowing the message card.
+     */
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   CHAT BUTTONS
+   ---------------------------------------------------------
+   General button styling used within the chat shell.
+   ========================================================= */
+.chat-shell button {
+    /*
+     * Gives buttons a comfortable minimum height for both mouse and touch interaction.
+     */
+    min-height: 38px;
+
+    /* Adds internal spacing around the button text. */
+    padding: 7px 14px;
+
+    /* Pink themed button border. */
+    border: 2px solid rgb(184, 79, 118);
+
+    /* Rounded button corners. */
+    border-radius: 12px;
+
+    /* Soft pink button background. */
+    background: rgb(244, 209, 217);
+
+    /* Dark pink/purple button text. */
+    color: rgb(113, 54, 79);
+
+    /* Keeps buttons consistent with the rest of the interface. */
+    font-family: 'Tempus Sans ITC', 'Trebuchet MS', Arial, sans-serif;
+
+    /*
+     * Uses the custom pink cursor when hovering over the button.
+     * Falls back to the browser's pointer cursor if the custom cursor cannot be loaded.
+     */
+    cursor: url('/assets/cursor/Cute%20Pink%20Link%20Select.cur'), pointer;
+}
+
+
+/*
+ * Button hover state.
+ * Provides visual feedback when the user moves the cursor over a button.
+ */
+.chat-shell button:hover {
+    /* Lightens the button background on hover. */
+    background: rgb(255, 225, 232);
+
+    /* Adds a subtle pink glow around the button. */
+    box-shadow: 0 0 10px rgba(214, 95, 136, 0.40);
+}
+
+
+/* =========================================================
+   CHAT INPUT
+   ---------------------------------------------------------
+   Message input field located inside the chat footer.
+   ========================================================= */
+.chat-shell footer input {
+    /*
+     * Allows the input to expand and take up available horizontal space inside the footer.
+     */
+    flex: 1;
+
+    /*
+     * Allows the input to shrink below its default minimum width when the footer becomes narrow.
+     */
+    min-width: 0;
+
+    /* Internal spacing around the typed message. */
+    padding: 11px 13px;
+
+    /* Semi-transparent pink border. */
+    border: 2px solid rgba(184, 79, 118, 0.55);
+
+    /* Rounded input corners. */
+    border-radius: 12px;
+
+    /* White background keeps typed text easy to read. */
+    background: white;
+
+    /* Dark pink/purple text colour. */
+    color: rgb(113, 54, 79);
+
+    /*
+     * Inherits the chat interface's font instead of using the browser's default input font.
+     */
+    font: inherit;
+
+    /*
+     * Removes the browser's default focus outline.
+     * A custom focus style is provided below instead.
+     */
+    outline: none;
+}
+
+
+/*
+ * Input focus state.
+ * Makes it clear which field currently has keyboard focus.
+ */
+.chat-shell footer input:focus {
+    /* Brightens the input border when focused. */
+    border-color: rgb(214, 95, 136);
+
+    /* Adds a soft pink focus ring around the input. */
+    box-shadow: 0 0 0 3px rgba(214, 95, 136, 0.13);
+}
+
+
+/* ============================================================================================
+   SYSTEM MESSAGES
+   --------------------------------------------------------------------------------------------
+   Special styling for messages generated by the system rather than by an individual chat user.
+   ============================================================================================ */
+.system {
+    /* Centers system messages horizontally. */
+    text-align: center;
+
+    /* Makes system messages visually distinct from normal chat. */
+    font-style: italic;
+
+    /* Adds a small amount of internal spacing. */
+    padding: 0.35rem;
+
+    /* Uses the darker pink accent colour. */
+    color: rgb(151, 65, 99);
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE STYLES
+   ---------------------------------------------------------
+   These rules apply when the viewport is 600px wide or less.
+   ========================================================= */
+@media (max-width: 600px) {
+
+    /*
+     * Reduces the outer spacing so more screen space is available for the chat interface on mobile devices.
+     */
+    .chat-screen {
+        padding: 66px 8px 8px;
+    }
+
+
+    /*
+     * Reduces the shell's corner radius so it fits more naturally against the edges of a small screen.
+     */
+    .chat-shell {
+        border-radius: 14px;
+    }
+
+
+    /*
+     * Allows the header contents to wrap onto multiple lines when there is not enough horizontal space.
+     */
+    .chat-shell header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+
+    /*
+     * Places the header's secondary paragraph on its own line on smaller screens.
+     */
+    .chat-shell header p {
+        width: 100%;
+        margin-left: 0;
+    }
+
+
+    /*
+     * Reduces footer spacing and padding on smaller screens.
+     */
+    .chat-shell footer {
+        gap: 8px;
+        padding: 10px;
+    }
+
+
+    /*
+     * Reduces message-history padding to maximize the amount of space available for messages on mobile.
+     */
+    .message-history {
+        padding: 10px;
+    }
+}
+
+
+/* =================================================================
+   CHAT IMAGE SUPPORT
+   -----------------------------------------------------------------
+   Styles for images attached to or displayed within chat messages.
+   These rules support the Phase 2 image functionality.
+   ================================================================= */
+
+
+/*
+ * Displays chat images as block-level elements so they do not leave unwanted inline spacing around the image.
+ */
+.chat-image {
+    /* Prevents images from becoming wider than the available space. */
+    display: block;
+
+    /*
+     * Limits images to 420px wide while still allowing them to shrink to fit smaller screens.
+     */
+    max-width: min(420px, 100%);
+
+    /* Prevents very tall images from taking over the chat. */
+    max-height: 360px;
+
+    /*
+     * Keeps the image's original proportions when it is resized to fit within the maximum dimensions.
+     */
+    object-fit: contain;
+
+    /* Gives attached images rounded corners. */
+    border-radius: 12px;
+
+    /* Adds spacing above and below the image. */
+    margin: 0.55rem 0;
+}
+
+
+/*
+ * Button used for selecting or interacting with an image file.
+ */
+.image-button {
+    /* Indicates that the image control can be clicked. */
+    cursor: pointer;
+
+    /* Adds comfortable internal spacing. */
+    padding: 0.65rem 0.9rem;
+
+    /* Subtle dark pink border. */
+    border: 1px solid #8f6174;
+
+    /* Rounded button corners. */
+    border-radius: 10px;
+
+    /* Very light pink background. */
+    background: #fff4f8;
+
+    /* Makes the button text slightly more prominent. */
+    font-weight: 700;
+}
+
+
+/*
+ * Hides the actual file input.
+ * The surrounding .image-button element can be styled as the visible control instead.
+ */
+.image-button input {
+    display: none;
+}
+
+
+/*
+ * Displays the selected image filename.
+ */
+.image-name {
+    /*
+     * Prevents long filenames from making the layout too wide.
+     */
+    max-width: 180px;
+
+    /*
+     * Hides text that extends beyond the maximum width.
+     */
+    overflow: hidden;
+
+    /*
+     * Displays "..." when the filename is too long.
+     */
+    text-overflow: ellipsis;
+
+    /* Prevents the filename from wrapping onto multiple lines. */
+    white-space: nowrap;
+
+    /* Uses a slightly smaller font for supporting information. */
+    font-size: 0.85rem;
+}
+
+
+/*
+ * Button used within the image filename/control area, such as a remove or clear button.
+ */
+.image-name button {
+    /* Removes the default button border. */
+    border: 0;
+
+    /* Makes the button background transparent. */
+    background: transparent;
+
+    /* Indicates that the control can be clicked. */
+    cursor: pointer;
+
+    /* Makes the icon/control easy to see and interact with. */
+    font-size: 1.1rem;
+}
+
+/* Places the avatar, username, online status and timestamp on one row. */
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Displays a compact circular profile picture beside each username. */
+.message-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Creates the small circular online/offline indicator. */
+.presence-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Green indicates an active Socket.io chat connection. */
+.presence-dot.online {
+  background: #35a853;
+}
+
+/* Grey indicates that the user does not currently have a chat connection. */
+.presence-dot.offline {
+  background: #8d8d8d;
+}
+
+/* Keeps the timestamp slightly separated from the identity information. */
+.message-header small {
+  margin-left: auto;
+}
