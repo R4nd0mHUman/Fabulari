@@ -38,6 +38,7 @@ import {ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild} 
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { validChatImageFile } from './chat-image-validation';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -333,11 +334,7 @@ export class ChatRoom implements OnInit, OnDestroy {
        */
       this.socket.on('connect', () => {
 
-          console.log(
-              'Socket.io connected:',
-              this.socket?.id
-          );
-
+          
           this.socket?.emit('join-channel', {
               channelId: this.channelId,
               userId: this.userId,
@@ -583,8 +580,7 @@ export class ChatRoom implements OnInit, OnDestroy {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
     if (!file) return;
-    const allowed = ['image/png', 'image/jpeg', 'image/gif'];
-    if (!allowed.includes(file.type) || file.size > 2 * 1024 * 1024) {
+    if (!validChatImageFile(file)) {
       alert('Choose a PNG, JPEG or GIF image no larger than 2 MB.');
       input.value = '';
       return;

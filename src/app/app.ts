@@ -12,5 +12,5 @@ import { RouterOutlet } from '@angular/router'; // Imports the RouterOutlet dire
 })
 
 export class App { // Defines the App component class.
-  protected readonly title = signal('Assignment'); // Creates a protected reactive value containing the app title.
+  protected readonly title = signal('Fabulari'); // Creates a protected reactive value containing the app title.
 }

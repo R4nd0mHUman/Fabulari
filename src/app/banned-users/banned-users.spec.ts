@@ -1,36 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'; // Imports Angular testing utilities for creating and testing components.
-import { BannedUsers } from './banned-users'; // Imports the BannedUsers component that will be tested.
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideRouter } from '@angular/router';
+import { BannedUsers } from './banned-users';
 
-// Creates a test suite for the BannedUsers component.
+@Component({ standalone: true, template: '' })
+class DummyRouteComponent {}
+
 describe('BannedUsers', () => {
-
-  let component: BannedUsers; // Stores the instance of the BannedUsers component being tested.
-  let fixture: ComponentFixture<BannedUsers>; // Provides access to the component instance, template, and Angular testing features.
-
-  // Runs before each test to create a fresh component instance.
   beforeEach(async () => {
+    // Keep smoke tests isolated from a developer's real browser session.
+    localStorage.clear();
 
-    // Configures the Angular testing environment for the component.
     await TestBed.configureTestingModule({
-
-      // Imports the standalone BannedUsers component into the test module.
       imports: [BannedUsers],
+      providers: [
+        // Components use HttpClient, but unit tests must never call the live API.
+        provideHttpClient(),
+        provideHttpClientTesting(),
 
-    // Compiles the component template and styles before testing.
+        // RouterLink/ActivatedRoute require a router. These dummy destinations also make authentication
+        //                    redirects safe during component initialisation.
+        provideRouter([
+          { path: 'login', component: DummyRouteComponent },
+          { path: 'groups', component: DummyRouteComponent }
+        ])
+      ]
     }).compileComponents();
-
-    // Creates an instance of the BannedUsers component, getting its actual instance from the fixture.
-    fixture = TestBed.createComponent(BannedUsers);
-    component = fixture.componentInstance;
-
-    // Waits for any asynchronous Angular tasks to finish.
-    await fixture.whenStable();
   });
 
-  // Checks that the component is created successfully.
   it('should create', () => {
-
-    expect(component).toBeTruthy(); // Expects the component instance to exist.
-
+    const fixture = TestBed.createComponent(BannedUsers);
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

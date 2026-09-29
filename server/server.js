@@ -28,6 +28,7 @@ const path = require('path');
 const { Server } = require('socket.io');
 
 const db = require('./database');
+const { validChatImage } = require('./validation');
 const { exportSnapshot } = require('./export-snapshot');
 
 /**
@@ -169,13 +170,6 @@ io.on('connection', (socket) => {
 
       // Retrieve the user attempting to enter the channel.
       const user = await db.User.findOne({ id: userId });
-
-      console.log(
-        'CHAT USER:',
-        user?.username,
-        'PROFILE PICTURE:',
-        user?.profilePicture
-      );
 
       /**
        * Authorisation check.
@@ -363,33 +357,8 @@ io.on('connection', (socket) => {
       const text = String(payload.text || '').trim();
       const image = String(payload.image || '');
 
-      /*
-       * Validate Base64 image data URLs.
-       *
-       * Accepted MIME types:
-       * - image/png
-       * - image/jpeg
-       * - image/gif
-       *
-       * Example valid prefix:
-       * data:image/png;base64,...
-       *
-       * The i flag makes the regular expression case-insensitive.
-       */
-      const allowedImage = /^data:image\/(png|jpeg|gif);base64,/i.test(image);
-
-      /*
-       * Calculate the actual decoded image size.
-       *
-       *                          The Base64 metadata before the comma is removed first.
-       * Buffer.byteLength then calculates the size of the decoded binary data rather than simply counting the much
-       *                                            longer Base64 string.
-       *
-       * If the image is invalid, imageBytes is set to 0 because it will fail the allowedImage validation below anyway.
-       */
-      const imageBytes = allowedImage
-        ? Buffer.byteLength(image.split(',')[1] || '', 'base64')
-        : 0;
+      // Image validation is shared with the backend unit tests so tests exercise the production rule.
+      const imageIsValid = validChatImage(image);
 
       // Reject messages that contain neither usable text nor an image.
       if (!text && !image) {
@@ -409,7 +378,7 @@ io.on('connection', (socket) => {
        */
       if (
         image &&
-        (!allowedImage || imageBytes > 2 * 1024 * 1024)
+        !imageIsValid
       ) {
         return socket.emit('chat-error', {
           message: 'Chat images must be PNG, JPEG or GIF and no larger than 2 MB.'

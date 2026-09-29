@@ -35,7 +35,7 @@ const OUTPUT = path.join(__dirname, 'data', 'mongodb-export.json');
  */
 async function exportSnapshot() {
   /**
-   * Convert MongoDB/Mongoose documents into safe plain JavaScript objects for export.
+   * Convert database documents into safe plain JavaScript objects for export.
    *
    * docs:
    *   Array of documents returned from a MongoDB query.
@@ -44,10 +44,10 @@ async function exportSnapshot() {
    *   Processes every document and returns a new array containing the cleaned versions.
    *
    * toObject():
-   *   Converts a Mongoose document into a normal JavaScript object when the method is available.
+   *   Converts a application document into a normal JavaScript object when the method is available.
    *
    * {...document}:
-   *   Provides a fallback copy if the supplied value is already a plain object rather than a Mongoose document.
+   *   Provides a fallback copy if the supplied value is already a plain object rather than a application document.
    *
    * _id:
    *   Removed because MongoDB's internal identifier is not required in the readable marking snapshot.
@@ -85,7 +85,7 @@ async function exportSnapshot() {
    *   Retrieves every document from the relevant collection because no filter is supplied.
    *
    * lean(false):
-   *   Explicitly keeps the query results as Mongoose documents rather than converting them to lean plain objects.
+   *   Explicitly keeps the query results as application documents rather than converting them to plain objects.
    *   This allows clean() to use each document's toObject() method before removing fields.
    *
    * Each query is awaited so its records are available before the final snapshot object is passed to JSON.stringify().

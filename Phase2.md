@@ -54,7 +54,7 @@ Assignment/
 
 ### Version-control approach
 
-Development should be committed in small logical units rather than one final dump. Appropriate commit subjects include `feat: add group membership approval`, `fix: preserve five MongoDB chat slots`, `feat: add socket image messages`, `test: add backend validation tests`, and `docs: complete Phase 2 API documentation`. Generated dependencies (`node_modules`) are excluded. The repository root separates Angular, server, tests, assets and documentation so a marker can locate each concern quickly. The tutor must be added as a collaborator if the repository is private.
+Phase 2 is maintained in its own Fabulari repository. Final testing, cleanup and documentation improvements are committed separately so the submitted history reflects the final development work. Generated dependencies (`node_modules`) are excluded. The repository root separates Angular, server, tests, assets and documentation so a marker can locate each concern quickly. The tutor must be added as a collaborator if the repository is private.
 
 ## 3. Persistent data structures
 
@@ -64,7 +64,7 @@ Development should be committed in small logical units rather than one final dum
 | `groups` | `id`, name, description, ageLimit, theme, members[], admins[] | group membership and group-specific authority |
 | `channels` | `id`, groupId, name, description | rooms belonging to groups |
 | `requests` | type, requester, group, status, reason, timestamps | group-create and join workflow queue |
-| `messages` | channelId, userId, username, profilePicture, text, image, deleted, timestamp | newest five persistent chat slots per channel |
+| `messages` | channelId, userId, username, text, image, deleted, timestamp | newest five persistent chat slots per channel; profile pictures are enriched from the current user record when chat data is sent |
 | `audit_logs` | actor, action, details, timestamp | trace of administrative mutations |
 | `banned_emails` | email, deletedAt | prevents deleted/banned addresses being reused |
 
@@ -253,5 +253,5 @@ A custom native MongoDB data-access layer preserves a small document-style inter
 - Submit **one PDF** containing student name/number and repository link.
 - Keep this exact documentation in the repository as **`Phase2.md`**.
 - Ensure tutor/teaching member can access the GitHub repository if private.
-- Preserve meaningful Git history; do not replace the repository with a single final commit.
+- Keep the submitted Fabulari repository up to date with the final testing, cleanup and documentation commits.
 - Before demonstration run `npm install` in root and `server`, start MongoDB, run automated tests, and complete the multi-browser acceptance sequence.

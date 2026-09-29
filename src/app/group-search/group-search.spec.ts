@@ -1,38 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideRouter } from '@angular/router';
 import { GroupSearch } from './group-search';
 
+@Component({ standalone: true, template: '' })
+class DummyRouteComponent {}
+
 describe('GroupSearch', () => {
+  beforeEach(async () => {
+    // Keep smoke tests isolated from a developer's real browser session.
+    localStorage.clear();
 
-    // Holds the instance of the GroupSearch component being tested.
-    let component: GroupSearch;
+    await TestBed.configureTestingModule({
+      imports: [GroupSearch],
+      providers: [
+        // Components use HttpClient, but unit tests must never call the live API.
+        provideHttpClient(),
+        provideHttpClientTesting(),
 
-    // Fixture provides access to the component instance, template, and Angular testing utilities.
-    let fixture: ComponentFixture<GroupSearch>;
+        // RouterLink/ActivatedRoute require a router. These dummy destinations also make authentication
+        //                    redirects safe during component initialisation.
+        provideRouter([
+          { path: 'login', component: DummyRouteComponent },
+          { path: 'groups', component: DummyRouteComponent }
+        ])
+      ]
+    }).compileComponents();
+  });
 
-
-    // Runs before each test to set up a fresh testing environment.
-    beforeEach(async () => {
-
-        // Configures the Angular testing module.
-        await TestBed.configureTestingModule({
-            // Since GroupSearch is a standalone component, it is added to the imports array.
-            imports: [GroupSearch],
-        }).compileComponents();
-
-
-        // Creates an instance of the GroupSearch component and retrieves its instance from the fixture.
-        fixture = TestBed.createComponent(GroupSearch);
-        component = fixture.componentInstance;
-
-
-        // Waits for any asynchronous initialization to complete before running tests.
-        await fixture.whenStable();
-    });
-
-
-    // Verifies that the component is created successfully.
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
-
+  it('should create', () => {
+    const fixture = TestBed.createComponent(GroupSearch);
+    expect(fixture.componentInstance).toBeTruthy();
+  });
 });

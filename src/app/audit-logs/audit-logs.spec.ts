@@ -1,36 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'; // Imports Angular testing utilities for creating and testing components.
-import { AuditLogs } from './audit-logs'; // Imports the AuditLogs component that will be tested.
+import { Component } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideRouter } from '@angular/router';
+import { AuditLogs } from './audit-logs';
 
-// Creates a test suite for the AuditLogs component.
+@Component({ standalone: true, template: '' })
+class DummyRouteComponent {}
+
 describe('AuditLogs', () => {
-
-  let component: AuditLogs; // Stores the instance of the AuditLogs component being tested.
-  let fixture: ComponentFixture<AuditLogs>; // Provides access to the component instance, template, and Angular testing features.
-
-  // Runs before each test to create a fresh component instance.
   beforeEach(async () => {
+    // Keep smoke tests isolated from a developer's real browser session.
+    localStorage.clear();
 
-    // Configures the Angular testing environment for the component.
     await TestBed.configureTestingModule({
-
-      // Imports the standalone AuditLogs component into the test module.
       imports: [AuditLogs],
+      providers: [
+        // Components use HttpClient, but unit tests must never call the live API.
+        provideHttpClient(),
+        provideHttpClientTesting(),
 
-    // Compiles the component template and styles before testing.
+        // RouterLink/ActivatedRoute require a router. These dummy destinations also make authentication
+        //                    redirects safe during component initialisation.
+        provideRouter([
+          { path: 'login', component: DummyRouteComponent },
+          { path: 'groups', component: DummyRouteComponent }
+        ])
+      ]
     }).compileComponents();
-
-    // Creates an instance of the AuditLogs component, getting its actual instance from the fixture.
-    fixture = TestBed.createComponent(AuditLogs);
-    component = fixture.componentInstance;
-
-    // Waits for any asynchronous Angular tasks to finish.
-    await fixture.whenStable();
   });
 
-  // Checks that the component is created successfully.
   it('should create', () => {
-
-    expect(component).toBeTruthy(); // Expects the component instance to exist.
-
+    const fixture = TestBed.createComponent(AuditLogs);
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

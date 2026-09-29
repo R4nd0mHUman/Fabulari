@@ -21,13 +21,13 @@ const db = require('./database');
  * 4. Disconnect cleanly from MongoDB.
  */
 (async () => {
-  // Establish the MongoDB/Mongoose connection before attempting to access any collections.
+  // Establish the MongoDB connection before attempting to access any collections.
   await db.connectDatabase();
 
   /**
    * Delete all documents from every Fabuloso collection.
    *
-   * The array contains each Mongoose model whose collection needs to be reset:
+   * The array contains each application model wrapper whose collection needs to be reset:
    * - User: registered user accounts and administrator accounts.
    * - Group: created groups and their membership information.
    * - Channel: communication channels belonging to groups.
@@ -37,7 +37,7 @@ const db = require('./database');
    * - Message: persisted Socket.io chat messages.
    *
    * map():
-   *   Calls deleteMany({}) once for each Mongoose model and produces an array of promises.
+   *   Calls deleteMany({}) once for each application model wrapper and produces an array of promises.
    *
    * deleteMany({}):
    *   The empty filter {} matches every document in the collection, so all records are permanently deleted.
