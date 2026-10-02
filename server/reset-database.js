@@ -3,8 +3,6 @@
  *
  * This script clears all Fabuloso collections from MongoDB so the application returns to its initial unconfigured state.
  * After the reset, the next application launch will require the bootstrap/setup process to be completed again.
- *
- * This script is intended for development and marking/testing purposes only because it permanently deletes the current application data.
  */
 
 const db = require('./database');
